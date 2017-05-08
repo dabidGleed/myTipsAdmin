@@ -48,7 +48,7 @@ The version should be higher than 2.1.8.
 Installing Angular CLI and project dependencies
 Copy
 
-$ npm install
+$ npm install 
 
 Run project
 
