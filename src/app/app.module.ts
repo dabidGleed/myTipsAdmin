@@ -19,6 +19,9 @@ import { AppRoutingModule } from './app.routing';
 import { FullLayoutComponent } from './layouts/full-layout.component';
 import { SimpleLayoutComponent } from './layouts/simple-layout.component';
 
+// Main App Links
+import { tipsListComponent } from './tipsLists/tipsLists.component';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -35,6 +38,7 @@ import { SimpleLayoutComponent } from './layouts/simple-layout.component';
     BreadcrumbsComponent,
     SIDEBAR_TOGGLE_DIRECTIVES,
     AsideToggleDirective,
+    tipsListComponent
   ],
   providers: [{
     provide: LocationStrategy,

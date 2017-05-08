@@ -65,7 +65,18 @@
         <li class="nav-item">
           <a class="nav-link" routerLinkActive="active" [routerLink]="['/dashboard']"><i class="icon-speedometer"></i> Dashboard <span class="badge badge-info">NEW</span></a>
         </li>
-        
+        <li class="divider"></li>
+        <li class="nav-title">
+          Admin  Pages
+        </li>
+         <li class="nav-item nav-dropdown" routerLinkActive="open">
+          <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-puzzle"></i> Manage Tips</a>
+          <ul class="nav-dropdown-items">
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['/tipsLists/tipsLists']"><i class="icon-puzzle"></i> List Tips</a>
+            </li>          
+          </ul>
+        </li>
         <li class="divider"></li>
         <li class="nav-title">
           UI Elements
