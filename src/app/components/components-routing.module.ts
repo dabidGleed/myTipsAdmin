@@ -6,6 +6,7 @@ import { CardsComponent } from './cards.component';
 import { FormsComponent } from './forms.component';
 import { ModalsComponent } from './modals.component';
 import { SocialButtonsComponent } from './social-buttons.component';
+
 import { SwitchesComponent } from './switches.component';
 import { TablesComponent } from './tables.component';
 import { TabsComponent } from './tabs.component';
@@ -52,6 +53,13 @@ const routes: Routes = [
           title: 'Social buttons'
         }
       },
+      //  {
+      //   path: 'tipsLists',
+      //   component: tipsListsComponent,
+      //   data: {
+      //     title: 'Social buttons'
+      //   }
+      // },
       {
         path: 'switches',
         component: SwitchesComponent,

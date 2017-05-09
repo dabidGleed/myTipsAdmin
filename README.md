@@ -25,3 +25,46 @@ Before running the tests make sure you are serving the app via `ng serve`.
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+
+=================================================
+$ node -v
+
+The version should be higher than v0.10.32.
+Updating npm
+
+Node comes with npm installed so you should have a version of npm. However, npm gets updated more frequently than Node does, so you’ll want to make sure it’s the latest version.
+Copy
+
+$ npm install npm@latest -g
+
+Test:
+Copy
+
+$ npm -v
+
+The version should be higher than 2.1.8.
+Installing Angular CLI and project dependencies
+Copy
+
+$ npm install 
+
+Run project
+
+Go to project directory
+Copy
+
+$ cd Angular4_CLI_Full_Project
+
+or
+Copy
+
+$ cd Angular4_CLI_Starter
+
+Start local server
+Copy
+
+$ ng serve
+
+Your project is ready. Go to following url http://localhost:4200.
