@@ -7,8 +7,6 @@ import { TipsListRoutingModule } from './tipsLists-routing.module';
   imports: [
       TipsListRoutingModule
     ],
-  declarations: [
-    tipsListComponent,  
-  ]
+  declarations: [ tipsListComponent ]
 })
 export class tipsListsModule { }

@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 // Layouts
 import { FullLayoutComponent } from './layouts/full-layout.component';
 import { SimpleLayoutComponent } from './layouts/simple-layout.component';
+import { tipsListComponent } from './tipsLists/tipsLists.component';
 
 export const routes: Routes = [
   {
@@ -18,6 +19,7 @@ export const routes: Routes = [
       title: 'Home'
     },
     children: [
+
       {
         path: 'dashboard',
         loadChildren: './dashboard/dashboard.module#DashboardModule'
@@ -25,6 +27,10 @@ export const routes: Routes = [
       {
         path: 'components',
         loadChildren: './components/components.module#ComponentsModule'
+      },
+      {
+        path: 'Tips',
+        loadChildren: './tipsLists/tipsLists.module#tipsListsModule'
       },
       {
         path: 'icons',

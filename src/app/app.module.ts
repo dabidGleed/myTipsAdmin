@@ -18,6 +18,7 @@ import { AppRoutingModule } from './app.routing';
 // Layouts
 import { FullLayoutComponent } from './layouts/full-layout.component';
 import { SimpleLayoutComponent } from './layouts/simple-layout.component';
+//import { tipsListComponent } from './tipsLists/tipsLists.component';
 
 // Main App Links
 //import { tipsListComponent } from './tipsLists/tipsLists.component';
@@ -37,7 +38,8 @@ import { SimpleLayoutComponent } from './layouts/simple-layout.component';
     NAV_DROPDOWN_DIRECTIVES,
     BreadcrumbsComponent,
     SIDEBAR_TOGGLE_DIRECTIVES,
-    AsideToggleDirective
+    AsideToggleDirective,
+    //tipsListComponent
     
   ],
   providers: [{
