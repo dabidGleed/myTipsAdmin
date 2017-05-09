@@ -20,7 +20,7 @@ import { FullLayoutComponent } from './layouts/full-layout.component';
 import { SimpleLayoutComponent } from './layouts/simple-layout.component';
 
 // Main App Links
-import { tipsListComponent } from './tipsLists/tipsLists.component';
+//import { tipsListComponent } from './tipsLists/tipsLists.component';
 
 @NgModule({
   imports: [
@@ -37,8 +37,8 @@ import { tipsListComponent } from './tipsLists/tipsLists.component';
     NAV_DROPDOWN_DIRECTIVES,
     BreadcrumbsComponent,
     SIDEBAR_TOGGLE_DIRECTIVES,
-    AsideToggleDirective,
-    tipsListComponent
+    AsideToggleDirective
+    
   ],
   providers: [{
     provide: LocationStrategy,
