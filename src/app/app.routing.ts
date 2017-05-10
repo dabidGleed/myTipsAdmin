@@ -32,6 +32,15 @@ export const routes: Routes = [
         path: 'Tips',
         loadChildren: './tipsLists/tipsLists.module#tipsListsModule'
       },
+       {
+        path: 'TipsAdd',
+        loadChildren: './tipsAdd/tipsAdd.module#tipsAddModule'
+      },
+      {
+        path: 'TipsDeleted',
+        loadChildren: './tipsDeleted/tipsDeleted.module#tipsDeletedModule'
+      },
+      
       {
         path: 'icons',
         loadChildren: './icons/icons.module#IconsModule'
