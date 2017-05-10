@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { HttpModule } from '@angular/http';
+import { Component } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { DropdownModule } from 'ng2-bootstrap/dropdown';
@@ -18,6 +20,7 @@ import { AppRoutingModule } from './app.routing';
 // Layouts
 import { FullLayoutComponent } from './layouts/full-layout.component';
 import { SimpleLayoutComponent } from './layouts/simple-layout.component';
+import { TipsService } from './providers/tipsProvider/tipsProvider';
 //import { tipsListComponent } from './tipsLists/tipsLists.component';
 
 // Main App Links
@@ -26,7 +29,9 @@ import { SimpleLayoutComponent } from './layouts/simple-layout.component';
 @NgModule({
   imports: [
     BrowserModule,
+  
     AppRoutingModule,
+    HttpModule,
     DropdownModule.forRoot(),
     TabsModule.forRoot(),
     ChartsModule
@@ -45,7 +50,9 @@ import { SimpleLayoutComponent } from './layouts/simple-layout.component';
   providers: [{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
-  }],
+  },
+  TipsService  
+  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
