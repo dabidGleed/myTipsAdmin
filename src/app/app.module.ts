@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { HttpModule } from '@angular/http';
-import { Component } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { DropdownModule } from 'ng2-bootstrap/dropdown';
@@ -29,7 +28,7 @@ import { TipsService } from './providers/tipsProvider/tipsProvider';
 @NgModule({
   imports: [
     BrowserModule,
-  
+
     AppRoutingModule,
     HttpModule,
     DropdownModule.forRoot(),
@@ -45,13 +44,13 @@ import { TipsService } from './providers/tipsProvider/tipsProvider';
     SIDEBAR_TOGGLE_DIRECTIVES,
     AsideToggleDirective,
     //tipsListComponent
-    
+
   ],
   providers: [{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
   },
-  TipsService  
+  TipsService
   ],
   bootstrap: [ AppComponent ]
 })

@@ -5,8 +5,6 @@
           <i class="fa fa-align-justify"></i> List of All Tips
         </div>
         <div class="card-block">
-          {{tips}}
-         
           <table class="table table-bordered table-striped table-condensed">
             <thead>
               <tr>
@@ -21,13 +19,13 @@
               </tr>
             </thead>
             <tbody>
-              <tr >
-                <td>Vishnu Serghei</td>
-                <td>2012/01/01</td>
+              <tr *ngFor="let tip of tips">
+                <td>{{tip.images}}</td>
+                <td>{{tip.title}}</td>
                 <td>Member</td>
-                <td>Member</td>
+                <td>{{tip.category}}</td>
                 <td>
-                  <span class="badge badge-success">Active</span>
+                  <span class="badge badge-success">{{tip.status}}</span>
                 </td>
                 <td>0</td>
                 <td>0</td>
