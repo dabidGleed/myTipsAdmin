@@ -22,6 +22,7 @@ import { FullLayoutComponent } from './layouts/full-layout.component';
 import { SimpleLayoutComponent } from './layouts/simple-layout.component';
 import { TipsService } from './providers/tipsProvider/tipsProvider';
 //import { tipsListComponent } from './tipsLists/tipsLists.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 // Main App Links
 //import { tipsListComponent } from './tipsLists/tipsLists.component';
@@ -29,7 +30,7 @@ import { TipsService } from './providers/tipsProvider/tipsProvider';
 @NgModule({
   imports: [
     BrowserModule,
-  
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpModule,
     DropdownModule.forRoot(),
