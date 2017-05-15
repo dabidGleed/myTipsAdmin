@@ -5,7 +5,11 @@ import { Component } from '@angular/core';
   templateUrl: 'tipsAdd.component.html'
 })
 export class tipsAddComponent {
-
+  public data;
+  model = {};
   constructor() { }
+  onSubmit(){
+    console.log("data")
+  }
 
 }
