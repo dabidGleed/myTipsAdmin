@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
 })
 export class tipsAddComponent {
   public data;
+  model = {};
   constructor() { }
   onSubmit(){
     console.log("data")

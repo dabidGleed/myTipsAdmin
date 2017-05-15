@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 import { tipsAddComponent } from './tipsAdd.component';
 import { TipsAddRoutingModule } from './tipsAdd-routing.module';
 import { CommonModule } from '@angular/common';
+import { FormsModule }   from '@angular/forms';
 
 @NgModule({
   imports: [
       TipsAddRoutingModule,
-      CommonModule
+      CommonModule,
+      FormsModule
     ],
   declarations: [ tipsAddComponent ]
 })
