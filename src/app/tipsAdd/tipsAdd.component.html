@@ -4,7 +4,7 @@
         <div class="card-header">
           <strong>New Tip</strong>
         </div>
-         <form  #heroForm="ngForm" class="form-horizontal ">
+         <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="card-block">
           <form class="form-horizontal ">
             <!--<div class="form-group row">
@@ -43,7 +43,7 @@
             </div>
 
              <div class="form-group row">
-              <label class="col-md-3 form-control-label" [(ngModel)]="model.image" for="file-input">Feature Image</label>
+              <label class="col-md-3 form-control-label"  formControlName="image" for="file-input">Feature Image</label>
               <div class="col-md-9">
                 <input type="file" id="file-input" name="file-input" (change)="fileChange($event)" placeholder="Upload file">
               </div>
@@ -52,7 +52,7 @@
              <div class="form-group row">
               <label class="col-md-3 form-control-label" for="file-input">Feature Video</label>
               <div class="col-md-9">
-                <input type="text" id="text-input" name="text-input" class="form-control" placeholder="Text">
+                <input type="text" id="text-input"  formControlName="video" name="text-input" class="form-control" placeholder="Text">
                 <span class="help-block">Add a You Tube Video URL here</span>
               </div>
             </div>
@@ -89,7 +89,7 @@
             <div class="form-group row">
               <label class="col-md-3 form-control-label" for="email-input">Tags</label>
               <div class="col-md-9">
-                <input type="email" id="email-input" [(ngModel)]="model.tags" name="email-input" class="form-control" placeholder="Enter Tags">
+                <input type="email" id="email-input"  formControlName="tags" name="email-input" class="form-control" placeholder="Enter Tags">
                 <span class="help-block">Please enter Tags seperated by Coma's</span>
               </div>
             </div>
@@ -99,7 +99,6 @@
           <button type="submit" class="btn btn-sm btn-primary" (click)="saveTip()"><i class="fa fa-dot-circle-o"></i> Submit</button>
           <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
         </div>
-        {{model}}
            </form>
       </div>
     </div>

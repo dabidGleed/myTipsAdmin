@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { TipsService } from '../providers/tipsProvider/tipsProvider';
+import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
+import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 
 
 @Component({
