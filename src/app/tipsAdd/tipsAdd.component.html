@@ -4,8 +4,9 @@
         <div class="card-header">
           <strong>New Tip</strong> 
         </div>
+         <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="card-block">
-          <form action="" method="post" enctype="multipart/form-data" class="form-horizontal ">
+         
             <!--<div class="form-group row">
               <label class="col-md-3 form-control-label">Static</label>
               <div class="col-md-9">
@@ -15,15 +16,16 @@
             <div class="form-group row">
               <label class="col-md-3 form-control-label" for="text-input">Tip TItle</label>
               <div class="col-md-9">
-                <input type="text" id="text-input" name="text-input" class="form-control" placeholder="Text">
-                <span class="help-block">TItle of the Tip comes here</span>
+                <input type="text" id="text-input" formControlName="tipTitle" name="text-input" class="form-control" placeholder="Text">
+                <span class="help-block">Title of the Tip comes here</span>
+               
               </div>
             </div>
 
              <div class="form-group row">
               <label class="col-md-3 form-control-label" for="textarea-input">Description</label>
               <div class="col-md-9">
-                <textarea id="textarea-input" name="textarea-input" rows="9" class="form-control" placeholder="Content.."></textarea>
+                <textarea id="textarea-input" formControlName="tipDesc" name="textarea-input" rows="9" class="form-control" placeholder="Content.."></textarea>
               </div>
             </div>
 
@@ -43,7 +45,7 @@
             </div>
             
              <div class="form-group row">
-              <label class="col-md-3 form-control-label" for="file-input">Feature Image</label>
+              <label class="col-md-3 form-control-label"  formControlName="image" for="file-input">Feature Image</label>
               <div class="col-md-9">
                 <input type="file" id="file-input" name="file-input">
               </div>
@@ -52,7 +54,7 @@
              <div class="form-group row">
               <label class="col-md-3 form-control-label" for="file-input">Feature Video</label>
               <div class="col-md-9">
-                <input type="text" id="text-input" name="text-input" class="form-control" placeholder="Text">
+                <input type="text" id="text-input"  formControlName="video" name="text-input" class="form-control" placeholder="Text">
                 <span class="help-block">Add a You Tube Video URL here</span>
               </div>
             </div>
@@ -81,27 +83,28 @@
             <div class="form-group row">
               <label class="col-md-3 form-control-label" for="select">Tip Category</label>
               <div class="col-md-9">
-                <select id="select" name="select" class="form-control" size="1">
+                <select id="select"  formControlName="category" name="select" class="form-control" size="1">
                   <option value="0">Please select</option>
-                  <option value="1">Beauty</option>
-                  <option value="2">Fitness</option>
-                  <option value="3">Yoga</option>
+                  <option value="Beauty">Beauty</option>
+                  <option value="Fitness">Fitness</option>
+                  <option value="Yoga">Yoga</option>
                 </select>
               </div>
             </div>
             <div class="form-group row">
               <label class="col-md-3 form-control-label" for="email-input">Tags</label>
               <div class="col-md-9">
-                <input type="email" id="email-input" name="email-input" class="form-control" placeholder="Enter Tags">
+                <input type="email" id="email-input"  formControlName="tags" name="email-input" class="form-control" placeholder="Enter Tags">
                 <span class="help-block">Please enter Tags seperated by Coma's</span>
               </div>
             </div>
-           </form>
+          
         </div>
         <div class="card-footer">
-          <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
+          <button type="submit" [disabled]="!form.valid" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
           <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
-        </div>
+        </div>        
+           </form>
       </div>
     </div>
     <!--/.col-->

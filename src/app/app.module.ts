@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { HttpModule } from '@angular/http';
-import { Component } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { DropdownModule } from 'ng2-bootstrap/dropdown';
@@ -22,7 +21,7 @@ import { FullLayoutComponent } from './layouts/full-layout.component';
 import { SimpleLayoutComponent } from './layouts/simple-layout.component';
 import { TipsService } from './providers/tipsProvider/tipsProvider';
 //import { tipsListComponent } from './tipsLists/tipsLists.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';  
 
 // Main App Links
 //import { tipsListComponent } from './tipsLists/tipsLists.component';
@@ -31,6 +30,7 @@ import {ReactiveFormsModule} from "@angular/forms";
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    FormsModule,
     AppRoutingModule,
     HttpModule,
     DropdownModule.forRoot(),
@@ -46,13 +46,13 @@ import {ReactiveFormsModule} from "@angular/forms";
     SIDEBAR_TOGGLE_DIRECTIVES,
     AsideToggleDirective,
     //tipsListComponent
-    
+
   ],
   providers: [{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
   },
-  TipsService  
+  TipsService
   ],
   bootstrap: [ AppComponent ]
 })
