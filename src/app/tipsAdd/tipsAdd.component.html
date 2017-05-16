@@ -5,20 +5,12 @@
           <strong>New Tip</strong> 
         </div>
          <form [formGroup]="form" (ngSubmit)="onSubmit()">
-        <div class="card-block">
-         
-            <!--<div class="form-group row">
-              <label class="col-md-3 form-control-label">Static</label>
-              <div class="col-md-9">
-                <p class="form-control-static">Username</p>
-              </div>
-            </div>-->
+          <div class="card-block">
             <div class="form-group row">
               <label class="col-md-3 form-control-label" for="text-input">Tip TItle</label>
               <div class="col-md-9">
                 <input type="text" id="text-input" formControlName="tipTitle" name="text-input" class="form-control" placeholder="Text">
-                <span class="help-block">Title of the Tip comes here</span>
-               
+                <span class="help-block">Title of the Tip comes here</span>               
               </div>
             </div>
 
