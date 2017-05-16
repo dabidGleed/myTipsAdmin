@@ -6,7 +6,6 @@ import { TipsService } from '../providers/tipsProvider/tipsProvider';
   templateUrl: 'tipsAdd.component.html'
 })
 export class tipsAddComponent {
-
   private categories;
   private tip = {title:'', description:'',category:''};
   private hello;
@@ -60,6 +59,5 @@ export class tipsAddComponent {
 
     }
   }
-
 
 }
