@@ -2,11 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { HttpModule } from '@angular/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { DropdownModule } from 'ng2-bootstrap/dropdown';
 import { TabsModule } from 'ng2-bootstrap/tabs';
 import { NAV_DROPDOWN_DIRECTIVES } from './shared/nav-dropdown.directive';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { SIDEBAR_TOGGLE_DIRECTIVES } from './shared/sidebar.directive';
@@ -21,7 +23,6 @@ import { FullLayoutComponent } from './layouts/full-layout.component';
 import { SimpleLayoutComponent } from './layouts/simple-layout.component';
 import { TipsService } from './providers/tipsProvider/tipsProvider';
 //import { tipsListComponent } from './tipsLists/tipsLists.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';  
 
 // Main App Links
 //import { tipsListComponent } from './tipsLists/tipsLists.component';
@@ -57,3 +58,4 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
+platformBrowserDynamic().bootstrapModule(AppModule);
