@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { TipsService } from '../providers/tipsProvider/tipsProvider';
+import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
+import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 
 
 @Component({
   templateUrl: 'tipsAdd.component.html'
 })
 export class tipsAddComponent {
-
   private categories;
   private tip = {title:'', description:'',category:''};
   private hello;
@@ -60,6 +61,5 @@ export class tipsAddComponent {
 
     }
   }
-
 
 }

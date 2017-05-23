@@ -30,6 +30,7 @@ import { TipsService } from './providers/tipsProvider/tipsProvider';
 @NgModule({
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     FormsModule,
     AppRoutingModule,
     HttpModule,
