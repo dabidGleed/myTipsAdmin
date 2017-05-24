@@ -9,7 +9,7 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 })
 export class tipsAddComponent {
   private categories;
-  private tip = {title:'', description:'',category:''};
+  private tip = {title:'', description:'',category:'',tagsList:'',tags:[], postType:''};
   private hello;
 
   constructor(private AllTipsService: TipsService){
@@ -33,6 +33,10 @@ export class tipsAddComponent {
 
   saveTip(){
     console.log("add A TIP");
+    if(this.tip.tagsList){
+      this.tip.tags = this.tip.tagsList.split(',');
+      delete this.tip.tagsList;
+    }
     console.log(this.tip);
     this.AllTipsService.addTip(this.tip)
         .then(
