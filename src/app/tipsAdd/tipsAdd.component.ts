@@ -1,19 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, ViewContainerRef } from '@angular/core';
+import { Overlay } from 'angular2-modal';
+import { Modal, BSModalContext } from 'angular2-modal/plugins/bootstrap';
 import { TipsService } from '../providers/tipsProvider/tipsProvider';
 import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 
 
 @Component({
-  templateUrl: 'tipsAdd.component.html'
+  templateUrl: 'tipsAdd.component.html',
+  providers: [Modal]
 })
 export class tipsAddComponent {
   private categories;
   private tip = {title:'', description:'',category:'',tagsList:'',tags:[], postType:'',genderSpecific:'',menSpecific:false,womenSpecific:false};
   private hello;
-
-  constructor(private AllTipsService: TipsService){
+  public showMe = false;
+  constructor(private AllTipsService: TipsService,overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal){
     this.loadCategories();
+    overlay.defaultViewContainer = vcRef;
   }
   // Local properties
 
@@ -51,7 +55,7 @@ export class tipsAddComponent {
         .then(
             data => {
               this.tip = {title:'', description:'',category:'',tagsList:'',tags:[], postType:'',genderSpecific:'',menSpecific:false,womenSpecific:false};
-              console.log(data);
+              this.tipPublished();
             }, //Bind to view
             err => {
               // Log errors if any
@@ -74,6 +78,17 @@ export class tipsAddComponent {
               });
 
     }
+  }
+
+
+   tipPublished() {
+    this.modal.alert()
+        .size('lg')
+        .showClose(true)
+        .title('Added Tip')
+        .body(`
+            <p>Your Tip is published successfully</p>`)
+        .open();
   }
 
 }
