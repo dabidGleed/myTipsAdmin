@@ -46,6 +46,7 @@ export class TipsService {
               });
       });
   }
+  
   deleteTip(tipId){
     return new Promise(resolve => {
       this.http.delete('https://health-tips-backend.herokuapp.com/tips/'+tipId+'/delete')
