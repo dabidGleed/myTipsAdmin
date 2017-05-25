@@ -9,7 +9,7 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 })
 export class tipsAddComponent {
   private categories;
-  private tip = {title:'', description:'',category:'',tagsList:'',tags:[], postType:''};
+  private tip = {title:'', description:'',category:'',tagsList:'',tags:[], postType:'',genderSpecific:'',menSpecific:false,womenSpecific:false};
   private hello;
 
   constructor(private AllTipsService: TipsService){
@@ -37,10 +37,20 @@ export class tipsAddComponent {
       this.tip.tags = this.tip.tagsList.split(',');
       delete this.tip.tagsList;
     }
+    if(this.tip.menSpecific === true){
+      this.tip.genderSpecific = "MEN"
+    }else if(this.tip.womenSpecific === true){
+      this.tip.genderSpecific = "WOMEN"
+    }else{
+      this.tip.genderSpecific = "ANY"
+    }
+    delete this.tip.menSpecific;
+    delete this.tip.womenSpecific;
     console.log(this.tip);
     this.AllTipsService.addTip(this.tip)
         .then(
             data => {
+              this.tip = {title:'', description:'',category:'',tagsList:'',tags:[], postType:'',genderSpecific:'',menSpecific:false,womenSpecific:false};
               console.log(data);
             }, //Bind to view
             err => {
