@@ -14,10 +14,10 @@ export class TipsService {
     console.log('Hello TipsService Provider');
   }
   load() {
-  return new Promise(resolve => {   
+  return new Promise(resolve => {
     this.http.get('https://health-tips-backend.herokuapp.com/all/tips')
       .map(res => res.json())
-      .subscribe(data => {  
+      .subscribe(data => {
         this.data = data;
         resolve(this.data);
       });
@@ -46,7 +46,18 @@ export class TipsService {
               });
       });
   }
-  public  fileUpload(file){
+
+  deleteTip(tipId){
+    return new Promise(resolve => {
+      this.http.delete('https://health-tips-backend.herokuapp.com/tips/'+tipId+'/delete')
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
+    });
+  }
+  fileUpload(file){
       let formData = new FormData();
       formData.append('content', file);
        //console.log(formData.get('content'));

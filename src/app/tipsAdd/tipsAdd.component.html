@@ -1,3 +1,4 @@
+
 <div class="row">
   <div class="col-lg-12">
     <div class="card">
@@ -6,12 +7,6 @@
       </div>
       <div class="card-block">
         <form class="form-horizontal ">
-          <!--<div class="form-group row">
-            <label class="col-md-3 form-control-label">Static</label>
-            <div class="col-md-9">
-              <p class="form-control-static">Username</p>
-            </div>
-          </div>-->
           <div class="form-group row">
             <label class="col-md-3 form-control-label" >Tip TItle</label>
             <div class="col-md-9">
@@ -25,18 +20,17 @@
               <textarea id="textarea-input" [(ngModel)]="tip.description"  name="textarea-input" rows="9" class="form-control" placeholder="Content.."></textarea>
             </div>
           </div>
-
           <div class="form-group row">
             <label class="col-md-3 form-control-label">Post Type</label>
             <div class="col-md-9">
               <label class="radio-inline" for="inline-radio1">
-                <input type="radio" id="inline-radio1" name="inline-radios" value="option1"> Video Post
+                <input type="radio" id="inline-radio1" name="inline-radios" [(ngModel)]="tip.postType" value="video"> Video Post
               </label>
               <label class="radio-inline" for="inline-radio2">
-                <input type="radio" id="inline-radio2" name="inline-radios" value="option2"> Image Post
+                <input type="radio" id="inline-radio2" name="inline-radios" [(ngModel)]="tip.postType" value="image"> Image Post
               </label>
               <label class="radio-inline" for="inline-radio3">
-                <input type="radio" id="inline-radio3" name="inline-radios" value="option3"> None
+                <input type="radio" id="inline-radio3" name="inline-radios" [(ngModel)]="tip.postType" value="none"> None
               </label>
             </div>
           </div>
@@ -61,19 +55,14 @@
             <div class="col-md-9">
               <div class="checkbox">
                 <label for="checkbox1">
-                  <input type="checkbox" id="checkbox1" name="checkbox1" value="option1"> Men Only
+                  <input type="checkbox" id="checkbox1" name="checkbox1" [(ngModel)]="tip.menSpecific" value="MEN"> Men Only
                 </label>
               </div>
               <div class="checkbox">
                 <label for="checkbox2">
-                  <input type="checkbox" id="checkbox2" name="checkbox2" value="option2"> Women Only
+                  <input type="checkbox" id="checkbox2" name="checkbox2" [(ngModel)]="tip.womenSpecific" value="WOMEN"> Women Only
                 </label>
               </div>
-              <!--<div class="checkbox">
-                <label for="checkbox3">
-                  <input type="checkbox" id="checkbox3" name="checkbox3" value="option3"> Option 3
-                </label>
-              </div>-->
             </div>
           </div>
           <div class="form-group row">
@@ -88,7 +77,7 @@
           <div class="form-group row">
             <label class="col-md-3 form-control-label" for="email-input">Tags</label>
             <div class="col-md-9">
-              <input type="email" id="email-input" name="email-input" class="form-control" placeholder="Enter Tags">
+              <input type="text" id="email-input" [(ngModel)]="tip.tagsList" name="email-input" class="form-control" placeholder="Enter Tags">
               <span class="help-block">Please enter Tags seperated by Coma's</span>
             </div>
           </div>
