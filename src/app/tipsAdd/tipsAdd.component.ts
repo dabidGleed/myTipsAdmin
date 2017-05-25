@@ -42,11 +42,11 @@ export class tipsAddComponent {
       delete this.tip.tagsList;
     }
     if(this.tip.menSpecific === true){
-      this.tip.genderSpecific = "MEN"
+      this.tip.genderSpecific = "male"
     }else if(this.tip.womenSpecific === true){
-      this.tip.genderSpecific = "WOMEN"
+      this.tip.genderSpecific = "female"
     }else{
-      this.tip.genderSpecific = "ANY"
+      this.tip.genderSpecific = "any"
     }
     delete this.tip.menSpecific;
     delete this.tip.womenSpecific;
@@ -54,7 +54,7 @@ export class tipsAddComponent {
     this.AllTipsService.addTip(this.tip)
         .then(
             data => {
-              this.tip = {title:'', description:'',category:'',tagsList:'',tags:[], postType:'',genderSpecific:'',menSpecific:false,womenSpecific:false};
+              this.tip = {title:'', description:'', category:'',tagsList:'',tags:[], postType:'',genderSpecific:'',menSpecific:false,womenSpecific:false};
               this.tipPublished();
             }, //Bind to view
             err => {
