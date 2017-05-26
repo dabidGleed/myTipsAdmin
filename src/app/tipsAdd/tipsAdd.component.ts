@@ -12,7 +12,7 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 })
 export class tipsAddComponent {
   private categories;
-  private tip = {title:'', description:'',category:'',tagsList:'',tags:[], postType:'',genderSpecific:'',menSpecific:false,womenSpecific:false};
+  private tip = {title:'', description:'',images:[], videos:[],category:'',tagsList:'',tags:[], postType:'',genderSpecific:[],menSpecific:false,womenSpecific:false,videoLink:''};
   private hello;
   public showMe = false;
   constructor(private AllTipsService: TipsService,overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal){
@@ -34,6 +34,14 @@ export class tipsAddComponent {
               console.log(err);
             });
   }
+  
+  setGender(value, event){
+    if(event.target.checked){
+      this.tip.genderSpecific.push(value);
+    }else{
+      this.tip.genderSpecific.splice(this.tip.genderSpecific.indexOf(value),1);
+     }
+  }
 
   saveTip(){
     console.log("add A TIP");
@@ -41,20 +49,23 @@ export class tipsAddComponent {
       this.tip.tags = this.tip.tagsList.split(',');
       delete this.tip.tagsList;
     }
-    if(this.tip.menSpecific === true){
-      this.tip.genderSpecific = "male"
-    }else if(this.tip.womenSpecific === true){
-      this.tip.genderSpecific = "female"
-    }else{
-      this.tip.genderSpecific = "any"
+    if(this.tip.postType == 'image'){
+      this.tip.videoLink = '';
     }
-    delete this.tip.menSpecific;
-    delete this.tip.womenSpecific;
     console.log(this.tip);
+    if(this.tip.videoLink != ''){
+      let videoId = this.tip.videoLink.substr(this.tip.videoLink.indexOf("=") + 1);
+      let imageId = 'http://img.youtube.com/vi/'+videoId+'/0.jpg';
+      this.tip.videos.push(videoId);
+      this.tip.images.push(imageId);
+      delete this.tip.videoLink;
+    }
+    //this.tip.images = [];
+    //this.tip.videos = [];
     this.AllTipsService.addTip(this.tip)
         .then(
             data => {
-              this.tip = {title:'', description:'', category:'',tagsList:'',tags:[], postType:'',genderSpecific:'',menSpecific:false,womenSpecific:false};
+              this.tip = {title:'', description:'', images:[],videos:[], category:'',tagsList:'',tags:[], postType:'',genderSpecific:[],menSpecific:false,womenSpecific:false, videoLink:''};
               this.tipPublished();
             }, //Bind to view
             err => {

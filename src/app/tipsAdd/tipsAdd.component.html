@@ -29,9 +29,6 @@
               <label class="radio-inline" for="inline-radio2">
                 <input type="radio" id="inline-radio2" name="inline-radios" [(ngModel)]="tip.postType" value="image"> Image Post
               </label>
-              <label class="radio-inline" for="inline-radio3">
-                <input type="radio" id="inline-radio3" name="inline-radios" [(ngModel)]="tip.postType" value="none"> None
-              </label>
             </div>
           </div>
 
@@ -45,7 +42,7 @@
           <div class="form-group row" *ngIf="tip.postType == 'video'">
             <label class="col-md-3 form-control-label" for="file-input">Feature Video</label>
             <div class="col-md-9">
-              <input type="text" id="text-input" name="text-input" class="form-control" placeholder="Text">
+              <input type="text" id="text-input" name="text-input" [(ngModel)]="tip.videoLink"  class="form-control" placeholder="Text">
               <span class="help-block">Add a You Tube Video URL here</span>
             </div>
           </div>
@@ -55,14 +52,15 @@
             <div class="col-md-9">
               <div class="checkbox">
                 <label for="checkbox1">
-                  <input type="checkbox" id="checkbox1" name="checkbox1" [(ngModel)]="tip.menSpecific" value="MEN"> Men Only
+                  <input type="checkbox" id="checkbox1" name="checkbox1" (change)="setGender('male', $event)"> Men Only
                 </label>
               </div>
               <div class="checkbox">
                 <label for="checkbox2">
-                  <input type="checkbox" id="checkbox2" name="checkbox2" [(ngModel)]="tip.womenSpecific" value="WOMEN"> Women Only
+                  <input type="checkbox" id="checkbox2" name="checkbox2" (change)="setGender('female', $event)"> Women Only
                 </label>
               </div>
+              {{tip | json}}
             </div>
           </div>
           <div class="form-group row">

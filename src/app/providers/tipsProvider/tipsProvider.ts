@@ -24,7 +24,7 @@ export class TipsService {
   });
 
   }
-  getCategories() {
+  public getCategories() {
     return new Promise(resolve => {
       this.http.get('https://health-tips-backend.herokuapp.com/category/list/all')
           .map(res => res.json())
@@ -36,7 +36,7 @@ export class TipsService {
 
   }
 
-  addTip(data){
+  public addTip(data){
       return new Promise(resolve => {
           this.http.post('https://health-tips-backend.herokuapp.com/tips/userId/create',data)
               .map(res => res.json())
@@ -46,7 +46,7 @@ export class TipsService {
               });
       });
   }
-  
+
   deleteTip(tipId){
     return new Promise(resolve => {
       this.http.delete('https://health-tips-backend.herokuapp.com/tips/'+tipId+'/delete')
