@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ModalModule } from 'angular2-modal';
+import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
+
 
 import { AppComponent } from './app.component';
 import { DropdownModule } from 'ng2-bootstrap/dropdown';
@@ -33,10 +36,12 @@ import { TipsService } from './providers/tipsProvider/tipsProvider';
     ReactiveFormsModule,
     FormsModule,
     AppRoutingModule,
+    ModalModule.forRoot(),
+    BootstrapModalModule,
     HttpModule,
     DropdownModule.forRoot(),
     TabsModule.forRoot(),
-    ChartsModule
+    ChartsModule    
   ],
   declarations: [
     AppComponent,
@@ -46,12 +51,14 @@ import { TipsService } from './providers/tipsProvider/tipsProvider';
     BreadcrumbsComponent,
     SIDEBAR_TOGGLE_DIRECTIVES,
     AsideToggleDirective,
+    
     //tipsListComponent
 
   ],
   providers: [{
     provide: LocationStrategy,
-    useClass: HashLocationStrategy
+    useClass: HashLocationStrategy,
+    
   },
   TipsService
   ],
