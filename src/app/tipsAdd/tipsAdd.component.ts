@@ -49,19 +49,17 @@ export class tipsAddComponent {
       this.tip.tags = this.tip.tagsList.split(',');
       delete this.tip.tagsList;
     }
-    if(this.tip.postType == 'image'){
-      this.tip.videoLink = '';
-    }
-    console.log(this.tip);
+
     if(this.tip.videoLink != ''){
       let videoId = this.tip.videoLink.substr(this.tip.videoLink.indexOf("=") + 1);
       let imageId = 'http://img.youtube.com/vi/'+videoId+'/0.jpg';
+      this.tip.videos = [];
+      this.tip.images = [];
       this.tip.videos.push(videoId);
       this.tip.images.push(imageId);
       delete this.tip.videoLink;
     }
-    //this.tip.images = [];
-    //this.tip.videos = [];
+  
     this.AllTipsService.addTip(this.tip)
         .then(
             data => {
@@ -73,33 +71,28 @@ export class tipsAddComponent {
               console.log(err);
             });
   }
-
-  fileChange(event) {
-    let fileList: FileList = event.target.files;
-    if(fileList.length > 0) {
-      let file: File = fileList[0];
-      this.AllTipsService.fileUpload(file)
-          .then(
-              data => {
-                console.log(data);
+  myfile:any;
+  fileChange(fileInput: any) {
+    this.myfile = fileInput.target.files[0];
+    //let fileList: FileList = event.target.files;        
+      this.AllTipsService.fileUpload(this.myfile)
+          .then(data => {
+                //console.log(data);
+                this.tip.images = [];
+                this.tip.images.push(data['files'][0].url);
               }, //Bind to view
               err => {
                 // Log errors if any
                 console.log(err);
               });
-
-    }
   }
 
-
-   tipPublished() {
+   tipPublished(){
     this.modal.alert()
         .size('lg')
         .showClose(true)
         .title('Added Tip')
-        .body(`
-            <p>Your Tip is published successfully</p>`)
+        .body(`<p>Your Tip is published successfully</p>`)
         .open();
   }
-
 }

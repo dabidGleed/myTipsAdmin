@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Http ,RequestOptions,Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
+import {Component} from '@angular/core';
 
 @Injectable()
 export class TipsService {
   data;
     options;
+    imageData;
   constructor(public http: Http) {
       let headers = new Headers();
       headers.append('Content-Type', 'multipart/form-data');
@@ -57,14 +59,19 @@ export class TipsService {
         });
     });
   }
+  
   fileUpload(file){
-      let formData = new FormData();
+    console.log(file);
+      let headers = new Headers();
+      let formData:FormData = new FormData();
       formData.append('content', file);
-       //console.log(formData.get('content'));
       return new Promise(resolve => {
-          this.http.post('https://health-tips-backend.herokuapp.com/file/uploads3', formData, this.options)
+      this.http.post('https://health-tips-backend.herokuapp.com/file/uploads3', formData, {
+        headers: headers
+      })
               .map(res => res.json())
               .subscribe(data => {
+                  // console.log(data)
                   this.data = data;
                   resolve(this.data);
               })
