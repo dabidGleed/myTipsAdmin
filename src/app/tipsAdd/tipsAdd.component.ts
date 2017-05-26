@@ -74,8 +74,7 @@ export class tipsAddComponent {
   myfile:any;
   fileChange(fileInput: any) {
     this.myfile = fileInput.target.files[0];
-    //let fileList: FileList = event.target.files;     
-    
+    //let fileList: FileList = event.target.files;        
       this.AllTipsService.fileUpload(this.myfile)
           .then(data => {
                 //console.log(data);
@@ -88,15 +87,12 @@ export class tipsAddComponent {
               });
   }
 
-
-   tipPublished() {
+   tipPublished(){
     this.modal.alert()
         .size('lg')
         .showClose(true)
         .title('Added Tip')
-        .body(`
-            <p>Your Tip is published successfully</p>`)
+        .body(`<p>Your Tip is published successfully</p>`)
         .open();
   }
-
 }
