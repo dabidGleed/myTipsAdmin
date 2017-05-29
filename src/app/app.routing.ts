@@ -9,7 +9,7 @@ import { tipsListComponent } from './tipsLists/tipsLists.component';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'pages/login',
     pathMatch: 'full',
   },
   {
