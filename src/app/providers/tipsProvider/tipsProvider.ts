@@ -8,6 +8,7 @@ export class TipsService {
   data;
     options;
     imageData;
+    url: 'https://health-tips-backend.herokuapp.com';
   constructor(public http: Http) {
       let headers = new Headers();
       headers.append('Content-Type', 'multipart/form-data');
