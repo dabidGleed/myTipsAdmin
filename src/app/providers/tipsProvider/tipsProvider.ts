@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Http ,RequestOptions,Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
+import {Component} from '@angular/core';
 
 @Injectable()
 export class TipsService {
   data;
     options;
+    imageData;
+    url: 'https://health-tips-backend.herokuapp.com';
   constructor(public http: Http) {
       let headers = new Headers();
       headers.append('Content-Type', 'multipart/form-data');
@@ -24,7 +27,7 @@ export class TipsService {
   });
 
   }
-  getCategories() {
+  public getCategories() {
     return new Promise(resolve => {
       this.http.get('https://health-tips-backend.herokuapp.com/category/list/all')
           .map(res => res.json())
@@ -36,7 +39,7 @@ export class TipsService {
 
   }
 
-  addTip(data){
+  public addTip(data){
       return new Promise(resolve => {
           this.http.post('https://health-tips-backend.herokuapp.com/tips/userId/create',data)
               .map(res => res.json())
@@ -46,6 +49,7 @@ export class TipsService {
               });
       });
   }
+
   deleteTip(tipId){
     return new Promise(resolve => {
       this.http.delete('https://health-tips-backend.herokuapp.com/tips/'+tipId+'/delete')
@@ -56,14 +60,19 @@ export class TipsService {
         });
     });
   }
+  
   fileUpload(file){
-      let formData = new FormData();
+    console.log(file);
+      let headers = new Headers();
+      let formData:FormData = new FormData();
       formData.append('content', file);
-       //console.log(formData.get('content'));
       return new Promise(resolve => {
-          this.http.post('https://health-tips-backend.herokuapp.com/file/uploads3', formData, this.options)
+      this.http.post('https://health-tips-backend.herokuapp.com/file/uploads3', formData, {
+        headers: headers
+      })
               .map(res => res.json())
               .subscribe(data => {
+                  // console.log(data)
                   this.data = data;
                   resolve(this.data);
               })
