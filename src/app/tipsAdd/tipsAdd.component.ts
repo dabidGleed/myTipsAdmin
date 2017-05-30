@@ -12,7 +12,7 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 })
 export class tipsAddComponent {
   private categories;
-  private tip = {title:'', description:'',images:[], videos:[],category:'',tagsList:'',tags:[], postType:'',genderSpecific:[],menSpecific:false,womenSpecific:false,videoLink:''};
+  private tip = {title:'', description:'',images:[], videos:[],category:'',tagsList:'',tags:[], postType:'',genderSpecific:[],videoLink:''};
   private hello;
   public showMe = false;
   constructor(private AllTipsService: TipsService,overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal){
@@ -34,7 +34,7 @@ export class tipsAddComponent {
               console.log(err);
             });
   }
-  
+
   setGender(value, event){
     if(event.target.checked){
       this.tip.genderSpecific.push(value);
@@ -59,11 +59,11 @@ export class tipsAddComponent {
       this.tip.images.push(imageId);
       delete this.tip.videoLink;
     }
-  
+
     this.AllTipsService.addTip(this.tip)
         .then(
             data => {
-              this.tip = {title:'', description:'', images:[],videos:[], category:'',tagsList:'',tags:[], postType:'',genderSpecific:[],menSpecific:false,womenSpecific:false, videoLink:''};
+              this.tip = {title:'', description:'', images:[],videos:[], category:'',tagsList:'',tags:[], postType:'',genderSpecific:[], videoLink:''};
               this.tipPublished();
             }, //Bind to view
             err => {
@@ -74,7 +74,7 @@ export class tipsAddComponent {
   myfile:any;
   fileChange(fileInput: any) {
     this.myfile = fileInput.target.files[0];
-    //let fileList: FileList = event.target.files;        
+    //let fileList: FileList = event.target.files;
       this.AllTipsService.fileUpload(this.myfile)
           .then(data => {
                 //console.log(data);
