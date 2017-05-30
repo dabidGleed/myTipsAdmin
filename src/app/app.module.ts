@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'angular2-modal';
 import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
-
+import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
 
 import { AppComponent } from './app.component';
 import { DropdownModule } from 'ng2-bootstrap/dropdown';
@@ -41,7 +41,8 @@ import { TipsService } from './providers/tipsProvider/tipsProvider';
     HttpModule,
     DropdownModule.forRoot(),
     TabsModule.forRoot(),
-    ChartsModule    
+    ChartsModule,
+    FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()   
   ],
   declarations: [
     AppComponent,

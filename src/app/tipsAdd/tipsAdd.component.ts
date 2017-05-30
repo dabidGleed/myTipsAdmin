@@ -44,7 +44,6 @@ export class tipsAddComponent {
   }
 
   saveTip(){
-    console.log("add A TIP");
     if(this.tip.tagsList){
       this.tip.tags = this.tip.tagsList.split(',');
       delete this.tip.tagsList;
@@ -76,19 +75,19 @@ export class tipsAddComponent {
     this.myfile = fileInput.target.files[0];
     //let fileList: FileList = event.target.files;        
       this.AllTipsService.fileUpload(this.myfile)
-          .then(data => {
-                //console.log(data);
-                this.tip.images = [];
-                this.tip.images.push(data['files'][0].url);
-              }, //Bind to view
-              err => {
-                // Log errors if any
-                console.log(err);
-              });
+      .then(data => {
+        //console.log(data);
+        this.tip.images = [];
+        this.tip.images.push(data['files'][0].url);
+      }, //Bind to view
+      err => {
+        // Log errors if any
+        console.log(err);
+      });
   }
 
-   tipPublished(){
-    this.modal.alert()
+  tipPublished(){
+   this.modal.alert()
         .size('lg')
         .showClose(true)
         .title('Added Tip')
