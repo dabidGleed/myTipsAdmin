@@ -1,6 +1,6 @@
 import { Component, ViewContainerRef } from '@angular/core';
 import {TipsService} from '../providers/tipsProvider/tipsProvider';
-
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -9,7 +9,7 @@ import {TipsService} from '../providers/tipsProvider/tipsProvider';
 export class tipsListComponent {
   public tips;
 
-  constructor(public tipsService: TipsService) {
+  constructor(public tipsService: TipsService, private router: Router, private route: ActivatedRoute) {
     this.loadTips();
   }
 
@@ -19,7 +19,6 @@ export class tipsListComponent {
         this.tips = data;
       });
   }
-
   removeTip(tip) {
     confirm("Are you sure to delete?");
     console.log(tip);

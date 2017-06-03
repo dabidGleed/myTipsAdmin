@@ -4,7 +4,6 @@ import { Routes, RouterModule } from '@angular/router';
 // Layouts
 import { FullLayoutComponent } from './layouts/full-layout.component';
 import { SimpleLayoutComponent } from './layouts/simple-layout.component';
-import { tipsListComponent } from './tipsLists/tipsLists.component';
 
 export const routes: Routes = [
   {
@@ -37,10 +36,14 @@ export const routes: Routes = [
         loadChildren: './tipsAdd/tipsAdd.module#tipsAddModule'
       },
       {
+        path: 'TipsEdit/:tipId',
+        loadChildren: './tipsEdit/tipsEdit.module#tipsEditModule'
+      },
+      {
         path: 'TipsDeleted',
         loadChildren: './tipsDeleted/tipsDeleted.module#tipsDeletedModule'
       },
-      
+
       {
         path: 'icons',
         loadChildren: './icons/icons.module#IconsModule'

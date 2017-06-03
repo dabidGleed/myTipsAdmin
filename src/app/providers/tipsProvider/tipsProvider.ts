@@ -38,7 +38,17 @@ export class TipsService {
     });
 
   }
+  public getOneTip(tipId){
+    return new Promise(resolve => {
+      this.http.get('https://health-tips-backend.herokuapp.com/tips/get/'+tipId+'/one')
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
+    });
 
+  }
   public addTip(data){
       return new Promise(resolve => {
           this.http.post('https://health-tips-backend.herokuapp.com/tips/userId/create',data)
@@ -48,6 +58,16 @@ export class TipsService {
                   resolve(this.data);
               });
       });
+  }
+  public updateTip(tipId,data){
+    return new Promise(resolve => {
+      this.http.put('https://health-tips-backend.herokuapp.com/tips/'+tipId+'/update',data)
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
+    });
   }
 
   deleteTip(tipId){
@@ -60,7 +80,7 @@ export class TipsService {
         });
     });
   }
-  
+
   fileUpload(file){
     console.log(file);
       let headers = new Headers();
