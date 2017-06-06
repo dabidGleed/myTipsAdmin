@@ -20,7 +20,7 @@
               <!--<textarea id="textarea-input" [(ngModel)]="tip.description"  name="textarea-input" rows="9" class="form-control" placeholder="Content.."></textarea>-->
               <div [froalaEditor]  [(froalaModel)]="tip.description">Hello, Froala!</div>
             </div>
-            
+
           </div>
           <div class="form-group row">
             <label class="col-md-2 form-control-label">Post Type</label>
@@ -62,7 +62,7 @@
                   <input type="checkbox" id="checkbox2" name="checkbox2" (change)="setGender('female', $event)"> Women Only
                 </label>
               </div>
-         
+
             </div>
           </div>
           <div class="form-group row">
@@ -87,7 +87,7 @@
         <button type="submit" class="btn btn-sm btn-primary" (click)="saveTip()"><i class="fa fa-dot-circle-o"></i> Submit</button>
         <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
       </div>
-      {{tip | json}}
+      <!--{{tip | json}}-->
     </div>
   </div>
   <!--/.col-->

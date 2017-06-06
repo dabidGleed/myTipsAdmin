@@ -13,12 +13,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class tipsEditComponent {
 
-  private tipId;
-  private sub: any;
-  private tip = {title:'', description:'', images:[],videos:[], category:'',tagsList:'',tags:[], postType:'',genderSpecific:[], videoLink:''};
-
+  private tipId: any;
+  private tip;
+  //private tip = {title:'', description:'', images:[],videos:[], category:'',tagsList:'',tags:[], postType:'',genderSpecific:[], videoLink:''};
   constructor(private AllTipsService: TipsService,overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal,private route: ActivatedRoute){
-    this.tipId = route.params.value.tipId;
+    if(route.params){
+      this.tipId = route.params.value.tipId;
+    }
     this.loadTipDetails();
     overlay.defaultViewContainer = vcRef;
   }
@@ -30,8 +31,7 @@ export class tipsEditComponent {
     this.AllTipsService.getOneTip(this.tipId)
         .then(
             data => {
-              console.log(data);
-              this.tip = data
+                this.tip = data
             }, //Bind to view
             err => {
               // Log errors if any
