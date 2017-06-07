@@ -14,11 +14,11 @@ import { ActivatedRoute } from '@angular/router';
 export class tipsEditComponent {
 
   private tipId: any;
-  private tip;
-  //private tip = {title:'', description:'', images:[],videos:[], category:'',tagsList:'',tags:[], postType:'',genderSpecific:[], videoLink:''};
+  tip: any = {};
+  // tip = {title:'', description:'', images:[],videos:[], category:'',tagsList:'',tags:[], postType:'',genderSpecific:[], videoLink:''};
   constructor(private AllTipsService: TipsService,overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal,private route: ActivatedRoute){
     if(route.params){
-      this.tipId = route.params.value.tipId;
+       this.tipId = route.params['_value']['tipId'];
     }
     this.loadTipDetails();
     overlay.defaultViewContainer = vcRef;
@@ -26,17 +26,11 @@ export class tipsEditComponent {
   // Local properties
 
   loadTipDetails(){
-    console.log("load details");
     // Get all comments
     this.AllTipsService.getOneTip(this.tipId)
-        .then(
-            data => {
-                this.tip = data
-            }, //Bind to view
-            err => {
-              // Log errors if any
-              console.log(err);
-            });
+        .then(data => {
+        this.tip = data;
+        });
   }
 
   setGender(value, event){
