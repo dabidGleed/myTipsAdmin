@@ -53,3 +53,10 @@
 .alert-danger {
   @include alert-variant($alert-danger-bg, $alert-danger-border, $alert-danger-text);
 }
+.tipTitle {
+  display: inline-block;
+  white-space: nowrap;
+  width: 13em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
