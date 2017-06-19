@@ -20,7 +20,7 @@ export class TipsService {
 
   load() {
     return new Promise(resolve => {
-      this.http.get('http://ec2-13-126-41-169.ap-south-1.compute.amazonaws.com/all/tips')
+      this.http.get('http://ec2-13-126-41-169.ap-south-1.compute.amazonaws.com/tips/list/all')
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;
@@ -86,7 +86,16 @@ export class TipsService {
         });
     });
   }
-
+  makePublish(tipId){
+    return new Promise(resolve => {
+      this.http.get('http://ec2-13-126-41-169.ap-south-1.compute.amazonaws.com/tips/' + tipId + '/make/publish')
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
+    });
+  }
   fileUpload(file) {
     console.log(file);
     let headers = new Headers();

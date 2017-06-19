@@ -91,7 +91,7 @@ export class tipsAddComponent {
         .size('lg')
         .showClose(true)
         .title('Added Tip')
-        .body(`<p>Your Tip is published successfully</p>`)
+        .body(`<p>Your Tip is saved successfully. You can make it publish</p>`)
         .open();
   }
 }
