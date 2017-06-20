@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Http, RequestOptions, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
+import {globalService} from './globalService';
 import {Component} from '@angular/core';
 
 @Injectable()
@@ -8,9 +9,8 @@ export class TipsService {
   data;
   options;
   imageData;
-  url: 'http://ec2-13-126-41-169.ap-south-1.compute.amazonaws.com';
-
-  constructor(public http: Http) {
+  constructor(public http: Http, public globalservices:globalService) {
+    console.log(globalservices.url + 'category');
     let headers = new Headers();
     headers.append('Content-Type', 'multipart/form-data');
     headers.append('Accept', 'application/json');
