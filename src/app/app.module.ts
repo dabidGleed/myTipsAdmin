@@ -53,6 +53,7 @@ import { TipsService } from './providers/tipsProvider/tipsProvider';
     SIDEBAR_TOGGLE_DIRECTIVES,
     AsideToggleDirective,
     
+    
     //tipsListComponent
 
   ],

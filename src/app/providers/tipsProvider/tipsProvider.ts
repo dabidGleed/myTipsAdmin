@@ -65,6 +65,17 @@ export class TipsService {
     });
   }
 
+    public AddCategory(data) {
+    return new Promise(resolve => {
+      this.http.post('http://ec2-13-126-41-169.ap-south-1.compute.amazonaws.com/category/12345/create', data)
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
+    });
+  }
+
   public updateTip(tipId, data) {
     return new Promise(resolve => {
       this.http.put('http://ec2-13-126-41-169.ap-south-1.compute.amazonaws.com/tips/' + tipId + '/update', data)
