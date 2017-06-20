@@ -1,0 +1,50 @@
+ <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i> List of Categories
+        </div>
+        <div class="card-block">
+          <table class="table table-bordered table-striped table-condensed">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Title</th>                
+                <th>No of items</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let tip of tips">
+                <td><img width="50" [src]="tip.images"></td>
+                <td><span class="tipTitle">{{tip.title}}</span></td>                
+                <td>{{tip.items}}</td>
+              <td>
+                  <button class="btn btn-success btn-sm" type="button" [routerLink]="['/TipsEdit',tip.id]">Edit</button>
+                  <button class="btn btn-danger btn-sm" type="button" (click)="removeTip(tip)" >Delete</button>
+                  <template [ngIf]="tip.status === 'UNPUBLISH'">
+                    <button  class="btn btn-primary btn-sm" type="button" (click)="makePublish(tip)">make Publish</button>
+                  </template>
+                  <template [ngIf]="tip.status === 'ACTIVE'">
+                    <button  class="btn btn-info btn-sm" type="button">Active</button>
+                  </template>
+
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <nav>
+            <ul class="pagination">
+              <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+              <li class="page-item active"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">4</a></li>
+              <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+  </div>

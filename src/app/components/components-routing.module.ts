@@ -53,13 +53,7 @@ const routes: Routes = [
           title: 'Social buttons'
         }
       },
-      //  {
-      //   path: 'tipsLists',
-      //   component: tipsListsComponent,
-      //   data: {
-      //     title: 'Social buttons'
-      //   }
-      // },
+      
       {
         path: 'switches',
         component: SwitchesComponent,
