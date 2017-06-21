@@ -14,6 +14,7 @@ import { ActivatedRoute } from '@angular/router';
 export class tipsEditComponent {
 
   private tipId: any;
+  private categories;
   tip: any = {};
   // tip = {title:'', description:'', images:[],videos:[], category:'',tagsList:'',tags:[], postType:'',genderSpecific:[], videoLink:''};
   constructor(private AllTipsService: TipsService,overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal,private route: ActivatedRoute){
@@ -21,6 +22,7 @@ export class tipsEditComponent {
        this.tipId = route.params['_value']['tipId'];
     }
     this.loadTipDetails();
+    this.loadCategories();
     overlay.defaultViewContainer = vcRef;
   }
   // Local properties
@@ -30,6 +32,19 @@ export class tipsEditComponent {
     this.AllTipsService.getOneTip(this.tipId)
         .then(data => {
         this.tip = data;
+        });
+  }
+  loadCategories(){
+    // Get all comments
+    this.AllTipsService.getCategories()
+      .then(
+        data => {
+          console.log(data);
+          this.categories = data
+        }, //Bind to view
+        err => {
+          // Log errors if any
+          console.log(err);
         });
   }
 
@@ -56,7 +71,6 @@ export class tipsEditComponent {
       this.tip.images.push(imageId);
       delete this.tip.videoLink;
     }
-
     this.AllTipsService.updateTip(this.tipId,this.tip)
         .then(
             data => {
