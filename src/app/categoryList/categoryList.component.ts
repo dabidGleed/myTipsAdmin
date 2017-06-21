@@ -9,49 +9,21 @@ import { Modal, BSModalContext } from 'angular2-modal/plugins/bootstrap';
   templateUrl: 'categoryList.component.html'
 })
 export class categoryListComponent {
-  public tips;
+  public Categories;
 
   constructor(public tipsService: TipsService, overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal) {
-    this.loadTips();
+    this.loadCategories();
     overlay.defaultViewContainer = vcRef;
   }
 
-  loadTips() {
-    this.tipsService.load()
+  loadCategories() {
+    this.tipsService.getCategories()
       .then(data => {
-        this.tips = data;
+      
+        this.Categories = data;
       });
   }
-  removeTip(tip) {
-    var confirmed = confirm("Are you sure to delete?");
-    console.log(tip);
-    if(confirmed){
-      this.tipsService.deleteTip(tip.id)
-        .then(
-          data => {
-            this.tips.splice(this.tips.indexOf(tip),1);
-            console.log(data);
-          }, //Bind to view
-          err => {
-            // Log errors if any
-            console.log(err);
-          });
-    }
 
-  }
-  makePublish(tip){
-    this.tipsService.makePublish(tip.id)
-      .then(
-        data => {
-          this.tips[this.tips.indexOf(tip)] = 'ACTIVE';
-          this.tipPublished();
-          console.log(data);
-        }, //Bind to view
-        err => {
-          // Log errors if any
-          console.log(err);
-        });
-  }
   tipPublished(){
     this.modal.alert()
       .size('lg')

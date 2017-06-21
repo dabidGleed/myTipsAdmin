@@ -25,6 +25,7 @@ import { AppRoutingModule } from './app.routing';
 import { FullLayoutComponent } from './layouts/full-layout.component';
 import { SimpleLayoutComponent } from './layouts/simple-layout.component';
 import { TipsService } from './providers/tipsProvider/tipsProvider';
+import { globalService } from './providers/tipsProvider/globalService';
 
 @NgModule({
   imports: [
@@ -47,6 +48,9 @@ import { TipsService } from './providers/tipsProvider/tipsProvider';
     NAV_DROPDOWN_DIRECTIVES,
     BreadcrumbsComponent,
     SIDEBAR_TOGGLE_DIRECTIVES,
+    AsideToggleDirective,
+    
+    //tipsListComponent
     AsideToggleDirective
   ],
   providers: [{
@@ -54,7 +58,8 @@ import { TipsService } from './providers/tipsProvider/tipsProvider';
     useClass: HashLocationStrategy,
     
   },
-  TipsService
+  TipsService,
+  globalService
   ],
   bootstrap: [ AppComponent ]
 })

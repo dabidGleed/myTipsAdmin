@@ -15,19 +15,15 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let tip of tips">
-                <td><img width="50" [src]="tip.images"></td>
-                <td><span class="tipTitle">{{tip.title}}</span></td>                
-                <td>{{tip.items}}</td>
+      
+              <tr *ngFor="let Category of Categories">
+                <td><img width="50" [src]="Category.imageURL"></td>
+                <td><span class="tipTitle">{{Category.name}}</span></td>                
+                <td>3</td>
               <td>
-                  <button class="btn btn-success btn-sm" type="button" [routerLink]="['/TipsEdit',tip.id]">Edit</button>
-                  <button class="btn btn-danger btn-sm" type="button" (click)="removeTip(tip)" >Delete</button>
-                  <template [ngIf]="tip.status === 'UNPUBLISH'">
-                    <button  class="btn btn-primary btn-sm" type="button" (click)="makePublish(tip)">make Publish</button>
-                  </template>
-                  <template [ngIf]="tip.status === 'ACTIVE'">
-                    <button  class="btn btn-info btn-sm" type="button">Active</button>
-                  </template>
+                  <button class="btn btn-success btn-sm" type="button">Edit</button>
+                  <button class="btn btn-danger btn-sm" type="button">Delete</button>
+
 
                 </td>
               </tr>
