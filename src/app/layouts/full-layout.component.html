@@ -62,37 +62,48 @@
     <nav class="sidebar-nav">
       <ul class="nav">
         <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" [routerLink]="['/dashboard']"><i class="icon-speedometer"></i> Dashboard <span class="badge badge-info">NEW</span></a>
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['/dashboard']"><i class="icon-speedometer"></i> Dashboard</a>
         </li>
         <li class="divider"></li>
         <li class="nav-title">
           Admin  Pages
         </li>
          <li class="nav-item nav-dropdown" routerLinkActive="open">
-          <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-puzzle"></i> Manage Tips</a>
+          <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-layers"></i> Tips</a>
           <ul class="nav-dropdown-items">
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/Tips']"><i class="icon-puzzle"></i> List Tips</a>
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['/Tips']"><i class="icon-list"></i> List Tips</a>
             </li>  
-            <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/Categories']"><i class="icon-puzzle"></i> List Categories</a>
-            </li>               
+                         
              <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/TipsAdd']"><i class="icon-puzzle"></i> Add Tip</a>
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['/TipsAdd']"><i class="icon-plus"></i> Add Tip</a>
             </li> 
+      
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/AddCategory']"><i class="icon-puzzle"></i>  Add Category </a>
-            </li>    
-            <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/TipsDeleted']"><i class="icon-puzzle"></i> Deleted Tips</a>
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['/TipsDeleted']"><i class="icon-trash"></i> Deleted Tips</a>
             </li>                  
           </ul>
         </li>
-        <li class="divider"></li>
-        <li class="nav-title">
-          UI Elements
-        </li>
+        
         <li class="nav-item nav-dropdown" routerLinkActive="open">
+          <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-layers"></i> Categories</a>
+          <ul class="nav-dropdown-items">
+            
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['/Categories']"><i class="icon-list"></i> List Categories</a>
+            </li>               
+         
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['/AddCategory']"><i class="icon-plus"></i>  Add Category </a>
+            </li>    
+                      
+          </ul>
+        </li>
+        <!--<li class="divider"></li>-->
+        <!--<li class="nav-title">
+          UI Elements
+        </li>-->
+        <!--<li class="nav-item nav-dropdown" routerLinkActive="open">
           <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-puzzle"></i> Manage Tips</a>
           <ul class="nav-dropdown-items">
             <li class="nav-item">
@@ -120,8 +131,8 @@
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/components/tabs']"><i class="icon-puzzle"></i> Tabs</a>
             </li>
           </ul>
-        </li>
-        <li class="nav-item nav-dropdown" routerLinkActive="open">
+        </li>-->
+        <!--<li class="nav-item nav-dropdown" routerLinkActive="open">
           <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-star"></i> Icons</a>
           <ul class="nav-dropdown-items">
             <li class="nav-item">
@@ -131,8 +142,8 @@
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/icons/simple-line-icons']"><i class="icon-star"></i> Simple Line Icons</a>
             </li>
           </ul>
-        </li>
-        <li class="nav-item">
+        </li>-->
+        <!--<li class="nav-item">
           <a class="nav-link" routerLinkActive="active" [routerLink]="['/widgets']"><i class="icon-calculator"></i> Widgets <span class="badge badge-info">NEW</span></a>
         </li>
         <li class="nav-item">
@@ -158,7 +169,7 @@
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/pages/500']"><i class="icon-star"></i> Error 500</a>
             </li>
           </ul>
-        </li>
+        </li>-->
         
       </ul>
     </nav>
