@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Http, RequestOptions, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
+import {globalService} from './globalService';
 import {Component} from '@angular/core';
 
 @Injectable()
@@ -8,9 +9,8 @@ export class TipsService {
   data;
   options;
   imageData;
-  url: 'http://ec2-13-126-41-169.ap-south-1.compute.amazonaws.com';
-
-  constructor(public http: Http) {
+  constructor(public http: Http, public globalservices:globalService) {
+    console.log(globalservices.url + 'category');
     let headers = new Headers();
     headers.append('Content-Type', 'multipart/form-data');
     headers.append('Accept', 'application/json');
@@ -57,6 +57,17 @@ export class TipsService {
   public addTip(data) {
     return new Promise(resolve => {
       this.http.post('http://ec2-13-126-41-169.ap-south-1.compute.amazonaws.com/tips/userId/create', data)
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
+    });
+  }
+
+    public AddCategory(data) {
+    return new Promise(resolve => {
+      this.http.post('http://ec2-13-126-41-169.ap-south-1.compute.amazonaws.com/category/12345/create', data)
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;

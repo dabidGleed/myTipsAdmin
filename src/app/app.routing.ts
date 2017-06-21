@@ -40,6 +40,10 @@ export const routes: Routes = [
         loadChildren: './tipsAdd/tipsAdd.module#tipsAddModule'
       },
       {
+        path: 'AddCategory',
+        loadChildren: './AddCategory/AddCategory.module#AddCategoryModule'
+      },
+      {
         path: 'TipsEdit/:tipId',
         loadChildren: './tipsEdit/tipsEdit.module#tipsEditModule'
       },
