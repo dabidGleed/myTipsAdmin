@@ -25,6 +25,7 @@ import { AppRoutingModule } from './app.routing';
 import { FullLayoutComponent } from './layouts/full-layout.component';
 import { SimpleLayoutComponent } from './layouts/simple-layout.component';
 import { TipsService } from './providers/tipsProvider/tipsProvider';
+import { AuthService } from './providers/tipsProvider/authProvider';
 import { globalService } from './providers/tipsProvider/globalService';
 
 @NgModule({
@@ -39,7 +40,7 @@ import { globalService } from './providers/tipsProvider/globalService';
     DropdownModule.forRoot(),
     TabsModule.forRoot(),
     ChartsModule,
-    FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()   
+    FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()
   ],
   declarations: [
     AppComponent,
@@ -49,16 +50,17 @@ import { globalService } from './providers/tipsProvider/globalService';
     BreadcrumbsComponent,
     SIDEBAR_TOGGLE_DIRECTIVES,
     AsideToggleDirective,
-    
+
     //tipsListComponent
     AsideToggleDirective
   ],
   providers: [{
     provide: LocationStrategy,
     useClass: HashLocationStrategy,
-    
+
   },
   TipsService,
+    AuthService,
   globalService
   ],
   bootstrap: [ AppComponent ]
