@@ -27,6 +27,9 @@ import { SimpleLayoutComponent } from './layouts/simple-layout.component';
 import { TipsService } from './providers/tipsProvider/tipsProvider';
 import { globalService } from './providers/tipsProvider/globalService';
 
+// ckEditor
+import { CKEditorModule } from 'ng2-ckeditor';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -39,7 +42,8 @@ import { globalService } from './providers/tipsProvider/globalService';
     DropdownModule.forRoot(),
     TabsModule.forRoot(),
     ChartsModule,
-    FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()   
+    FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),
+     CKEditorModule  
   ],
   declarations: [
     AppComponent,
