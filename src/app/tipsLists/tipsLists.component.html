@@ -8,6 +8,7 @@
           <table class="table table-bordered table-striped table-condensed">
             <thead>
               <tr>
+                <th>Index</th>
                 <th>Post Image</th>
                 <th>Title</th>
                 <th>Gender</th>
@@ -18,7 +19,8 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let tip of tips">
+              <tr *ngFor="let tip of tips;let i = index" [attr.data-index]="i" >
+                <td>{{i+1}}</td>
                 <td><img width="50" [src]="tip.images"></td>
                 <td><span class="tipTitle">{{tip.title}}</span></td>
                 <td>{{tip.genderSpecific}}</td>

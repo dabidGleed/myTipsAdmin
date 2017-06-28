@@ -24,7 +24,6 @@ export class tipsListComponent {
   }
   removeTip(tip) {
     var confirmed = confirm("Are you sure to delete?");
-    console.log(tip);
     if(confirmed){
       this.tipsService.deleteTip(tip.id)
         .then(

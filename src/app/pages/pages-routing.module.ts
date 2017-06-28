@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { P404Component } from './404.component';
 import { P500Component } from './500.component';
-import { LoginComponent } from './login.component';
+import { loginComponent } from './login.component';
 import { RegisterComponent } from './register.component';
 
 const routes: Routes = [
@@ -29,7 +29,7 @@ const routes: Routes = [
       },
       {
         path: 'login',
-        component: LoginComponent,
+        component: loginComponent,
         data: {
           title: 'Login Page'
         }
