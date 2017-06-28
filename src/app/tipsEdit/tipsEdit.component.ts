@@ -12,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
   providers: [Modal]
 })
 export class tipsEditComponent {
-
+  showLoading = false;
   private tipId: any;
   private categories;
   tip: any = {};
@@ -84,6 +84,7 @@ export class tipsEditComponent {
   }
   myfile:any;
   fileChange(fileInput: any) {
+    this.showLoading = true;
     this.myfile = fileInput.target.files[0];
     //let fileList: FileList = event.target.files;
       this.AllTipsService.fileUpload(this.myfile)
@@ -91,6 +92,7 @@ export class tipsEditComponent {
         //console.log(data);
         this.tip.images = [];
         this.tip.images.push(data['files'][0].url);
+        this.showLoading = false;
       }, //Bind to view
       err => {
         // Log errors if any

@@ -10,7 +10,8 @@ import { Modal, BSModalContext } from 'angular2-modal/plugins/bootstrap';
 })
 export class categoryListComponent {
   public Categories;
-
+  public tips;
+  
   constructor(public tipsService: TipsService, overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal) {
     this.loadCategories();
     overlay.defaultViewContainer = vcRef;
@@ -33,5 +34,22 @@ export class categoryListComponent {
       .open();
   }
 
+    DelCategory(category) {
+      console.log(category);
+    var confirmed = confirm("Are you sure to delete?");
+    if(confirmed){
+      this.tipsService.deleteCategory(category.id)
+        .then(
+          data => {
+            this.Categories.splice(this.Categories.indexOf(category),1);
+            console.log(data);
+          }, //Bind to view
+          err => {
+            // Log errors if any
+            console.log(err);
+          });
+    }
+
+  }
 
 }
