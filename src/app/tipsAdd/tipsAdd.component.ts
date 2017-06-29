@@ -12,6 +12,7 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 })
 export class tipsAddComponent {
   private categories;
+ showLoading = false;
   private tip = {title:'', description:'',images:[], videos:[],category:'',tagsList:'',tags:[], postType:'',genderSpecific:[],videoLink:''};
   private hello;
   public showMe = false;
@@ -72,6 +73,7 @@ export class tipsAddComponent {
   }
   myfile:any;
   fileChange(fileInput: any) {
+    this.showLoading = true;
     this.myfile = fileInput.target.files[0];
     //let fileList: FileList = event.target.files;
       this.AllTipsService.fileUpload(this.myfile)
@@ -79,6 +81,7 @@ export class tipsAddComponent {
         //console.log(data);
         this.tip.images = [];
         this.tip.images.push(data['files'][0].url);
+        this.showLoading = false;
       }, //Bind to view
       err => {
         // Log errors if any
