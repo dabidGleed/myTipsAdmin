@@ -25,10 +25,11 @@ import { AppRoutingModule } from './app.routing';
 import { FullLayoutComponent } from './layouts/full-layout.component';
 import { SimpleLayoutComponent } from './layouts/simple-layout.component';
 import { TipsService } from './providers/tipsProvider/tipsProvider';
-//import { tipsListComponent } from './tipsLists/tipsLists.component';
+import { AuthService } from './providers/tipsProvider/authProvider';
+import { globalService } from './providers/tipsProvider/globalService';
 
-// Main App Links
-//import { tipsListComponent } from './tipsLists/tipsLists.component';
+// ckEditor
+import { CKEditorModule } from 'ng2-ckeditor';
 
 @NgModule({
   imports: [
@@ -42,7 +43,9 @@ import { TipsService } from './providers/tipsProvider/tipsProvider';
     DropdownModule.forRoot(),
     TabsModule.forRoot(),
     ChartsModule,
-    FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()   
+
+    FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),
+     CKEditorModule  
   ],
   declarations: [
     AppComponent,
@@ -52,16 +55,18 @@ import { TipsService } from './providers/tipsProvider/tipsProvider';
     BreadcrumbsComponent,
     SIDEBAR_TOGGLE_DIRECTIVES,
     AsideToggleDirective,
-    
-    //tipsListComponent
 
+    //tipsListComponent
+    AsideToggleDirective
   ],
   providers: [{
     provide: LocationStrategy,
     useClass: HashLocationStrategy,
-    
+
   },
-  TipsService
+  TipsService,
+    AuthService,
+  globalService
   ],
   bootstrap: [ AppComponent ]
 })

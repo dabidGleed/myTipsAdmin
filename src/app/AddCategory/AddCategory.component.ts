@@ -7,14 +7,14 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 
 
 @Component({
-  templateUrl: 'tipsAdd.component.html',
+  templateUrl: 'AddCategory.component.html',
   providers: [Modal]
 })
-export class tipsAddComponent {
+export class AddCategoryComponent {
   private categories;
- showLoading = false;
-  private tip = {title:'', description:'',images:[], videos:[],category:'',tagsList:'',tags:[], postType:'',genderSpecific:[],videoLink:''};
+  private tip = {name:'', imageURL:''};
   private hello;
+  showLoading = false;
   public showMe = false;
   constructor(private AllTipsService: TipsService,overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal){
     this.loadCategories();
@@ -36,34 +36,14 @@ export class tipsAddComponent {
             });
   }
 
-  setGender(value, event){
-    if(event.target.checked){
-      this.tip.genderSpecific.push(value);
-    }else{
-      this.tip.genderSpecific.splice(this.tip.genderSpecific.indexOf(value),1);
-     }
-  }
+
 
   saveTip(){
-    if(this.tip.tagsList){
-      this.tip.tags = this.tip.tagsList.split(',');
-      delete this.tip.tagsList;
-    }
 
-    if(this.tip.videoLink != ''){
-      let videoId = this.tip.videoLink.substr(this.tip.videoLink.indexOf("=") + 1);
-      let imageId = 'http://img.youtube.com/vi/'+videoId+'/0.jpg';
-      this.tip.videos = [];
-      this.tip.images = [];
-      this.tip.videos.push(videoId);
-      this.tip.images.push(imageId);
-      delete this.tip.videoLink;
-    }
-
-    this.AllTipsService.addTip(this.tip)
+    this.AllTipsService.AddCategory(this.tip)
         .then(
             data => {
-              this.tip = {title:'', description:'', images:[],videos:[], category:'',tagsList:'',tags:[], postType:'',genderSpecific:[], videoLink:''};
+              this.tip = {name:'', imageURL:''};
               this.tipPublished();
             }, //Bind to view
             err => {
@@ -79,9 +59,9 @@ export class tipsAddComponent {
       this.AllTipsService.fileUpload(this.myfile)
       .then(data => {
         //console.log(data);
-        this.tip.images = [];
-        this.tip.images.push(data['files'][0].url);
-        this.showLoading = false;
+        this.tip.imageURL = '';
+        this.tip.imageURL = (data['files'][0].url);
+         this.showLoading = false;
       }, //Bind to view
       err => {
         // Log errors if any
@@ -97,4 +77,6 @@ export class tipsAddComponent {
         .body(`<p>Your Tip is saved successfully. You can make it publish</p>`)
         .open();
   }
+
+  
 }

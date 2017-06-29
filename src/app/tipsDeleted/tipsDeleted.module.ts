@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { tipsDeletedComponent } from './tipsDeleted.component';
 import { TipsDeletedRoutingModule } from './tipsDeleted-routing.module';
 
+
 @NgModule({
   imports: [
-      TipsDeletedRoutingModule
+      TipsDeletedRoutingModule,
+      CommonModule
     ],
   declarations: [ tipsDeletedComponent ]
 })

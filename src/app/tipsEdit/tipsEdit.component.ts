@@ -1,39 +1,51 @@
-import { Component, ViewContainerRef } from '@angular/core';
+import { Component, ViewContainerRef, OnInit, OnDestroy } from '@angular/core';
 import { Overlay } from 'angular2-modal';
 import { Modal, BSModalContext } from 'angular2-modal/plugins/bootstrap';
 import { TipsService } from '../providers/tipsProvider/tipsProvider';
 import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
-  templateUrl: 'tipsAdd.component.html',
+  templateUrl: 'tipsEdit.component.html',
   providers: [Modal]
 })
-export class tipsAddComponent {
+export class tipsEditComponent {
+  showLoading = false;
+  private tipId: any;
   private categories;
- showLoading = false;
-  private tip = {title:'', description:'',images:[], videos:[],category:'',tagsList:'',tags:[], postType:'',genderSpecific:[],videoLink:''};
-  private hello;
-  public showMe = false;
-  constructor(private AllTipsService: TipsService,overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal){
+  tip: any = {};
+  // tip = {title:'', description:'', images:[],videos:[], category:'',tagsList:'',tags:[], postType:'',genderSpecific:[], videoLink:''};
+  constructor(private AllTipsService: TipsService,overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal,private route: ActivatedRoute){
+    if(route.params){
+       this.tipId = route.params['_value']['tipId'];
+    }
+    this.loadTipDetails();
     this.loadCategories();
     overlay.defaultViewContainer = vcRef;
   }
   // Local properties
 
+  loadTipDetails(){
+    // Get all comments
+    this.AllTipsService.getOneTip(this.tipId)
+        .then(data => {
+        this.tip = data;
+        });
+  }
   loadCategories(){
     // Get all comments
     this.AllTipsService.getCategories()
-        .then(
-            data => {
-              console.log(data);
-              this.categories = data
-            }, //Bind to view
-            err => {
-              // Log errors if any
-              console.log(err);
-            });
+      .then(
+        data => {
+          console.log(data);
+          this.categories = data
+        }, //Bind to view
+        err => {
+          // Log errors if any
+          console.log(err);
+        });
   }
 
   setGender(value, event){
@@ -44,7 +56,7 @@ export class tipsAddComponent {
      }
   }
 
-  saveTip(){
+  updateTip(){
     if(this.tip.tagsList){
       this.tip.tags = this.tip.tagsList.split(',');
       delete this.tip.tagsList;
@@ -59,8 +71,7 @@ export class tipsAddComponent {
       this.tip.images.push(imageId);
       delete this.tip.videoLink;
     }
-
-    this.AllTipsService.addTip(this.tip)
+    this.AllTipsService.updateTip(this.tipId,this.tip)
         .then(
             data => {
               this.tip = {title:'', description:'', images:[],videos:[], category:'',tagsList:'',tags:[], postType:'',genderSpecific:[], videoLink:''};
@@ -94,7 +105,7 @@ export class tipsAddComponent {
         .size('lg')
         .showClose(true)
         .title('Added Tip')
-        .body(`<p>Your Tip is saved successfully. You can make it publish</p>`)
+        .body(`<p>Your Tip is updated successfully</p>`)
         .open();
   }
 }

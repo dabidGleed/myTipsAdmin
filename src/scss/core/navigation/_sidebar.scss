@@ -2,6 +2,7 @@
   padding: $sidebar-padding;
   color: $sidebar-color;
   background: $sidebar-bg;
+  // background: green;
   @include borders($sidebar-borders);
 
   .sidebar-close {
@@ -108,7 +109,8 @@
 
         &:hover {
           color: $sidebar-nav-link-hover-color !important;
-          background: $sidebar-nav-link-hover-bg !important;
+          // background: $sidebar-nav-link-hover-bg !important;
+          background:#338027!important;
           @include borders($sidebar-nav-link-hover-borders);
 
           i {
@@ -118,11 +120,13 @@
 
         &.active {
           color: $sidebar-nav-link-active-color;
-          background: $sidebar-nav-link-active-bg;
+          // background: $sidebar-nav-link-active-bg;
+           background:#338027 !important;
           @include borders($sidebar-nav-link-active-borders);
 
           i {
-            color: $sidebar-nav-link-active-icon-color;
+            // color: $sidebar-nav-link-active-icon-color;
+            color: white;
           }
         }
 
@@ -147,7 +151,7 @@
         }
 
         &.nav-dropdown-toggle {
-
+            font-weight: 700;
           &::before {
             position: absolute;
             top: ($sidebar-nav-link-padding-y + ($font-size-base / 4));
@@ -162,12 +166,16 @@
             content: "\2039";
             transition: .3s;
           }
+          i{
+            font-weight: 700;
+            color: white;
+          }
         }
       }
 
       &.nav-dropdown {
         &.open {
-          background: $sidebar-nav-dropdown-bg;
+          // background: $sidebar-nav-dropdown-bg;
           @include borders($sidebar-nav-dropdown-borders);
           @if $enable-sidebar-nav-rounded {
             border-radius: $border-radius;
@@ -343,7 +351,7 @@
           &:hover {
             width: $sidebar-width + $sidebar-compact-width;
             overflow: visible;
-            background: $sidebar-nav-link-hover-bg;
+            // background: $sidebar-nav-link-hover-bg;
             transition: 0s;
 
             > a.nav-link {

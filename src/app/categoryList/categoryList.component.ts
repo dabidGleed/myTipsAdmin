@@ -4,51 +4,44 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Overlay } from 'angular2-modal';
 import { Modal, BSModalContext } from 'angular2-modal/plugins/bootstrap';
 
-@Component({
-  templateUrl: 'tipsDeleted.component.html'
-})
-export class tipsDeletedComponent {
 
+@Component({
+  templateUrl: 'categoryList.component.html'
+})
+export class categoryListComponent {
+  public Categories;
   public tips;
-  Categories;
+  
   constructor(public tipsService: TipsService, overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal) {
     this.loadCategories();
-    this.getDelTips();
-    
-   }
-
-    getDelTips() {
-    this.tipsService.getdeletedTip()
-      .then(data => {
-        this.tips = data;
-      });
+    overlay.defaultViewContainer = vcRef;
   }
 
-    loadCategories() {
+  loadCategories() {
     this.tipsService.getCategories()
       .then(data => {
-       this.Categories = data;
+      
+        this.Categories = data;
       });
   }
 
-  categoryName(categoryId){
-    let catName;
-    this.Categories.forEach(element => {
-      if(element.id == categoryId){
-         catName = element.name;
-      }
-      
-    });
-    return catName;
+  tipPublished(){
+    this.modal.alert()
+      .size('lg')
+      .showClose(true)
+      .title('Added Tip')
+      .body(`<p>Your Tip is published successfully</p>`)
+      .open();
   }
 
-    DelTip(tip) {
+    DelCategory(category) {
+      console.log(category);
     var confirmed = confirm("Are you sure to delete?");
     if(confirmed){
-      this.tipsService.perdeleteTip(tip.id)
+      this.tipsService.deleteCategory(category.id)
         .then(
           data => {
-            this.tips.splice(this.tips.indexOf(tip),1);
+            this.Categories.splice(this.Categories.indexOf(category),1);
             console.log(data);
           }, //Bind to view
           err => {
@@ -58,4 +51,5 @@ export class tipsDeletedComponent {
     }
 
   }
+
 }
