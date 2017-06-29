@@ -16,3 +16,23 @@
         }
     }
 }
+
+.ngx-pagination {
+    padding-left: 0px;
+    .current {
+        background: #336600!important;
+    }
+}
+
+.btn-info {
+    background-color: #63b60f;
+    border-color: #63b60f;
+}
+
+.form-control:focus {
+    border-color: #5aa40f!important;
+}
+
+.logoHead {
+    padding: 7px 25px;
+}

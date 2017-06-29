@@ -11,7 +11,8 @@ import { Modal, BSModalContext } from 'angular2-modal/plugins/bootstrap';
 export class categoryListComponent {
   public Categories;
   public tips;
-  
+  itemsPPage = 10;
+  curPage = '1';
   constructor(public tipsService: TipsService, overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal) {
     this.loadCategories();
     overlay.defaultViewContainer = vcRef;
@@ -50,6 +51,11 @@ export class categoryListComponent {
           });
     }
 
+  }
+
+    pagination(i,p){
+    
+    return ((Number(this.curPage)- 1)*this.itemsPPage)+i+1;
   }
 
 }

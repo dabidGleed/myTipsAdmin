@@ -1,58 +1,60 @@
- <div class="row">
+<div class="row">
     <div class="col-lg-12">
-      <div class="card">
-        <div class="card-header">
-          <i class="fa fa-align-justify"></i> List of All Tips
-        </div>
-        <div class="card-block">
-          <table class="table table-bordered table-striped table-condensed">
-            <thead>
-              <tr>
-                <th>Index</th>
-                <th>Post Image</th>
-                <th>Title</th>
-                <th>Gender</th>
-                <th>Category</th>
-                <th>Likes</th>
-                <th>Favs</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let tip of tips;let i = index" [attr.data-index]="i" >
-                <td>{{i+1}}</td>
-                <td><img width="50" [src]="tip.images"></td>
-                <td><span class="tipTitle">{{tip.title}}</span></td>
-                <td>{{tip.genderSpecific}}</td>
-                <td>{{tip.category}}</td>
-                <td>{{tip.likes.length}}</td>
-                <td>{{tip.favourites.length}}</td>
-                <td>
-                  <button class="btn btn-success btn-sm" type="button" [routerLink]="['/TipsEdit',tip.id]">Edit</button>
-                  <button class="btn btn-danger btn-sm" type="button" (click)="removeTip(tip)" >Delete</button>
-                  <template [ngIf]="tip.status === 'UNPUBLISH'">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-align-justify"></i> List of All Tips
+            </div>
+            <div class="card-block">
+                <table class="table table-bordered table-striped table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Index</th>
+                            <th>Post Image</th>
+                            <th>Title</th>
+                            <th>Gender</th>
+                            <th>Category</th>
+                            <th>Likes</th>
+                            <th>Favs</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr *ngFor="let tip of tips  | paginate: { itemsPerPage: itemsPPage, currentPage: curPage };let i = index" [attr.data-index]="i">
+                            <td>{{pagination(i,curPage)}}</td>
+                            <td><img width="50" [src]="tip.images"></td>
+                            <td><span class="tipTitle">{{tip.title}}</span></td>
+                            <td>{{tip.genderSpecific}}</td>
+                            <td>{{tip.category}}</td>
+                            <td>{{tip.likes.length}}</td>
+                            <td>{{tip.favourites.length}}</td>
+                            <td>
+                                <button class="btn btn-success btn-sm" type="button" [routerLink]="['/TipsEdit',tip.id]">Edit</button>
+                                <button class="btn btn-danger btn-sm" type="button" (click)="removeTip(tip)">Delete</button>
+                                <template [ngIf]="tip.status === 'UNPUBLISH'">
                     <button  class="btn btn-primary btn-sm" type="button" (click)="makePublish(tip)">make Publish</button>
                   </template>
-                  <template [ngIf]="tip.status === 'ACTIVE'">
+                                <template [ngIf]="tip.status === 'ACTIVE'">
                     <button  class="btn btn-info btn-sm" type="button">Active</button>
                   </template>
 
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <nav>
-            <ul class="pagination">
-              <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-              <li class="page-item active"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item"><a class="page-link" href="#">4</a></li>
-              <li class="page-item"><a class="page-link" href="#">Next</a></li>
-            </ul>
-          </nav>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <pagination-controls (pageChange)="curPage = $event" autoHide="true" previousLabel="" nextLabel=""></pagination-controls>
+                <!--<nav>
+                    <ul class="pagination">
+                        <li class="page-item"><a class="page-link" href="">Prev</a></li>
+                        <li class="page-item active"><a class="page-link" href="">1</a></li>
+                        <li class="page-item"><a class="page-link" href="">2</a></li>
+                        <li class="page-item"><a class="page-link" href="">3</a></li>
+                        <li class="page-item"><a class="page-link" href="">4</a></li>
+                        <li class="page-item"><a class="page-link" href="">Next</a></li>
+                    </ul>
+                </nav>-->
+            </div>
         </div>
-      </div>
     </div>
     <!--/.col-->
-  </div>
+</div>

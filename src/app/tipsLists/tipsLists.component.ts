@@ -10,7 +10,8 @@ import { Modal, BSModalContext } from 'angular2-modal/plugins/bootstrap';
 })
 export class tipsListComponent {
   public tips;
-
+  itemsPPage = 10;
+  curPage = '1';
   constructor(public tipsService: TipsService, overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal) {
     this.loadTips();
     overlay.defaultViewContainer = vcRef;
@@ -59,6 +60,9 @@ export class tipsListComponent {
       .body(`<p>Your Tip is published successfully</p>`)
       .open();
   }
-
+  pagination(i,p){
+    
+    return ((Number(this.curPage)- 1)*this.itemsPPage)+i+1;
+  }
 
 }
