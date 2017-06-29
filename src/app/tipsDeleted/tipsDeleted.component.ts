@@ -11,6 +11,8 @@ export class tipsDeletedComponent {
 
   public tips;
   Categories;
+  itemsPPage = 10;
+  curPage = '1';
   constructor(public tipsService: TipsService, overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal) {
     this.loadCategories();
     this.getDelTips();
@@ -57,5 +59,10 @@ export class tipsDeletedComponent {
           });
     }
 
+  }
+
+    pagination(i,p){
+    console.log(p);
+    return ((Number(this.curPage)- 1)*this.itemsPPage)+i+1;
   }
 }

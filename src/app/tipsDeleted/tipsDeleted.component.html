@@ -17,8 +17,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let tip of tips;let i = index" [attr.data-index]="i">
-                            <td>{{i+1}}</td>
+                        <tr *ngFor="let tip of tips | paginate: { itemsPerPage: itemsPPage, currentPage: curPage };let i = index" [attr.data-index]="i">
+                            <td>{{pagination(i,curPage)}}</td>
                             <td><img width="50" [src]="tip.images"></td>
                             <td><span class="tipTitle">{{tip.title}}</span></td>
                             <td>{{tip.genderSpecific}}</td>
@@ -37,18 +37,20 @@
                         </tr>
                     </tbody>
                 </table>
-                <nav>
+
+                <pagination-controls (pageChange)="curPage = $event" autoHide="true" previousLabel="" nextLabel=""></pagination-controls>
+                <!--<nav>
                     <ul class="pagination">
-                        <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+                        <li class="page-item"><a class="page-link" href="">Prev</a></li>
                         <li class="page-item active">
-                            <a class="page-link" href="#">1</a>
+                            <a class="page-link" href="">1</a>
                         </li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                        <li class="page-item"><a class="page-link" href="">2</a></li>
+                        <li class="page-item"><a class="page-link" href="">3</a></li>
+                        <li class="page-item"><a class="page-link" href="">4</a></li>
+                        <li class="page-item"><a class="page-link" href="">Next</a></li>
                     </ul>
-                </nav>
+                </nav>-->
             </div>
         </div>
     </div>
