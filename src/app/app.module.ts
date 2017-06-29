@@ -6,6 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'angular2-modal';
 import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
 import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
+import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+import { CKEditorModule,CKEditorComponent  } from 'ng2-ckeditor';
 
 import { AppComponent } from './app.component';
 import { DropdownModule } from 'ng2-bootstrap/dropdown';
@@ -28,8 +30,7 @@ import { TipsService } from './providers/tipsProvider/tipsProvider';
 import { AuthService } from './providers/tipsProvider/authProvider';
 import { globalService } from './providers/tipsProvider/globalService';
 
-// ckEditor
-import { CKEditorModule } from 'ng2-ckeditor';
+
 
 @NgModule({
   imports: [
@@ -43,9 +44,9 @@ import { CKEditorModule } from 'ng2-ckeditor';
     DropdownModule.forRoot(),
     TabsModule.forRoot(),
     ChartsModule,
-
+    CKEditorModule,
     FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),
-     CKEditorModule  
+    NgxPaginationModule
   ],
   declarations: [
     AppComponent,
@@ -55,7 +56,6 @@ import { CKEditorModule } from 'ng2-ckeditor';
     BreadcrumbsComponent,
     SIDEBAR_TOGGLE_DIRECTIVES,
     AsideToggleDirective,
-
     //tipsListComponent
     AsideToggleDirective
   ],

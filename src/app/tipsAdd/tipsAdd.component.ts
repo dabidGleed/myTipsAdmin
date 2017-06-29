@@ -12,6 +12,7 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 })
 export class tipsAddComponent {
   private categories;
+  ckeditorContent;
  showLoading = false;
   private tip = {title:'', description:'',images:[], videos:[],category:'',tagsList:'',tags:[], postType:'',genderSpecific:[],videoLink:''};
   private hello;
@@ -19,6 +20,7 @@ export class tipsAddComponent {
   constructor(private AllTipsService: TipsService,overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal){
     this.loadCategories();
     overlay.defaultViewContainer = vcRef;
+    this.ckeditorContent = '<p>My HTML</p>';
   }
   // Local properties
 
