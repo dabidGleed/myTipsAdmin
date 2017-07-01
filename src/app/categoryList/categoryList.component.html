@@ -22,7 +22,7 @@
                             <td>{{pagination(i,curPage)}}</td>
                             <td><img width="50" [src]="category.imageURL"></td>
                             <td><span class="tipTitle">{{category.name}}</span></td>
-                            <td>3</td>
+                            <td>{{category.count}}</td>
                             <td>
                                 <button class="btn btn-success btn-sm" type="button">Edit</button>
                                 <button class="btn btn-danger btn-sm" type="button" (click)="DelCategory(category)">Delete</button>
@@ -33,12 +33,12 @@
                 <pagination-controls (pageChange)="curPage = $event" autoHide="true" previousLabel="" nextLabel=""></pagination-controls>
                 <!--<nav>
                     <ul class="pagination">
-                        <li class="page-item"><a class="page-link" href="">Prev</a></li>
-                        <li class="page-item active"><a class="page-link" href="">1</a></li>
-                        <li class="page-item"><a class="page-link" href="">2</a></li>
-                        <li class="page-item"><a class="page-link" href="">3</a></li>
-                        <li class="page-item"><a class="page-link" href="">4</a></li>
-                        <li class="page-item"><a class="page-link" href="">Next</a></li>
+                        <li class="page-item"><a class="page-link" href="javascript:void()">Prev</a></li>
+                        <li class="page-item active"><a class="page-link" href="javascript:void()">1</a></li>
+                        <li class="page-item"><a class="page-link" href="javascript:void()">2</a></li>
+                        <li class="page-item"><a class="page-link" href="javascript:void()">3</a></li>
+                        <li class="page-item"><a class="page-link" href="javascript:void()">4</a></li>
+                        <li class="page-item"><a class="page-link" href="javascript:void()">Next</a></li>
                     </ul>
                 </nav>-->
 
