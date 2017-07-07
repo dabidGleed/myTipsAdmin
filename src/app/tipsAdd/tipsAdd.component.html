@@ -6,7 +6,6 @@
             </div>
             <div class="card-block loadingOuter">
                 <div class="loadingBar" *ngIf="showLoading">
-                    <h4>Loading....</h4>
                 </div>
                 <form class="form-horizontal ">
                     <div class="form-group row">
@@ -22,11 +21,10 @@
                             <!--<textarea id="textarea-input" [(ngModel)]="tip.description"  name="textarea-input" rows="9" class="form-control" placeholder="Content.."></textarea>-->
                             <!--<div [froalaEditor] [(froalaModel)]="tip.description">Hello, Froala!</div>-->
                               <ckeditor [(ngModel)]="tip.description" [ngModelOptions]="{standalone: true}" [config]="config" debounce="500">
-      <p>Hello <strong>world</strong></p>
-    </ckeditor>
-    <div [innerHTML]="content"></div>
+                                <p>Hello <strong>world</strong></p>
+                                </ckeditor>
+                    <div [innerHTML]="content"></div>
                         </div>
-
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2 form-control-label">Post Type</label>
