@@ -6,6 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'angular2-modal';
 import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
 import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
+import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+import { CKEditorModule,CKEditorComponent  } from 'ng2-ckeditor';
 
 import { AppComponent } from './app.component';
 import { DropdownModule } from 'ng2-bootstrap/dropdown';
@@ -25,6 +27,10 @@ import { AppRoutingModule } from './app.routing';
 import { FullLayoutComponent } from './layouts/full-layout.component';
 import { SimpleLayoutComponent } from './layouts/simple-layout.component';
 import { TipsService } from './providers/tipsProvider/tipsProvider';
+import { AuthService } from './providers/tipsProvider/authProvider';
+import { globalService } from './providers/tipsProvider/globalService';
+
+
 
 @NgModule({
   imports: [
@@ -38,7 +44,9 @@ import { TipsService } from './providers/tipsProvider/tipsProvider';
     DropdownModule.forRoot(),
     TabsModule.forRoot(),
     ChartsModule,
-    FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()   
+    CKEditorModule,
+    FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),
+    NgxPaginationModule
   ],
   declarations: [
     AppComponent,
@@ -47,14 +55,18 @@ import { TipsService } from './providers/tipsProvider/tipsProvider';
     NAV_DROPDOWN_DIRECTIVES,
     BreadcrumbsComponent,
     SIDEBAR_TOGGLE_DIRECTIVES,
+    AsideToggleDirective,
+    //tipsListComponent
     AsideToggleDirective
   ],
   providers: [{
     provide: LocationStrategy,
     useClass: HashLocationStrategy,
-    
+
   },
-  TipsService
+  TipsService,
+    AuthService,
+  globalService
   ],
   bootstrap: [ AppComponent ]
 })

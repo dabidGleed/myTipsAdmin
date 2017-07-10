@@ -1,1 +1,37 @@
 // Here you can add other styles
+.loadingOuter {
+    position: relative;
+    .loadingBar {
+        position: absolute;
+        background-color: rgba(204, 204, 204, 0.46);
+        width: 100%;
+        height: calc(100% - -52px);
+        z-index: 999;
+        right: 0px;
+        top: 0px;
+        background-image: url('../assets/img/avatars/spin.gif');
+        background-repeat: no-repeat;
+        background-position: center;
+      
+    }
+}
+
+.ngx-pagination {
+    padding-left: 0px;
+    .current {
+        background: #336600!important;
+    }
+}
+
+.btn-info {
+    background-color: #63b60f;
+    border-color: #63b60f;
+}
+
+.form-control:focus {
+    border-color: #5aa40f!important;
+}
+
+.logoHead {
+    padding: 7px 25px;
+}

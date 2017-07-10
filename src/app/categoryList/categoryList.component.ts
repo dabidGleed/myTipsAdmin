@@ -9,49 +9,23 @@ import { Modal, BSModalContext } from 'angular2-modal/plugins/bootstrap';
   templateUrl: 'categoryList.component.html'
 })
 export class categoryListComponent {
+  public Categories;
   public tips;
-
+  itemsPPage = 10;
+  curPage = '1';
   constructor(public tipsService: TipsService, overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal) {
-    this.loadTips();
+    this.loadCategories();
     overlay.defaultViewContainer = vcRef;
   }
 
-  loadTips() {
-    this.tipsService.load()
+  loadCategories() {
+    this.tipsService.getCategories()
       .then(data => {
-        this.tips = data;
+      
+        this.Categories = data;
       });
   }
-  removeTip(tip) {
-    var confirmed = confirm("Are you sure to delete?");
-    console.log(tip);
-    if(confirmed){
-      this.tipsService.deleteTip(tip.id)
-        .then(
-          data => {
-            this.tips.splice(this.tips.indexOf(tip),1);
-            console.log(data);
-          }, //Bind to view
-          err => {
-            // Log errors if any
-            console.log(err);
-          });
-    }
 
-  }
-  makePublish(tip){
-    this.tipsService.makePublish(tip.id)
-      .then(
-        data => {
-          this.tips[this.tips.indexOf(tip)] = 'ACTIVE';
-          this.tipPublished();
-          console.log(data);
-        }, //Bind to view
-        err => {
-          // Log errors if any
-          console.log(err);
-        });
-  }
   tipPublished(){
     this.modal.alert()
       .size('lg')
@@ -61,5 +35,27 @@ export class categoryListComponent {
       .open();
   }
 
+    DelCategory(category) {
+      console.log(category);
+    var confirmed = confirm("Are you sure to delete?");
+    if(confirmed){
+      this.tipsService.deleteCategory(category.id)
+        .then(
+          data => {
+            this.Categories.splice(this.Categories.indexOf(category),1);
+            console.log(data);
+          }, //Bind to view
+          err => {
+            // Log errors if any
+            console.log(err);
+          });
+    }
+
+  }
+
+    pagination(i,p){
+    
+    return ((Number(this.curPage)- 1)*this.itemsPPage)+i+1;
+  }
 
 }

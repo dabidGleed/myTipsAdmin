@@ -12,15 +12,35 @@ import { ActivatedRoute } from '@angular/router';
   providers: [Modal]
 })
 export class tipsEditComponent {
-
+  showLoading = false;
   private tipId: any;
+  private categories;
   tip: any = {};
+    public config = {toolbarGroups:[
+        { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
+        { name: 'editing',     groups: [ 'find', 'selection', 'spellchecker' ] },
+        { name: 'links' },
+        { name: 'insert',    groups: ['Image']  },
+        { name: 'forms' },
+        { name: 'tools' },
+        { name: 'document',    groups: [ 'mode', 'document', 'doctools' ] },
+        { name: 'others' },
+        '/',
+        { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+        { name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },
+        { name: 'styles' },
+        { name: 'colors' },
+        { name: 'about' }
+    ],
+    removeDialogTabs:'image:advanced;link:advanced'
+  };
   // tip = {title:'', description:'', images:[],videos:[], category:'',tagsList:'',tags:[], postType:'',genderSpecific:[], videoLink:''};
   constructor(private AllTipsService: TipsService,overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal,private route: ActivatedRoute){
     if(route.params){
        this.tipId = route.params['_value']['tipId'];
     }
     this.loadTipDetails();
+    this.loadCategories();
     overlay.defaultViewContainer = vcRef;
   }
   // Local properties
@@ -30,6 +50,19 @@ export class tipsEditComponent {
     this.AllTipsService.getOneTip(this.tipId)
         .then(data => {
         this.tip = data;
+        });
+  }
+  loadCategories(){
+    // Get all comments
+    this.AllTipsService.getCategories()
+      .then(
+        data => {
+          console.log(data);
+          this.categories = data
+        }, //Bind to view
+        err => {
+          // Log errors if any
+          console.log(err);
         });
   }
 
@@ -56,7 +89,6 @@ export class tipsEditComponent {
       this.tip.images.push(imageId);
       delete this.tip.videoLink;
     }
-
     this.AllTipsService.updateTip(this.tipId,this.tip)
         .then(
             data => {
@@ -70,6 +102,7 @@ export class tipsEditComponent {
   }
   myfile:any;
   fileChange(fileInput: any) {
+    this.showLoading = true;
     this.myfile = fileInput.target.files[0];
     //let fileList: FileList = event.target.files;
       this.AllTipsService.fileUpload(this.myfile)
@@ -77,6 +110,7 @@ export class tipsEditComponent {
         //console.log(data);
         this.tip.images = [];
         this.tip.images.push(data['files'][0].url);
+        this.showLoading = false;
       }, //Bind to view
       err => {
         // Log errors if any

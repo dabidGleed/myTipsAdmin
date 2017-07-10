@@ -1,19 +1,24 @@
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {PagesRoutingModule} from './pages-routing.module';
+import {FroalaEditorModule, FroalaViewModule} from 'angular2-froala-wysiwyg';
 
-import { P404Component } from './404.component';
-import { P500Component } from './500.component';
-import { LoginComponent } from './login.component';
-import { RegisterComponent } from './register.component';
+import {P404Component} from './404.component';
+import {P500Component} from './500.component';
+import {loginComponent} from './login.component';
+import {RegisterComponent} from './register.component';
 
-import { PagesRoutingModule } from './pages-routing.module';
 
 @NgModule({
-  imports: [ PagesRoutingModule ],
+  imports: [PagesRoutingModule, CommonModule,
+    FormsModule, FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()],
   declarations: [
     P404Component,
     P500Component,
-    LoginComponent,
+    loginComponent,
     RegisterComponent
   ]
 })
-export class PagesModule { }
+export class PagesModule {
+}

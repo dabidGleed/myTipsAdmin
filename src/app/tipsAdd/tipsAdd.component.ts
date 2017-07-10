@@ -12,12 +12,34 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 })
 export class tipsAddComponent {
   private categories;
+  ckeditorContent;
+ showLoading = false;
   private tip = {title:'', description:'',images:[], videos:[],category:'',tagsList:'',tags:[], postType:'',genderSpecific:[],videoLink:''};
   private hello;
   public showMe = false;
+  public config = {toolbarGroups:[
+        { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
+        { name: 'editing',     groups: [ 'find', 'selection', 'spellchecker' ] },
+        { name: 'links' },
+        { name: 'insert',    groups: ['Image']  },
+        { name: 'forms' },
+        { name: 'tools' },
+        { name: 'document',    groups: [ 'mode', 'document', 'doctools' ] },
+        { name: 'others' },
+        '/',
+        { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+        { name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align', 'bidi' ] },
+        { name: 'styles' },
+        { name: 'colors' },
+        { name: 'about' }
+    ],
+    removeDialogTabs:'image:advanced;link:advanced'
+  };
+
   constructor(private AllTipsService: TipsService,overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal){
     this.loadCategories();
     overlay.defaultViewContainer = vcRef;
+    this.ckeditorContent = '<p>My HTML</p>';
   }
   // Local properties
 
@@ -72,6 +94,7 @@ export class tipsAddComponent {
   }
   myfile:any;
   fileChange(fileInput: any) {
+    this.showLoading = true;
     this.myfile = fileInput.target.files[0];
     //let fileList: FileList = event.target.files;
       this.AllTipsService.fileUpload(this.myfile)
@@ -79,6 +102,7 @@ export class tipsAddComponent {
         //console.log(data);
         this.tip.images = [];
         this.tip.images.push(data['files'][0].url);
+        this.showLoading = false;
       }, //Bind to view
       err => {
         // Log errors if any
