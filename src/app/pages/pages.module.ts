@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {PagesRoutingModule} from './pages-routing.module';
 import {FroalaEditorModule, FroalaViewModule} from 'angular2-froala-wysiwyg';
+import { DatePickerModule } from 'ng2-datepicker';
 
 import {P404Component} from './404.component';
 import {P500Component} from './500.component';
@@ -11,7 +12,7 @@ import {RegisterComponent} from './register.component';
 
 
 @NgModule({
-  imports: [PagesRoutingModule, CommonModule,
+  imports: [PagesRoutingModule, CommonModule,DatePickerModule,
     FormsModule, FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()],
   declarations: [
     P404Component,
