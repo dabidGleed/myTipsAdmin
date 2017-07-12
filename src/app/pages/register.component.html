@@ -8,25 +8,53 @@
             <p class="text-muted">Create your account</p>
             <div class="input-group mb-1">
               <span class="input-group-addon"><i class="icon-user"></i></span>
-              <input type="text" class="form-control" placeholder="Username">
+              <input type="text" class="form-control" name="firstName" [(ngModel)]="userData.firstName" placeholder="FirstName">
             </div>
-
+            <div class="input-group mb-1">
+              <span class="input-group-addon"><i class="icon-user"></i></span>
+              <input type="text" class="form-control" name="lastName" [(ngModel)]="userData.lastName" placeholder="LastName">
+            </div>
             <div class="input-group mb-1">
               <span class="input-group-addon">@</span>
-              <input type="text" class="form-control" placeholder="Email">
+              <input type="text" class="form-control" name="email" [(ngModel)]="userData.email" placeholder="Email">
             </div>
 
             <div class="input-group mb-1">
               <span class="input-group-addon"><i class="icon-lock"></i></span>
-              <input type="password" class="form-control" placeholder="Password">
+              <input type="password" class="form-control" name="password" [(ngModel)]="userData.password" placeholder="Password">
             </div>
 
             <div class="input-group mb-2">
               <span class="input-group-addon"><i class="icon-lock"></i></span>
               <input type="password" class="form-control" placeholder="Repeat password">
             </div>
+          <div class="input-group mb-2">
+            <span class="input-group-addon"><i class="icon-lock"></i></span>
+            <input type="text" class="form-control"  name="mobileNumber" [(ngModel)]="userData.mobileNumber" placeholder="MobileNumber">
+          </div>
+          <div class="input-group mb-2">
+            <span class="input-group-addon"><i class="icon-lock"></i></span>
+            <select type="text" class="form-control"  name="gender" [(ngModel)]="userData.gender">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+          <div class="input-group mb-2">
+            <span class="input-group-addon"><i class="icon-lock"></i></span>
+            <ng2-datepicker  [options]="options" name="dateofBirth" [(ngModel)]="userData.dateofBirth" placeholder="DateofBirth"></ng2-datepicker>
+            <!--<input type="text" class="form-control"  name="dateofBirth" [(ngModel)]="userData.dateofBirth" placeholder="DateofBirth">-->
+          </div>
+          <div class="input-group mb-2">
+            <span class="input-group-addon"><i class="icon-lock"></i></span>
+            <input type="text" class="form-control"  name="role" [(ngModel)]="userData.role" placeholder="Role">
+          </div>
 
-            <button type="button" class="btn btn-block btn-success">Create Account</button>
+          <div class="input-group mb-2">
+            <!--<input type="file" class="form-control"  name="profilePic" [(ngModel)]="userData.profilePic" placeholder="ProfilePic">-->
+        
+              <input type="file" class="form-control" id="file-input" name="file-input" (change)="fileChange($event)" placeholder="Upload file">
+           </div>
+            <button (click)="register()" type="button" class="btn btn-block btn-success">Create Account</button>
           </div>
           <div class="card-footer p-2">
             <div class="row">
