@@ -30,6 +30,10 @@ export class loginComponent {
           }
         });
   }
+
+    Register() {
+        this.router.navigate(['/pages/register']);
+     }
   tipPublished(){
     this.modal.alert()
       .size('sm')
