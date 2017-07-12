@@ -13,7 +13,7 @@ import {RegisterComponent} from './register.component';
 
 @NgModule({
   imports: [PagesRoutingModule, CommonModule,DatePickerModule,
-    FormsModule, FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()],
+    FormsModule, ReactiveFormsModule, FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()],
   declarations: [
     P404Component,
     P500Component,

@@ -9,6 +9,7 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
 import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 import { CKEditorModule,CKEditorComponent  } from 'ng2-ckeditor';
 import { DatePickerModule } from 'ng2-datepicker';
+// import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { DropdownModule } from 'ng2-bootstrap/dropdown';
@@ -48,7 +49,8 @@ import { globalService } from './providers/tipsProvider/globalService';
     CKEditorModule,
     FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),
     NgxPaginationModule,
-    DatePickerModule
+    DatePickerModule,
+    
   ],
   declarations: [
     AppComponent,
