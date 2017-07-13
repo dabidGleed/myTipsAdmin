@@ -8,6 +8,7 @@ import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
 import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
 import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 import { CKEditorModule,CKEditorComponent  } from 'ng2-ckeditor';
+import { DatePickerModule } from 'ng2-datepicker';
 
 import { AppComponent } from './app.component';
 import { DropdownModule } from 'ng2-bootstrap/dropdown';
@@ -46,7 +47,8 @@ import { globalService } from './providers/tipsProvider/globalService';
     ChartsModule,
     CKEditorModule,
     FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),
-    NgxPaginationModule
+    NgxPaginationModule,
+    DatePickerModule
   ],
   declarations: [
     AppComponent,
