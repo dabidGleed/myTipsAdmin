@@ -8,7 +8,7 @@ export class globalService {
   data;
   options;
   imageData;
-public url: 'http://ec2-13-126-41-169.ap-south-1.compute.amazonaws.com';
+public url: 'http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com';
 
 }
 
