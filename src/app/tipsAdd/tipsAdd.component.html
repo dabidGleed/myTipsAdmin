@@ -7,7 +7,7 @@
             <div class="card-block loadingOuter">
                 <div class="loadingBar" *ngIf="showLoading">
                 </div>
-                <form class="form-horizontal" (ngSubmit)="submitButton()" #f="ngForm">
+                <form class="form-horizontal" (ngSubmit)="submitButton()" #f="ngForm" novalidate>
                     <div class="form-group row">
                         <label class="col-md-2 form-control-label">Tip Title</label>
                         <div class="col-md-10">
@@ -48,7 +48,7 @@
                     <div class="form-group row" *ngIf="tip.postType == 'video'">
                         <label class="col-md-2 form-control-label" for="file-input">Feature Video</label>
                         <div class="col-md-10">
-                            <input type="text" id="text-input" name="text-input" [(ngModel)]="tip.videoLink" class="form-control" placeholder="Text" required>
+                            <input type="text" id="text-input" name="video-input" [(ngModel)]="tip.videoLink" class="form-control" placeholder="Text" required>
                             <span class="help-block">Add a You Tube Video URL here</span>
                         </div>
                     </div>

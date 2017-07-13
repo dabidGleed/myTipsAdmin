@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'angular2-modal';
 import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
-import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
+// import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
 import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 import { CKEditorModule,CKEditorComponent  } from 'ng2-ckeditor';
 import { DatePickerModule } from 'ng2-datepicker';
@@ -47,7 +47,7 @@ import { globalService } from './providers/tipsProvider/globalService';
     TabsModule.forRoot(),
     ChartsModule,
     CKEditorModule,
-    FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),
+    // FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),
     NgxPaginationModule,
     DatePickerModule,
     

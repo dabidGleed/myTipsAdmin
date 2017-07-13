@@ -9,7 +9,9 @@ export class AuthService {
   data;
   options;
   imageData;
-  public  baseURL :"http://ec2-13-126-41-169.ap-south-1.compute.amazonaws.com";
+
+  public  baseURL :"http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/";
+
   constructor(public http: Http, public globalservices:globalService) {
     console.log(this.baseURL);
 
@@ -23,7 +25,7 @@ export class AuthService {
 
   public login(data) {
     return new Promise(resolve => {
-      this.http.post('http://ec2-13-126-41-169.ap-south-1.compute.amazonaws.com/user/login', data)
+      this.http.post('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/user/login', data)
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;
@@ -36,7 +38,7 @@ export class AuthService {
 
     public register(data) {
     return new Promise(resolve => {
-      this.http.post('http://ec2-13-126-41-169.ap-south-1.compute.amazonaws.com/user/register', data)
+      this.http.post('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/user/register', data)
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;
