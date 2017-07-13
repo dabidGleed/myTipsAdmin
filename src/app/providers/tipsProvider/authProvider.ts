@@ -9,7 +9,9 @@ export class AuthService {
   data;
   options;
   imageData;
-  public  baseURL :"http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com";
+
+  public  baseURL :"http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/";
+
   constructor(public http: Http, public globalservices:globalService) {
     console.log(this.baseURL);
 
