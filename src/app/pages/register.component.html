@@ -6,35 +6,36 @@
           <div class="card-block p-2">
             <h1>Register</h1>
             <p class="text-muted">Create your account</p>
+            <form (ngSubmit)="submitButton()" #f="ngForm">
             <div class="input-group mb-1">
               <span class="input-group-addon"><i class="icon-user"></i></span>
-              <input type="text" class="form-control" name="firstName" [(ngModel)]="userData.firstName" placeholder="FirstName">
+              <input type="text" class="form-control" name="firstName" [(ngModel)]="userData.firstName" placeholder="FirstName" required>
             </div>
             <div class="input-group mb-1">
               <span class="input-group-addon"><i class="icon-user"></i></span>
-              <input type="text" class="form-control" name="lastName" [(ngModel)]="userData.lastName" placeholder="LastName">
+              <input type="text" class="form-control" name="lastName" [(ngModel)]="userData.lastName" placeholder="LastName" required>
             </div>
             <div class="input-group mb-1">
               <span class="input-group-addon">@</span>
-              <input type="text" class="form-control" name="email" [(ngModel)]="userData.email" placeholder="Email">
+              <input type="text" class="form-control" name="email" [(ngModel)]="userData.email" placeholder="Email" required email>
             </div>
 
             <div class="input-group mb-1">
               <span class="input-group-addon"><i class="icon-lock"></i></span>
-              <input type="password" class="form-control" name="password" [(ngModel)]="userData.password" placeholder="Password">
+              <input type="password" class="form-control" name="password" [(ngModel)]="userData.password" placeholder="Password" required>
             </div>
 
             <div class="input-group mb-2">
               <span class="input-group-addon"><i class="icon-lock"></i></span>
-              <input type="password" class="form-control" placeholder="Repeat password">
+              <input type="password" class="form-control" placeholder="Repeat password" required>
             </div>
           <div class="input-group mb-2">
             <span class="input-group-addon"><i class="icon-lock"></i></span>
-            <input type="text" class="form-control"  name="mobileNumber" [(ngModel)]="userData.mobileNumber" placeholder="MobileNumber">
+            <input type="text" class="form-control"  name="mobileNumber" [(ngModel)]="userData.mobileNumber" placeholder="MobileNumber" required> 
           </div>
           <div class="input-group mb-2">
             <span class="input-group-addon"><i class="icon-lock"></i></span>
-            <select type="text" class="form-control"  name="gender" [(ngModel)]="userData.gender">
+            <select type="text" class="form-control"  name="gender" [(ngModel)]="userData.gender"  required>
               <option value="male">Male</option>
               <option value="female">Female</option>
             </select>
@@ -46,7 +47,7 @@
           </div>
           <div class="input-group mb-2">
             <span class="input-group-addon"><i class="icon-lock"></i></span>
-            <input type="text" class="form-control"  name="role" [(ngModel)]="userData.role" placeholder="Role">
+            <input type="text" class="form-control"  name="role" [(ngModel)]="userData.role" placeholder="Role" required>
           </div>
 
           <div class="input-group mb-2">
@@ -54,7 +55,9 @@
         
               <input type="file" class="form-control" id="file-input" name="file-input" (change)="fileChange($event)" placeholder="Upload file">
            </div>
-            <button (click)="register()" type="button" class="btn btn-block btn-success">Create Account</button>
+            <button (click)="register()" type="button" class="btn btn-block btn-success" [disabled]="!f.valid">Create Account</button>
+            
+            </form>
           </div>
           <div class="card-footer p-2">
             <div class="row">
