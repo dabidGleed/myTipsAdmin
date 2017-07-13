@@ -36,7 +36,7 @@ export class AuthService {
 
     public register(data) {
     return new Promise(resolve => {
-      this.http.post('http://ec2-13-126-41-169.ap-south-1.compute.amazonaws.com/user/register', data)
+      this.http.post('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/user/register', data)
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;
