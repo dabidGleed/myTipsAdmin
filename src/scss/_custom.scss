@@ -62,4 +62,17 @@ ng2-datepicker {
     -moz-border-right-colors: none;
     -moz-border-top-colors: none;
     border-color: -moz-use-text-color -moz-use-text-color #ced4da;
+
+}
+.datepicker-input-icon{
+     height: 100%;
+    position: absolute;
+    right: 0;
+    width: 100%;
+    >i{
+        display: none;
+    }
+}
+select{
+    outline: none;
 }

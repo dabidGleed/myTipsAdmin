@@ -50,6 +50,7 @@ export class tipsEditComponent {
     this.AllTipsService.getOneTip(this.tipId)
         .then(data => {
         this.tip = data;
+        console.log(this.tip);
         });
   }
   loadCategories(){
@@ -92,7 +93,7 @@ export class tipsEditComponent {
     this.AllTipsService.updateTip(this.tipId,this.tip)
         .then(
             data => {
-              this.tip = {title:'', description:'', images:[],videos:[], category:'',tagsList:'',tags:[], postType:'',genderSpecific:[], videoLink:''};
+            //  this.tip = {title:'', description:'', images:[],videos:[], category:'',tagsList:'',tags:[], postType:'',genderSpecific:[], videoLink:''};
               this.tipPublished();
             }, //Bind to view
             err => {

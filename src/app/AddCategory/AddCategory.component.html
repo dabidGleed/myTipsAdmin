@@ -8,7 +8,7 @@
                 <div class="loadingBar" *ngIf="showLoading">
                     
                 </div>
-                <form class="form-horizontal" (ngSubmit)="submitButton()" #f="ngForm">
+                <form class="form-horizontal" (ngSubmit)="submitButton()" #f="ngForm" novalidate>
                     <div class="form-group row">
                         <label class="col-md-2 form-control-label">Category Title</label>
                         <div class="col-md-10">
