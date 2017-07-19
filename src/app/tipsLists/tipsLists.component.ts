@@ -18,7 +18,12 @@ export class tipsListComponent {
   }
 
   loadTips() {
-    this.tipsService.load()
+    var a = localStorage.getItem('userData');
+    a = JSON.parse(a);
+    var b =[];
+    b.push(a);
+    console.log(b[0].id);
+    this.tipsService.load(b[0].id)
       .then(data => {
         this.tips = data;
       });
@@ -43,7 +48,7 @@ export class tipsListComponent {
     this.tipsService.makePublish(tip.id)
       .then(
         data => {
-          this.tips[this.tips.indexOf(tip)] = 'ACTIVE';
+          this.tips[this.tips.indexOf(tip)].status = 'ACTIVE';
           this.tipPublished();
           console.log(data);
         }, //Bind to view
@@ -60,8 +65,7 @@ export class tipsListComponent {
       .body(`<p>Your Tip is published successfully</p>`)
       .open();
   }
-  pagination(i,p){
-    
+  pagination(i,p){    
     return ((Number(this.curPage)- 1)*this.itemsPPage)+i+1;
   }
 

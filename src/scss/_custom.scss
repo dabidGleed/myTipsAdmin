@@ -12,7 +12,6 @@
         background-image: url('../assets/img/avatars/spin.gif');
         background-repeat: no-repeat;
         background-position: center;
-      
     }
 }
 
@@ -34,4 +33,46 @@
 
 .logoHead {
     padding: 7px 25px;
+}
+
+ng2-datepicker {
+    width: 100%;
+    .datepicker-container {
+        width: 100%;
+        border: 1px solid #ccc;
+    }
+    .datepicker-input-container {
+        width: 100%;
+    }
+    .datepicker-input {
+        width: calc(100% - 25px) !important;
+        height: 32px !important;
+        -moz-border-bottom-colors: #ced4da !important;
+        -moz-border-left-colors: #ced4da !important;
+        -moz-border-right-colors: #ced4da !important;
+        -moz-border-top-colors: #ced4da !important;
+        border-color: -moz-use-text-color -moz-use-text-color #ced4da;
+    }
+}
+
+.datepicker-container[_ngcontent-yug-35] .datepicker-input-container[_ngcontent-yug-35] .datepicker-input[_ngcontent-yug-35] {
+    border-style: 1px 1px solid !important;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: -moz-use-text-color -moz-use-text-color #ced4da;
+
+}
+.datepicker-input-icon{
+     height: 100%;
+    position: absolute;
+    right: 0;
+    width: 100%;
+    >i{
+        display: none;
+    }
+}
+select{
+    outline: none;
 }

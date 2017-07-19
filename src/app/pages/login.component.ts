@@ -22,6 +22,16 @@ export class loginComponent {
     this.Auth.login(this.userData)
       .then(
         data => {
+          var tempData =[];
+          tempData.push(data);
+          // console.log(user[0].user.firstname);
+          var userInfo ={
+            "firstName":tempData[0].user.firstName,
+            "id":tempData[0].user.id,
+            "lastName":tempData[0].user.lastName,
+            "tokenId":tempData[0].user.tokenId,
+          }
+          localStorage.setItem('userData', JSON.stringify(userInfo));
           this.data = data;
           if (this.data.status === 200) {
             this.router.navigate(['/Tips']);
@@ -30,6 +40,10 @@ export class loginComponent {
           }
         });
   }
+
+    Register() {
+        this.router.navigate(['/pages/register']);
+     }
   tipPublished(){
     this.modal.alert()
       .size('sm')
