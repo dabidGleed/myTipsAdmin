@@ -80,8 +80,12 @@ export class tipsAddComponent {
       this.tip.images.push(imageId);
       delete this.tip.videoLink;
     }
-
-    this.AllTipsService.addTip(this.tip)
+     var a = localStorage.getItem('userData');
+    a = JSON.parse(a);
+    var b =[];
+    b.push(a);
+    console.log(b[0].id);
+    this.AllTipsService.addTip(this.tip, b[0].id)
         .then(
             data => {
               this.tip = {title:'', description:'', images:[],videos:[], category:'',tagsList:'',tags:[], postType:'',genderSpecific:[], videoLink:''};
