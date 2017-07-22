@@ -54,9 +54,9 @@ export class TipsService {
 
   }
 
-  public addTip(data) {
+  public addTip(data,idVal) {
     return new Promise(resolve => {
-      this.http.post('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/tips/userId/create', data)
+      this.http.post('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/tips/'+idVal+'/create', data)
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;

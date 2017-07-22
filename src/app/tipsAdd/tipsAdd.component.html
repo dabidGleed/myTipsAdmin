@@ -20,10 +20,10 @@
                         <div class="col-md-10">
                             <!--<textarea id="textarea-input" [(ngModel)]="tip.description"  name="textarea-input" rows="9" class="form-control" placeholder="Content.."></textarea>-->
                             <!--<div [froalaEditor] [(froalaModel)]="tip.description">Hello, Froala!</div>-->
-                              <!--<ckeditor [(ngModel)]="tip.description" [ngModelOptions]="{standalone: true}" [config]="config" debounce="500" required>
+                            <ckeditor [(ngModel)]="tip.description" [ngModelOptions]="{standalone: true}" [config]="config" debounce="500" required>
                                 <p>Hello <strong>world</strong></p>
-                                </ckeditor>-->
-                    <div [innerHTML]="content"></div>
+                            </ckeditor>
+                            <!--<div [innerHTML]="content"></div>-->
                         </div>
                     </div>
                     <div class="form-group row">
@@ -88,7 +88,7 @@
                 </form>
             </div>
             <div class="card-footer">
-                <button type="submit" class="btn btn-sm btn-primary" (click)="saveTip()"  [disabled]="!f.valid"><i class="fa fa-dot-circle-o"></i> Submit</button>
+                <button type="submit" class="btn btn-sm btn-primary" (click)="saveTip()" [disabled]="!f.valid"><i class="fa fa-dot-circle-o"></i> Submit</button>
                 <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
             </div>
             <!--{{tip | json}}-->
