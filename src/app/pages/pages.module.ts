@@ -5,6 +5,7 @@ import {PagesRoutingModule} from './pages-routing.module';
 // import {FroalaEditorModule, FroalaViewModule} from 'angular2-froala-wysiwyg';
 import { DatePickerModule } from 'ng2-datepicker';
 
+
 import {P404Component} from './404.component';
 import {P500Component} from './500.component';
 import {loginComponent} from './login.component';

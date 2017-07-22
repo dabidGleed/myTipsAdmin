@@ -4,6 +4,7 @@ import {Modal, BSModalContext} from 'angular2-modal/plugins/bootstrap';
 import {Router, NavigationExtras} from '@angular/router';
 import { DatePickerOptions, DateModel } from 'ng2-datepicker';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
 // import { NGValidators } from 'ng-validators';
 
 import {AuthService} from '../providers/tipsProvider/authProvider';
@@ -15,6 +16,7 @@ export class RegisterComponent {
   private data: any;
    date: DateModel;
    theForm;
+
   options: DatePickerOptions;
     constructor(public router: Router, private Auth: AuthService, overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal, private fb: FormBuilder) {
 //     this.userData = {
