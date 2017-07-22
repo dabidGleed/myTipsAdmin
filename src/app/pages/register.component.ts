@@ -40,6 +40,7 @@ this.userData = {};
     // });
   }
    register() {
+     this.userData.role ='VENDOR';
     this.Auth.register(this.userData);
     console.log(this.userData);
   }

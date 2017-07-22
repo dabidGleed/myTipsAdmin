@@ -84,7 +84,7 @@ export class tipsAddComponent {
     a = JSON.parse(a);
     var b =[];
     b.push(a);
-    console.log(b[0].id);
+    // console.log(b[0].id);
     this.AllTipsService.addTip(this.tip, b[0].id)
         .then(
             data => {
