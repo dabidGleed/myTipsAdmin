@@ -6,9 +6,9 @@
                     <div class="card-block p-2">
                         <h1>Register</h1>
                         <p class="text-muted">Create your account</p>
-                        <form (ngSubmit)="submitButton()" #f="ngForm" novalidate>
-                            <div class="input-group mb-1">
-                                <span class="input-group-addon"><i class="icon-user"></i></span>
+                        <form (ngSubmit)="f.valid && submitButton()" #f="ngForm" novalidate>
+                            <div class="input-group mb-1">                             
+                               <span class="input-group-addon"><i class="icon-user"></i></span>
                                 <input type="text" class="form-control" name="firstName" [(ngModel)]="userData.firstName" placeholder="FirstName" required>
                             </div>
                             <div class="input-group mb-1">
@@ -57,7 +57,7 @@
                                 <input type="file" class="form-control" id="file-input" name="file-input" (change)="fileChange($event)" placeholder="Upload file">
                             </div>-->
 
-                            <button (click)="register()" type="button" class="btn btn-block btn-success" [disabled]="!f.valid">Create Account</button>
+                            <button (click)="register()" type="button" class="btn btn-block btn-success">Create Account</button>
 
                         </form>
                     </div>
