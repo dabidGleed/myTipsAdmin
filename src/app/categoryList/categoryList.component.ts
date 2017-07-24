@@ -37,8 +37,15 @@ export class categoryListComponent {
 
     DelCategory(category) {
       console.log(category);
-    var confirmed = confirm("Are you sure to delete?");
-    if(confirmed){
+
+    // var confirmed = confirm("Are you sure to delete?");
+    if(category.count == 0){
+         this.modal.alert()
+        .size('lg')
+        .showClose(true)
+        .title('Added Tip')
+        .body(`<p>category is deleted successfully.</p>`)
+        .open();
       this.tipsService.deleteCategory(category.id)
         .then(
           data => {
@@ -49,6 +56,14 @@ export class categoryListComponent {
             // Log errors if any
             console.log(err);
           });
+    }
+    else{
+      this.modal.alert()
+        .size('lg')
+        .showClose(true)
+        .title('Added Tip')
+        .body(`<p>category cannot be deleted.</p>`)
+        .open();
     }
 
   }
