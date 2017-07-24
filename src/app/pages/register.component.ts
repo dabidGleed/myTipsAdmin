@@ -4,6 +4,7 @@ import {Modal, BSModalContext} from 'angular2-modal/plugins/bootstrap';
 import {Router, NavigationExtras} from '@angular/router';
 import { DatePickerOptions, DateModel } from 'ng2-datepicker';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
 // import { NGValidators } from 'ng-validators';
 
 import {AuthService} from '../providers/tipsProvider/authProvider';
@@ -28,7 +29,14 @@ export class RegisterComponent {
 //   "profilePic" : "",
 //   "role" : ""
 // };
-this.userData = {};
+this.userData = {
+  firstName:'',
+  lastName:'',
+  email:'',
+  password:'',
+  confirmPassword:'',
+  mobileNumber:''
+};
 
     overlay.defaultViewContainer = vcRef;
     this.options = new DatePickerOptions();
@@ -39,11 +47,16 @@ this.userData = {};
   }
    register() {
      this.userData.role ='VENDOR';
-    this.Auth.register(this.userData);
+     let TempData = this.userData;
+     delete TempData.confirmPassword;
+    this.Auth.register(TempData);
     console.log(this.userData);
   }
-  submitButton(){
+  submitButton(validVal){
+    console.log(validVal);
+    if(validVal){
      this.register();
+    }
   }
 }
 

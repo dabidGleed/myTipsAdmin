@@ -6,58 +6,67 @@
                     <div class="card-block p-2">
                         <h1>Register</h1>
                         <p class="text-muted">Create your account</p>
-                        <form (ngSubmit)="f.valid && submitButton()" #f="ngForm" novalidate>
-                            <div class="input-group mb-1">                             
-                               <span class="input-group-addon"><i class="icon-user"></i></span>
-                                <input type="text" class="form-control" name="firstName" [(ngModel)]="userData.firstName" placeholder="FirstName" required>
+                        <form (ngSubmit)="submitButton(f.valid)" #f="ngForm" novalidate>
+                            <div class="form-group" [ngClass]="firstName.valid || (firstName.pristine && !f.submitted)? '':'has-danger'">
+                                <div class="input-group mb-1">                             
+                                    <span class="input-group-addon"><i class="icon-user"></i></span>
+                                    <input type="text" class="form-control" name="firstName" [(ngModel)]="userData.firstName" placeholder="FirstName" required #firstName="ngModel">
+                                </div>
+                                <!--<small [hidden]="firstName.valid || (firstName.pristine && !f.submitted)" class="text-danger">
+                                       firstName required
+                                </small>-->
                             </div>
-                            <div class="input-group mb-1">
-                                <span class="input-group-addon"><i class="icon-user"></i></span>
-                                <input type="text" class="form-control" name="lastName" [(ngModel)]="userData.lastName" placeholder="LastName" required>
+                            <div class="form-group" [ngClass]="lastName.valid || (lastName.pristine && !f.submitted)? '':'has-danger'">
+                                <div class="input-group mb-1">
+                                    <span class="input-group-addon"><i class="icon-user"></i></span>
+                                    <input type="text" class="form-control" name="lastName" [(ngModel)]="userData.lastName" placeholder="LastName" required #lastName="ngModel">
+                                </div>
+                                <!--<small [hidden]="lastName.valid || (lastName.pristine && !f.submitted)" class="text-danger">
+                                        Lastname Required
+                                </small>-->
                             </div>
-                            <div class="input-group mb-1">
-                                <span class="input-group-addon">@</span>
-                                <input type="text" class="form-control" name="email" [(ngModel)]="userData.email" placeholder="Email" required email>
+                            <div class="form-group" [ngClass]="email.valid || (email.pristine && !f.submitted)? '':'has-danger'">
+                                <div class="input-group mb-1">
+                                    <span class="input-group-addon">@</span>
+                                    <input type="email" class="form-control" name="email" [(ngModel)]="userData.email" placeholder="Email" required #email="ngModel">
+                                </div>
+                                <!--<small [hidden]="email.valid || (email.pristine && !f.submitted)" class="text-danger">
+                                        email Required
+                                </small> -->
+                            </div>
+                            <div class="form-group" [ngClass]="password.valid || (password.pristine && !f.submitted)? '':'has-danger'">
+                                <div class="input-group mb-1">
+                                    <span class="input-group-addon"><i class="icon-lock"></i></span>
+                                    <input type="password" class="form-control" name="password" [ngModel]="userData.password"  placeholder="Password"
+                                        required validateEqual="confirmPassword" reverse="true" #password="ngModel">                                
+                                </div>
+                                <!--<small [hidden]="password.valid || (password.pristine && !f.submitted)" class="text-danger">
+                                    Password is required
+                                </small>-->
                             </div>
 
-                            <div class="input-group mb-1">
-                                <span class="input-group-addon"><i class="icon-lock"></i></span>
-                                <input type="password" class="form-control" name="password" [(ngModel)]="userData.password" placeholder="Password" required>
-                            </div>
+                            <div class="form-group" [ngClass]="confirmPassword.valid || (confirmPassword.pristine && !f.submitted)? '':'has-danger'">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-addon"><i class="icon-lock"></i></span>
+                                    <input type="password" class="form-control" name="confirmPassword" [ngModel]="userData.confirmPassword" placeholder="Confirm Password"
+                                        required validateEqual="password" reverse="false" #confirmPassword="ngModel">                                                               
+                                </div>
+                                <small [hidden]="confirmPassword.valid || (confirmPassword.pristine && !f.submitted)" class="text-danger">
+                                        Password mismatch
+                                </small>  
+                            </div>  
+                            <div class="form-group" [ngClass]="mobileNumber.valid || (mobileNumber.pristine && !f.submitted)? '':'has-danger'">                             
+                                <div class="input-group mb-2">
+                                    <span class="input-group-addon"><i class="icon-phone"></i></span>
+                                    <input type="number" class="form-control" name="mobileNumber" [(ngModel)]="userData.mobileNumber" placeholder="MobileNumber" required  #mobileNumber="ngModel">
+                                </div> 
+                                <!--<small [hidden]="mobileNumber.valid || (mobileNumber.pristine && !f.submitted)" class="text-danger">
+                                        Mobile Required
+                                </small>   -->
+                            </div>                    
+                           
 
-                            <div class="input-group mb-2">
-                                <span class="input-group-addon"><i class="icon-lock"></i></span>
-                                <input type="password" class="form-control" placeholder="Repeat password" required>
-                            </div>
-                            <div class="input-group mb-2">
-
-                                <span class="input-group-addon"><i class="icon-phone"></i></span>
-                                <input type="text" class="form-control" name="mobileNumber" [(ngModel)]="userData.mobileNumber" placeholder="MobileNumber" required>
-                            </div>
-                            <!--<div class="input-group mb-2">
-                                <span class="input-group-addon">F/M</span>
-                                <select type="text" class="form-control" name="gender" [(ngModel)]="userData.gender" required>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-            </select>
-                            </div>
-                            <div class="input-group mb-2">
-                                <span class="input-group-addon"><i class="icon-calendar"></i></span>
-                                <ng2-datepicker [options]="options" name="dateofBirth" [(ngModel)]="userData.dateofBirth" placeholder="DateofBirth"></ng2-datepicker>
-                                <input type="text" class="form-control"  name="dateofBirth" [(ngModel)]="userData.dateofBirth" placeholder="DateofBirth">-->
-                            <!--</div>-->
-                            <!--<div class="input-group mb-2">
-                                <span class="input-group-addon"><i class="icon-lock"></i></span>
-                                <input type="text" class="form-control" name="role" [(ngModel)]="userData.role" placeholder="Role" required>
-                            </div>-->
-
-                            <!--<div class="input-group mb-2">
-                                <input type="file" class="form-control"  name="profilePic" [(ngModel)]="userData.profilePic" placeholder="ProfilePic">
-
-                                <input type="file" class="form-control" id="file-input" name="file-input" (change)="fileChange($event)" placeholder="Upload file">
-                            </div>-->
-
-                            <button (click)="register()" type="button" class="btn btn-block btn-success">Create Account</button>
+                            <button type="submit" class="btn btn-block btn-success">Create Account</button>
 
                         </form>
                     </div>
