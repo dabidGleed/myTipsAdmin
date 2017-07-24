@@ -9,7 +9,7 @@ import {P404Component} from './404.component';
 import {P500Component} from './500.component';
 import {loginComponent} from './login.component';
 import {RegisterComponent} from './register.component';
-
+import { EqualValidator } from './equalValidator.directive';  // import validator
 
 @NgModule({
   imports: [PagesRoutingModule, CommonModule,DatePickerModule,
@@ -20,7 +20,8 @@ import {RegisterComponent} from './register.component';
     P404Component,
     P500Component,
     loginComponent,
-    RegisterComponent
+    RegisterComponent,
+    EqualValidator
   ]
 })
 export class PagesModule {
