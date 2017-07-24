@@ -1,50 +1,47 @@
+
 import { Component, ViewContainerRef } from '@angular/core';
 import { Overlay } from 'angular2-modal';
 import { Modal, BSModalContext } from 'angular2-modal/plugins/bootstrap';
 import { TipsService } from '../providers/tipsProvider/tipsProvider';
 import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
-
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  templateUrl: 'AddCategory.component.html',
+  templateUrl: 'categoryEdit.component.html',
   providers: [Modal]
 })
-export class AddCategoryComponent {
+export class CategoryEditComponent {
   private categories;
-  private tip = {name:'', imageURL:''};
+   private categoryId: any;
+  private tip: any = {name:'', imageURL:''};
+  private category: any = {};
   private hello;
   showLoading = false;
   public showMe = false;
-  constructor(private AllTipsService: TipsService,overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal){
-    this.loadCategories();
+  constructor(private AllTipsService: TipsService,overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal,private route: ActivatedRoute){
+     if(route.params){
+       this.categoryId = route.params['_value']['categoryId'];
+       console.log(this.categoryId + 'CATEGORY');
+    }
+    this. loadCategoryDetails();
     overlay.defaultViewContainer = vcRef;
   }
-  // Local properties
-
-  loadCategories(){
+  
+    loadCategoryDetails(){
     // Get all comments
-    this.AllTipsService.getCategories()
-        .then(
-            data => {
-              console.log(data);
-              this.categories = data
-            }, //Bind to view
-            err => {
-              // Log errors if any
-              console.log(err);
-            });
+    this.AllTipsService.getOneCategory(this.categoryId)
+        .then(data => {
+        this.category = data;
+        console.log(data);
+        });
   }
 
-
-
   saveTip(){
-
-    this.AllTipsService.AddCategory(this.tip)
+    this.AllTipsService.updateCategory(this.categoryId,this.category)
         .then(
             data => {
-              this.tip = {name:'', imageURL:''};
-              this.tipPublished();
+              this.categoryPublished();
             }, //Bind to view
             err => {
               // Log errors if any
@@ -59,9 +56,11 @@ export class AddCategoryComponent {
       this.AllTipsService.fileUpload(this.myfile)
       .then(data => {
         //console.log(data);
-        this.tip.imageURL = '';
-        this.tip.imageURL = (data['files'][0].url);
+         if(this.category.imageURL){
+         this.category.imageURL = '';
+         this.category.imageURL = (data['files'][0].url);
          this.showLoading = false;
+         }
       }, //Bind to view
       err => {
         // Log errors if any
@@ -69,15 +68,14 @@ export class AddCategoryComponent {
       });
   }
 
-  tipPublished(){
+  categoryPublished(){
    this.modal.alert()
         .size('lg')
         .showClose(true)
         .title('Added Tip')
-        .body(`<p>Your Tip is saved successfully. You can make it publish</p>`)
+        .body(`<p>category is edited successfully.</p>`)
         .open();
   }
-
 
   
 }
