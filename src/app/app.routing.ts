@@ -48,6 +48,10 @@ export const routes: Routes = [
         loadChildren: './tipsEdit/tipsEdit.module#tipsEditModule'
       },
       {
+        path: 'CategoryEdit/:categoryId',
+        loadChildren: './categoryEdit/categoryEdit.module#categoryEditModule'
+      },
+      {
         path: 'TipsDeleted',
         loadChildren: './tipsDeleted/tipsDeleted.module#tipsDeletedModule'
       },
