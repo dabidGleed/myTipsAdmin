@@ -14,8 +14,8 @@ import { ActivatedRoute } from '@angular/router';
 export class CategoryEditComponent {
   private categories;
    private categoryId: any;
-  private tip = {name:'', imageURL:''};
-  private category = {};
+  private tip: any = {name:'', imageURL:''};
+  private category: any = {};
   private hello;
   showLoading = false;
   public showMe = false;
@@ -56,11 +56,11 @@ export class CategoryEditComponent {
       this.AllTipsService.fileUpload(this.myfile)
       .then(data => {
         //console.log(data);
-        // if(this.category.imageURL){
-        // this.category.imageURL = '';
-        // this.category.imageURL = (data['files'][0].url);
-        //  this.showLoading = false;
-        // }
+         if(this.category.imageURL){
+         this.category.imageURL = '';
+         this.category.imageURL = (data['files'][0].url);
+         this.showLoading = false;
+         }
       }, //Bind to view
       err => {
         // Log errors if any

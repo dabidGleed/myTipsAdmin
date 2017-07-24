@@ -44,7 +44,7 @@ export class categoryListComponent {
         .size('lg')
         .showClose(true)
         .title('Added Tip')
-        .body(`<p>category is deleted successfully.</p>`)
+        .body(`<p>Category is deleted successfully.</p>`)
         .open();
       this.tipsService.deleteCategory(category.id)
         .then(
@@ -62,7 +62,7 @@ export class categoryListComponent {
         .size('lg')
         .showClose(true)
         .title('Added Tip')
-        .body(`<p>category cannot be deleted.</p>`)
+        .body(`<p>Category cannot be deleted, As it has some Tips added.</p>`)
         .open();
     }
 
