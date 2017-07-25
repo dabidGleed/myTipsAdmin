@@ -16,6 +16,7 @@ export class RegisterComponent {
   private data: any;
    date: DateModel;
    theForm;
+
   options: DatePickerOptions;
     constructor(public router: Router, private Auth: AuthService, overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal, private fb: FormBuilder) {
 //     this.userData = {
@@ -58,6 +59,9 @@ this.userData = {
      this.register();
     }
   }
+      verification() {
+        this.router.navigate(['/pages/verify/789777']);
+     }
 }
 
 

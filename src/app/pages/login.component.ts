@@ -54,4 +54,8 @@ export class loginComponent {
       .open();
   }
 
+  forgetPassword(){
+     this.router.navigate(['/pages/forgetpassword']);
+  }
+
 }

@@ -70,7 +70,7 @@ export class CategoryEditComponent {
 
   categoryPublished(){
    this.modal.alert()
-        .size('lg')
+        .size('sm')
         .showClose(true)
         .title('Added Tip')
         .body(`<p>category is edited successfully.</p>`)
