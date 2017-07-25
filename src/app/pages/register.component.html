@@ -6,10 +6,11 @@
                     <div class="card-block p-2">
                         <h1>Register</h1>
                         <p class="text-muted">Create your account</p>
+
                         <form (ngSubmit)="f.valid && submitButton()" #f="ngForm" novalidate>
-                            <div class="input-group mb-1">                             
-                               <span class="input-group-addon"><i class="icon-user"></i></span>
-                                <input type="text" class="form-control" name="firstName" [(ngModel)]="userData.firstName" placeholder="FirstName" required>
+                            <div class="input-group mb-1">
+                                <span class="input-group-addon"><i class="icon-user"></i></span>
+                                <input type="text" class="form-control" name="firstName" [(ngModel)]="userData.firstName" placeholder="FirstName" required> {{ firstName | json }}
                             </div>
                             <div class="input-group mb-1">
                                 <span class="input-group-addon"><i class="icon-user"></i></span>
@@ -22,12 +23,18 @@
 
                             <div class="input-group mb-1">
                                 <span class="input-group-addon"><i class="icon-lock"></i></span>
-                                <input type="password" class="form-control" name="password" [(ngModel)]="userData.password" placeholder="Password" required>
+                                <input type="password" class="form-control" name="password" [(ngModel)]="userData.password" placeholder="Password" required #password="ngModel">
+                                <small [hidden]="password.valid || (password.pristine && !f.submitted)">
+                                    Password is required
+                                </small>
                             </div>
 
                             <div class="input-group mb-2">
                                 <span class="input-group-addon"><i class="icon-lock"></i></span>
-                                <input type="password" class="form-control" placeholder="Repeat password" required>
+                                <input type="password" name="confirmPassword" [ngModel]="user.confirmPassword" required validateEqual="password" #confirmPassword="ngModel">
+                                <small [hidden]="confirmPassword.valid || (confirmPassword.pristine && !f.submitted)">
+                                    Password mismatch
+                                </small>
                             </div>
                             <div class="input-group mb-2">
 
@@ -57,7 +64,7 @@
                                 <input type="file" class="form-control" id="file-input" name="file-input" (change)="fileChange($event)" placeholder="Upload file">
                             </div>-->
 
-                            <button (click)="register()" type="button" class="btn btn-block btn-success">Create Account</button>
+                            <button (click)="register()" [disabled]="!myForm.valid" type="button" class="btn btn-block btn-success">Create Account</button>
 
                         </form>
                     </div>
