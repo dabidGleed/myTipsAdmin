@@ -157,5 +157,27 @@ export class TipsService {
         });
     });
   }
+
+    public getOneCategory(categoryId) {  
+    return new Promise(resolve => {
+      this.http.get('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/category/' + categoryId + '/findCategory')
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
+    });
+
+  }
+    public updateCategory(categoryId, data) {
+    return new Promise(resolve => {
+      this.http.put('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/category/' + categoryId + '/update', data)
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
+    });
+  }
 }
 

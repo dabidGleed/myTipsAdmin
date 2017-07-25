@@ -2,7 +2,7 @@ import {Component, ViewContainerRef} from '@angular/core';
 import {Overlay} from 'angular2-modal';
 import {Modal, BSModalContext} from 'angular2-modal/plugins/bootstrap';
 import {Router, NavigationExtras} from '@angular/router';
-
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {AuthService} from '../providers/tipsProvider/authProvider';
 
 @Component({
@@ -18,7 +18,8 @@ export class loginComponent {
     overlay.defaultViewContainer = vcRef;
   }
 
-  login() {
+  login(val) {
+    if(val){
     this.Auth.login(this.userData)
       .then(
         data => {
@@ -39,6 +40,7 @@ export class loginComponent {
             this.tipPublished();
           }
         });
+    }
   }
 
     Register() {
@@ -50,6 +52,10 @@ export class loginComponent {
       .title('Login Error')
       .body('<p>Invalid Login Credentials</p>')
       .open();
+  }
+
+  forgetPassword(){
+     this.router.navigate(['/pages/forgetpassword']);
   }
 
 }

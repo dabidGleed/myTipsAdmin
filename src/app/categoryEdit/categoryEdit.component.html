@@ -2,7 +2,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <strong>New Category</strong>
+                <strong>Edit Category</strong>
             </div>
             <div class="card-block loadingOuter">
                 <div class="loadingBar" *ngIf="showLoading">
@@ -12,7 +12,7 @@
                     <div class="form-group row">
                         <label class="col-md-2 form-control-label">Category Title</label>
                         <div class="col-md-10">
-                            <input type="text" name="text-input" class="form-control" [(ngModel)]="tip.name" placeholder="Text" required>
+                            <input type="text" name="text-input" class="form-control" [(ngModel)]="category.name" placeholder="Text" required>
                         </div>
                     </div>
 
@@ -26,16 +26,18 @@
           </div>-->
                     <div class="form-group row">
                         <label class="col-md-2 form-control-label" for="file-input">Feature Image</label>
-                         <div class="col-md-1"><img width="100" src="{{tip.imageURL}}" /></div>
+                        <div class="col-md-1"><img width="100" src="{{category.imageURL}}" /></div>
                         <div class="col-md-9">
                             <input type="file" id="file-input" name="file-input" (change)="fileChange($event)" placeholder="Upload file" required>
                         </div>
+                         
+                        
                     </div>
 
                 </form>
             </div>
             <div class="card-footer">
-                <button type="submit" class="btn btn-sm btn-primary" (click)="saveTip()"  [disabled]="!f.valid"><i class="fa fa-dot-circle-o"></i> Submit</button>
+                <button type="submit" class="btn btn-sm btn-primary" (click)="saveTip()" [disabled]="!f.valid"><i class="fa fa-dot-circle-o"></i> Submit</button>
                 <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
             </div>
             <!--{{tip | json}}-->

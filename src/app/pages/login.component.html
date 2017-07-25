@@ -7,21 +7,21 @@
             <div class="card-block">
               <h1>Login</h1>
               <p class="text-muted">Sign In to your account</p>
-              <form class="form-horizontal ">
-                <div class="input-group mb-1">
+              <form class="form-horizontal" (ngSubmit)="login(f.valid)" #f="ngForm" novalidate>
+                <div class="input-group mb-1"  [ngClass]="identifier.valid || (identifier.pristine && !f.submitted)? '':'has-danger'">
                   <span class="input-group-addon"><i class="icon-user"></i></span>
-                  <input type="text" class="form-control" name="identifier" [(ngModel)]="userData.identifier" placeholder="Username">
+                  <input type="text" class="form-control" name="identifier" [(ngModel)]="userData.identifier" placeholder="Username" required #identifier = "ngModel">
                 </div>
-                <div class="input-group mb-2">
+                <div class="input-group mb-2" [ngClass]="password.valid || (password.pristine && !f.submitted)? '':'has-danger'">
                   <span class="input-group-addon"><i class="icon-lock"></i></span>
-                  <input type="password" class="form-control" name="password" [(ngModel)]="userData.password" placeholder="Password">
+                  <input type="password" class="form-control" name="password" [(ngModel)]="userData.password" placeholder="Password" required #password = "ngModel">
                 </div>
                 <div class="row">
                   <div class="col-6">
-                    <button type="button" (click)="login()" class="btn btn-primary px-2">Login</button>
+                    <button type="submit" class="btn btn-primary px-2">Login</button>
                   </div>
                   <div class="col-6 text-right">
-                    <button type="button" class="btn btn-link px-0">Forgot password?</button>
+                    <button type="button" (click)="forgetPassword()" class="btn btn-link px-0">Forgot password?</button>
                   </div>
                 </div>
               </form>
