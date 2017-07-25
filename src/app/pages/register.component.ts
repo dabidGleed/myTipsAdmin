@@ -58,6 +58,9 @@ this.userData = {
      this.register();
     }
   }
+      verification() {
+        this.router.navigate(['/pages/verify/789777']);
+     }
 }
 
 

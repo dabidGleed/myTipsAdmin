@@ -25,6 +25,16 @@
                                         Lastname Required
                                 </small>-->
                             </div>
+
+                            <div class="form-group" [ngClass]="mobileNumber.valid || (mobileNumber.pristine && !f.submitted)? '':'has-danger'">                             
+                                <div class="input-group mb-1">
+                                    <span class="input-group-addon"><i class="icon-phone"></i></span>
+                                    <input type="number" class="form-control" name="mobileNumber" [(ngModel)]="userData.mobileNumber" placeholder="MobileNumber" required  #mobileNumber="ngModel">
+                                </div> 
+                                <!--<small [hidden]="mobileNumber.valid || (mobileNumber.pristine && !f.submitted)" class="text-danger">
+                                        Mobile Required
+                                </small>   -->
+                            </div> 
                             <div class="form-group" [ngClass]="email.valid || (email.pristine && !f.submitted)? '':'has-danger'">
                                 <div class="input-group mb-1">
                                     <span class="input-group-addon">@</span>
@@ -45,27 +55,18 @@
                                 </small>-->
                             </div>
 
-                            <div class="form-group" [ngClass]="confirmPassword.valid || (confirmPassword.pristine && !f.submitted)? '':'has-danger'">
-                                <div class="input-group mb-2">
+                            <div class="form-group passwordMismatch" [ngClass]="confirmPassword.valid || (confirmPassword.pristine && !f.submitted)? '':'has-danger'">
+                                <div class="input-group mb-1">
                                     <span class="input-group-addon"><i class="icon-lock"></i></span>
                                     <input type="password" class="form-control" name="confirmPassword" [ngModel]="userData.confirmPassword" placeholder="Confirm Password"
                                         required validateEqual="password" reverse="false" #confirmPassword="ngModel">                                                               
                                 </div>
-                                <small [hidden]="confirmPassword.valid || (confirmPassword.pristine && !f.submitted)" class="text-danger">
+                                <small [hidden]="confirmPassword.valid || (confirmPassword.pristine && !f.submitted)" class="text-danger missMatch">
                                         Password mismatch
                                 </small>  
-                            </div>  
-                            <div class="form-group" [ngClass]="mobileNumber.valid || (mobileNumber.pristine && !f.submitted)? '':'has-danger'">                             
-                                <div class="input-group mb-2">
-                                    <span class="input-group-addon"><i class="icon-phone"></i></span>
-                                    <input type="number" class="form-control" name="mobileNumber" [(ngModel)]="userData.mobileNumber" placeholder="MobileNumber" required  #mobileNumber="ngModel">
-                                </div> 
-                                <!--<small [hidden]="mobileNumber.valid || (mobileNumber.pristine && !f.submitted)" class="text-danger">
-                                        Mobile Required
-                                </small>   -->
-                            </div>                    
+                            </div>                     
                            
-
+                            <button type ="button" (click)="verification()">verify</button>
                             <button type="submit" class="btn btn-block btn-success">Create Account</button>
 
                         </form>
