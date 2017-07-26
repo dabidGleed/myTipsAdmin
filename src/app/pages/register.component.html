@@ -7,7 +7,7 @@
                         <h1>Register</h1>
                         <p class="text-muted">Create your account</p>
 
-                        <form (ngSubmit)="submitButton(f.valid)" #f="ngForm" novalidate>
+                        <form (ngSubmit)="submitButton(f)" #f="ngForm" novalidate>
                             <div class="form-group" [ngClass]="firstName.valid || (firstName.pristine && !f.submitted)? '':'has-danger'">
                                 <div class="input-group mb-1">
                                     <span class="input-group-addon"><i class="icon-user"></i></span>
@@ -46,10 +46,11 @@
                                 </small> -->
 
                             </div>
+                          
                             <div class="form-group" [ngClass]="password.valid || (password.pristine && !f.submitted)? '':'has-danger'">
                                 <div class="input-group mb-1">
                                     <span class="input-group-addon"><i class="icon-lock"></i></span>
-                                    <input type="password" class="form-control" name="password" [ngModel]="userData.password" placeholder="Password" required validateEqual="confirmPassword" reverse="true" #password="ngModel">
+                                    <input type="password" class="form-control" name="password" [(ngModel)]="userData.password" placeholder="Password" required validateEqual="confirmPassword" reverse="true" #password="ngModel">
                                 </div>
                                 <!--<small [hidden]="password.valid || (password.pristine && !f.submitted)" class="text-danger">
                                     Password is required
@@ -60,7 +61,7 @@
                             <div class="form-group passwordMismatch" [ngClass]="confirmPassword.valid || (confirmPassword.pristine && !f.submitted)? '':'has-danger'">
                                 <div class="input-group mb-1">
                                     <span class="input-group-addon"><i class="icon-lock"></i></span>
-                                    <input type="password" class="form-control" name="confirmPassword" [ngModel]="userData.confirmPassword" placeholder="Confirm Password" required validateEqual="password" reverse="false" #confirmPassword="ngModel">
+                                    <input type="password" class="form-control" name="confirmPassword" [(ngModel)]="userData.confirmPassword" placeholder="Confirm Password" required validateEqual="password" reverse="false" #confirmPassword="ngModel">
                                 </div>
                                 <small [hidden]="confirmPassword.valid || (confirmPassword.pristine && !f.submitted)" class="text-danger missMatch">
                                         Password mismatch

@@ -59,7 +59,7 @@ export class tipsListComponent {
   }
   tipPublished(){
     this.modal.alert()
-      .size('lg')
+      .size('sm')
       .showClose(true)
       .title('Added Tip')
       .body(`<p>Your Tip is published successfully</p>`)

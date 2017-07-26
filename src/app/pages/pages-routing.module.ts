@@ -58,7 +58,7 @@ const routes: Routes = [
         }
       },
       {
-        path: 'resetpassword',
+        path: 'resetpassword/:verificationId',
         component: resetPasswordComponent,
         data: {
           title: 'resetPassword Page'
