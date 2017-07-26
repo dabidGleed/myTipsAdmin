@@ -49,5 +49,55 @@ export class AuthService {
     });
   }
 
+    public forgetPassword(role,data) {   
+    return new Promise(resolve => {
+      this.http.post('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/user/'+ role +'/forgot-password',data)
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        }, err =>{
+          resolve(err);
+        });
+    });
+  }
+
+  public emailVerification(token) {
+    return new Promise(resolve => {
+      this.http.get('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/user/verify/'+ token)
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        }, err =>{
+          resolve(err);
+        });
+    });
+  }
+      public resetPassword(token) {
+    return new Promise(resolve => {
+      this.http.get('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/user/verify/token/'+ token)
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        }, err =>{
+          resolve(err);
+        });
+    });
+  }
+
+      public changePassword(token,data) { 
+    return new Promise(resolve => {
+      this.http.post('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/user/reset-password?token='+ token,data)
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        }, err =>{
+          resolve(err);
+        });
+    });
+  }
 }
 

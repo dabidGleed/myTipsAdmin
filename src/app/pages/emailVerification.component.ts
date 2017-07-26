@@ -17,12 +17,11 @@ export class emailVerificationComponent {
     overlay.defaultViewContainer = vcRef;
       if(route.params){
     this.verificationId = route.params['_value']['verificationId'];
+    this.Auth.emailVerification( this.verificationId);
     console.log(this.verificationId);
     }
   }
-
-loginPage(){
-  this.router.navigate(['/pages/login']);
-}  
-
+  loginPage(){
+     this.router.navigate(['/pages/login']);
+  }
 }
