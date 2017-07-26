@@ -37,8 +37,9 @@ export class CategoryEditComponent {
         });
   }
 
-  saveTip(){
-    this.AllTipsService.updateCategory(this.categoryId,this.category)
+  saveTip(val){
+    if(val){
+       this.AllTipsService.updateCategory(this.categoryId,this.category)
         .then(
             data => {
               this.categoryPublished();
@@ -47,6 +48,9 @@ export class CategoryEditComponent {
               // Log errors if any
               console.log(err);
             });
+
+    }
+   
   }
   myfile:any;
   fileChange(fileInput: any) {

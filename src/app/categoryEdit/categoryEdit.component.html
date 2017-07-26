@@ -4,15 +4,16 @@
             <div class="card-header">
                 <strong>Edit Category</strong>
             </div>
+             <form class="form-horizontal" (ngSubmit)="saveTip(f.valid)" #f="ngForm" novalidate>
             <div class="card-block loadingOuter">
                 <div class="loadingBar" *ngIf="showLoading">
                     
                 </div>
-                <form class="form-horizontal" (ngSubmit)="submitButton()" #f="ngForm" novalidate>
-                    <div class="form-group row">
+               
+                    <div class="form-group row" [ngClass]="textinput.valid || (textinput.pristine && !f.submitted)? '':'has-danger'">
                         <label class="col-md-2 form-control-label">Category Title</label>
                         <div class="col-md-10">
-                            <input type="text" name="text-input" class="form-control" [(ngModel)]="category.name" placeholder="Text" required>
+                            <input type="text" name="textinput" class="form-control" [(ngModel)]="category.name" placeholder="Text" required #textinput="ngModel">
                         </div>
                     </div>
 
@@ -34,12 +35,12 @@
                         
                     </div>
 
-                </form>
+              
             </div>
             <div class="card-footer">
-                <button type="submit" class="btn btn-sm btn-primary" (click)="saveTip()" [disabled]="!f.valid"><i class="fa fa-dot-circle-o"></i> Submit</button>
-                <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
+                <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
             </div>
+             </form>
             <!--{{tip | json}}-->
         </div>
     </div>

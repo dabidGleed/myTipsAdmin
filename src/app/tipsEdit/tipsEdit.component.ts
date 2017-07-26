@@ -75,7 +75,8 @@ export class tipsEditComponent {
      }
   }
 
-  updateTip(){
+  updateTip(val){
+    if(val){
     if(this.tip.tagsList){
       this.tip.tags = this.tip.tagsList.split(',');
       delete this.tip.tagsList;
@@ -100,6 +101,7 @@ export class tipsEditComponent {
               // Log errors if any
               console.log(err);
             });
+    }
   }
   myfile:any;
   fileChange(fileInput: any) {

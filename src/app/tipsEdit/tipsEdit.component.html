@@ -4,15 +4,16 @@
             <div class="card-header">
                 <strong>Edit  Tip</strong>
             </div>
+         <form class="form-horizontal" (ngSubmit)="updateTip(f.valid)" #f="ngForm" novalidate>
             <div class="card-block loadingOuter">
                 <div class="loadingBar" *ngIf="showLoading">
 
                 </div>
-                <form class="form-horizontal ">
-                    <div class="form-group row">
+                
+                    <div class="form-group row" [ngClass]="textinput.valid || (textinput.pristine && !f.submitted)? '':'has-danger'">
                         <label class="col-md-2 form-control-label">Tip Title</label>
                         <div class="col-md-10">
-                            <input type="text" name="text-input" class="form-control" [(ngModel)]="tip.title" placeholder="Text">
+                            <input type="text" name="textinput" class="form-control" [(ngModel)]="tip.title" placeholder="Text" required #textinput="ngModel">
                         </div>
                     </div>
 
@@ -28,11 +29,11 @@
                         </div>
 
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group row" [ngClass]="inlineradios.valid || (inlineradios.pristine && !f.submitted)? '':'has-danger'">
                         <label class="col-md-2 form-control-label">Post Type</label>
                         <div class="col-md-10">
                             <label class="radio-inline" for="inline-radio1">
-                                <input type="radio" id="inline-radio1" name="inline-radios"  checked="true" [(ngModel)]="tip.postType" value="video"> Video Post
+                                <input type="radio" id="inline-radio1" name="inlineradios"  checked="true" [(ngModel)]="tip.postType" value="video" required #inlineradios="ngModel"> Video Post
                             </label>
                             <label class="radio-inline" for="inline-radio2">
                 <input type="radio" id="inline-radio2" name="inline-radios" [(ngModel)]="tip.postType" value="image"> Image Post
@@ -47,10 +48,10 @@
                         </div>
                     </div>
 
-                    <div class="form-group row" *ngIf="tip.postType == 'video'">
+                    <div class="form-group row" *ngIf="tip.postType == 'video'" [ngClass]="textinput.valid || (textinput.pristine && !f.submitted)? '':'has-danger'">
                         <label class="col-md-2 form-control-label" for="file-input">Feature Video</label>
                         <div class="col-md-10">
-                            <input type="text" id="text-input" name="text-input" [(ngModel)]="tip.videoLink" class="form-control" placeholder="Text">
+                            <input type="text" id="text-input" name="textinput" [(ngModel)]="tip.videoLink" class="form-control" placeholder="Text" required #textinput="ngModel">
                             <span class="help-block">Add a You Tube Video URL here</span>
                         </div>
                     </div>
@@ -71,28 +72,28 @@
 
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group row" [ngClass]="select.valid || (select.pristine && !f.submitted)? '':'has-danger'">
                         <label class="col-md-2 form-control-label" for="select">Tip Category</label>
                         <div class="col-md-10">
-                            <select id="select" name="select" [(ngModel)]="tip.category" class="form-control" size="1">
+                            <select id="select" name="select" [(ngModel)]="tip.category" class="form-control" size="1" required #select="ngModel">
                 <option value="0">Please select</option>
                 <option *ngFor="let cat of categories" value="{{cat.id}}">{{cat.name}}</option>
               </select>
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group row" [ngClass]="emailinput.valid || (emailinput.pristine && !f.submitted)? '':'has-danger'">
                         <label class="col-md-2 form-control-label" for="email-input">Tags</label>
                         <div class="col-md-10">
-                            <input type="text" id="email-input" [(ngModel)]="tip.tagsList" name="email-input" class="form-control" placeholder="Enter Tags">
+                            <input type="text" id="email-input" [(ngModel)]="tip.tagsList" name="emailinput" class="form-control" placeholder="Enter Tags" required #emailinput="ngModel">
                             <span class="help-block">Please enter Tags seperated by Coma's</span>
                         </div>
                     </div>
-                </form>
             </div>
             <div class="card-footer">
                 <button type="submit" class="btn btn-sm btn-primary" (click)="updateTip()"><i class="fa fa-dot-circle-o"></i> Submit</button>
-                <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
+                <!--<button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>-->
             </div>
+         </form>
             <!--{{tip | json}}-->
         </div>
     </div>
