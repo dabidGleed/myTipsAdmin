@@ -3,7 +3,7 @@ import {Overlay} from 'angular2-modal';
 import {Modal, BSModalContext} from 'angular2-modal/plugins/bootstrap';
 import {Router, NavigationExtras} from '@angular/router';
 import { DatePickerOptions, DateModel } from 'ng2-datepicker';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { NgForm, FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 // import { NGValidators } from 'ng-validators';
 
@@ -16,6 +16,7 @@ export class RegisterComponent {
   private data: any;
    date: DateModel;
    theForm;
+
   options: DatePickerOptions;
     constructor(public router: Router, private Auth: AuthService, overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal, private fb: FormBuilder) {
 //     this.userData = {
@@ -45,19 +46,34 @@ this.userData = {
     //   email: ['', [Validators.required, NGValidators.isEmail()]]
     // });
   }
-   register() {
+   register(validVal: NgForm) {
      this.userData.role ='VENDOR';
      let TempData = this.userData;
-     delete TempData.confirmPassword;
+    //  delete TempData.confirmPassword;
     this.Auth.register(TempData);
     console.log(this.userData);
+   this.userData = {};
+   validVal.resetForm();
+   this.createdAccount();
   }
-  submitButton(validVal){
+  submitButton(validVal: NgForm){
     console.log(validVal);
-    if(validVal){
-     this.register();
+    if(validVal.valid){
+     this.register(validVal);
     }
   }
+      verification() {
+        this.router.navigate(['/pages/verify/789777']);
+     }
+
+    createdAccount(){
+      this.modal.alert()
+      .size('sm')
+      .showClose(true)
+      .title('Added Tip')
+      .body(`<p>Your Account is created successfully.We send you a Verification email so we'll know that you are really you.</p>`)
+      .open(); 
+}
 }
 
 

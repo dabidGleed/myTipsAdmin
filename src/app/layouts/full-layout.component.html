@@ -72,7 +72,11 @@
                     <a class="nav-link nav-dropdown-toggle" href="javascript:void()"><i class="icon-layers"></i> Tips</a>
                     <ul class="nav-dropdown-items">
                         <li class="nav-item">
-                            <a class="nav-link" routerLinkActive="active" [routerLink]="['/Tips']"><i class="icon-list"></i> List Tips</a>
+                            <a class="nav-link" routerLinkActive="active" [routerLink]="['/Tips']"><i class="icon-list"></i> My Tips</a>
+                        </li>
+
+                        <li *ngIf="hideRole('VENDOR')" class="nav-item">
+                            <a class="nav-link" routerLinkActive="active" [routerLink]="['/AllTips']"><i class="icon-list"></i>Vendors Tips List</a>
                         </li>
 
                         <li class="nav-item">
@@ -85,7 +89,7 @@
                     </ul>
                 </li>
 
-                <li class="nav-item nav-dropdown" routerLinkActive="open">
+                <li *ngIf="hideRole('VENDOR')" class="nav-item nav-dropdown" routerLinkActive="open">
                     <a class="nav-link nav-dropdown-toggle" href="javascript:void()"><i class="icon-layers"></i> Categories</a>
                     <ul class="nav-dropdown-items">
 

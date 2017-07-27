@@ -20,4 +20,19 @@ export class FullLayoutComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  hideRole(role){
+
+    var a = localStorage.getItem('userData');
+
+    a = JSON.parse(a);
+    var b =[];
+    b.push(a);
+    if(b[0].role[0] == role){
+      return false;
+    }
+    else{
+      return true;
+    }
+  }
 }

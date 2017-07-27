@@ -25,20 +25,22 @@ export class loginComponent {
         data => {
           var tempData =[];
           tempData.push(data);
-          // console.log(user[0].user.firstname);
+          console.log(data);
+            this.data = data;
+          if (this.data.status === 200) {
+            this.router.navigate(['/Tips']);
+          } else {
+            this.tipPublished('Invalid Login Credentials');
+          }
           var userInfo ={
             "firstName":tempData[0].user.firstName,
             "id":tempData[0].user.id,
             "lastName":tempData[0].user.lastName,
             "tokenId":tempData[0].user.tokenId,
+            "role":tempData[0].user.role
           }
           localStorage.setItem('userData', JSON.stringify(userInfo));
-          this.data = data;
-          if (this.data.status === 200) {
-            this.router.navigate(['/Tips']);
-          } else {
-            this.tipPublished();
-          }
+        
         });
     }
   }
@@ -46,12 +48,16 @@ export class loginComponent {
     Register() {
         this.router.navigate(['/pages/register']);
      }
-  tipPublished(){
+  tipPublished(message){
     this.modal.alert()
       .size('sm')
       .title('Login Error')
-      .body('<p>Invalid Login Credentials</p>')
+      .body('<p>'+ message +'</p>')
       .open();
+  }
+
+  forgetPassword(){
+     this.router.navigate(['/pages/forgetpassword']);
   }
 
 }

@@ -6,9 +6,9 @@ import { Modal, BSModalContext } from 'angular2-modal/plugins/bootstrap';
 
 
 @Component({
-  templateUrl: 'tipsLists.component.html'
+  templateUrl: 'AlltipsLists.component.html'
 })
-export class tipsListComponent {
+export class AlltipsListComponent {
   public tips;
   itemsPPage = 10;
   curPage = '1';
@@ -18,12 +18,12 @@ export class tipsListComponent {
   }
 
   loadTips() {
-    var a = localStorage.getItem('userData');
+     var a = localStorage.getItem('userData');
     a = JSON.parse(a);
     var b =[];
     b.push(a);
     console.log(b[0].id + 'LOAD');
-    this.tipsService.load(b[0].id)
+    this.tipsService.allTips(b[0].id)
       .then(data => {
         this.tips = data;
       });

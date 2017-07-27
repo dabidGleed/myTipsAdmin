@@ -5,7 +5,9 @@ import { P404Component } from './404.component';
 import { P500Component } from './500.component';
 import { loginComponent } from './login.component';
 import { RegisterComponent } from './register.component';
-
+import { emailVerificationComponent } from './emailVerification.component';
+import { forgetPasswordComponent } from './forgetPassword.component';
+import { resetPasswordComponent } from './reset.component';
 const routes: Routes = [
   {
     path: '',
@@ -39,6 +41,27 @@ const routes: Routes = [
         component: RegisterComponent,
         data: {
           title: 'Register Page'
+        }
+      },
+      {
+        path: 'verify/:verificationId',
+        component: emailVerificationComponent,
+        data: {
+          title: 'verify Page'
+        } 
+      },
+      {
+        path: 'forgetpassword',
+        component: forgetPasswordComponent,
+        data: {
+          title: 'forgetPassword Page'
+        }
+      },
+      {
+        path: 'resetpassword/:verificationId',
+        component: resetPasswordComponent,
+        data: {
+          title: 'resetPassword Page'
         }
       }
     ]
