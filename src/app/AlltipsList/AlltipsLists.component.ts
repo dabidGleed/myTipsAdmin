@@ -18,12 +18,12 @@ export class AlltipsListComponent {
   }
 
   loadTips() {
-    var a = localStorage.getItem('userData');
+     var a = localStorage.getItem('userData');
     a = JSON.parse(a);
     var b =[];
     b.push(a);
     console.log(b[0].id + 'LOAD');
-    this.tipsService.load(b[0].id)
+    this.tipsService.allTips(b[0].id)
       .then(data => {
         this.tips = data;
       });

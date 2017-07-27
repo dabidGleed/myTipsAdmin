@@ -75,8 +75,8 @@
                             <a class="nav-link" routerLinkActive="active" [routerLink]="['/Tips']"><i class="icon-list"></i> My Tips</a>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" routerLinkActive="active" [routerLink]="['/AllTips']"><i class="icon-list"></i>All Tips List</a>
+                        <li *ngIf="hideRole('VENDOR')" class="nav-item">
+                            <a class="nav-link" routerLinkActive="active" [routerLink]="['/AllTips']"><i class="icon-list"></i>Vendors Tips List</a>
                         </li>
 
                         <li class="nav-item">

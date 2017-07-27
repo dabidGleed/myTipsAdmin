@@ -179,5 +179,25 @@ export class TipsService {
         });
     });
   }
+
+    allTips(userId) {
+    return new Promise(resolve => { 
+      this.http.get('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/tips/list/all')
+        .map(res => res.json())
+        .subscribe(data => {
+          let b =[];
+          data.forEach(element => {
+            if(element.userId != userId){
+               b.push(element);
+            }
+          });
+           this.data = b;
+           resolve(this.data);
+        });
+
+
+    });
+
+  }
 }
 

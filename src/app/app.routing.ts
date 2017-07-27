@@ -28,11 +28,11 @@ export const routes: Routes = [
         loadChildren: './components/components.module#ComponentsModule'
       },
       {
-        path: 'Tips',
+        path: 'Tips', 
         loadChildren: './tipsLists/tipsLists.module#tipsListsModule'
       },
       {
-        path: 'AllTips ',
+        path: 'AllTips',
         loadChildren: './AlltipsList/AlltipsLists.module#AlltipsListsModule'
       },
       {
