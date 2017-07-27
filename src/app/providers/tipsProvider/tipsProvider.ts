@@ -125,9 +125,9 @@ export class TipsService {
     });
   }
 
- public getdeletedTip() {
+ public getdeletedTip(userId) { 
     return new Promise(resolve => {
-      this.http.get('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/tips/get/deleted')
+      this.http.get('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/tips/'+ userId +'/deletedUserTips')
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;
@@ -136,7 +136,7 @@ export class TipsService {
     });
   }
 
-   public perdeleteTip(tipId) {
+   public perdeleteTip(tipId) {   
     return new Promise(resolve => {
       this.http.delete('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/tips/' + tipId + '/trash')
         .map(res => res.json())

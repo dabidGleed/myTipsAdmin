@@ -20,7 +20,12 @@ export class tipsDeletedComponent {
    }
 
     getDelTips() {
-    this.tipsService.getdeletedTip()
+    var a = localStorage.getItem('userData');
+    a = JSON.parse(a);
+    var b =[];
+    b.push(a);
+    console.log(b[0].id);
+    this.tipsService.getdeletedTip(b[0].id)
       .then(data => {
         this.tips = data;
       });

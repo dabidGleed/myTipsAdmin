@@ -6,9 +6,9 @@ import { Modal, BSModalContext } from 'angular2-modal/plugins/bootstrap';
 
 
 @Component({
-  templateUrl: 'tipsLists.component.html'
+  templateUrl: 'AlltipsLists.component.html'
 })
-export class tipsListComponent {
+export class AlltipsListComponent {
   public tips;
   itemsPPage = 10;
   curPage = '1';
