@@ -12,9 +12,10 @@ export class tipsListComponent {
   public tips;
   itemsPPage = 10;
   curPage = '1';
-  constructor(public tipsService: TipsService, overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal) {
+  constructor(public tipsService: TipsService, overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal,private route: ActivatedRoute) {
     this.loadTips();
     overlay.defaultViewContainer = vcRef;
+    this.curPage = route.params['_value']['page'];
   }
 
   loadTips() {

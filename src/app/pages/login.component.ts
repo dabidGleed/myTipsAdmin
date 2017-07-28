@@ -28,7 +28,7 @@ export class loginComponent {
           console.log(data);
             this.data = data;
           if (this.data.status === 200) {
-            this.router.navigate(['/Tips']);
+            this.router.navigate(['/Tips/1']);
           } else {
             this.tipPublished('Invalid Login Credentials');
           }
