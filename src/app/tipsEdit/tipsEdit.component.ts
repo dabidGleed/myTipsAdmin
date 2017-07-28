@@ -37,7 +37,7 @@ export class tipsEditComponent {
     ],
     removeDialogTabs:'image:advanced;link:advanced'
   };
-  // tip = {title:'', description:'', images:[],videos:[], category:'',tagsList:'',tags:[], postType:'',genderSpecific:[], videoLink:''};
+ 
   constructor(private AllTipsService: TipsService,overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal,private route: ActivatedRoute){
     if(route.params){
        this.tipId = route.params['_value']['tipId'];

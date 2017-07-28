@@ -1,4 +1,4 @@
-import { Component, ViewContainerRef, NgZone  } from '@angular/core';
+import { Component, ViewContainerRef } from '@angular/core';
 import {TipsService} from '../providers/tipsProvider/tipsProvider';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Overlay } from 'angular2-modal';
@@ -6,25 +6,25 @@ import { Modal, BSModalContext } from 'angular2-modal/plugins/bootstrap';
 
 
 @Component({
-  templateUrl: 'tipsLists.component.html'
+  templateUrl: 'AlltipsLists.component.html'
 })
-export class tipsListComponent {
+export class AlltipsListComponent {
   public tips;
   itemsPPage = 10;
   curPage = '1';
-  constructor(public tipsService: TipsService, public router: Router, private zone: NgZone, overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal,private route: ActivatedRoute) {
+  constructor(public tipsService: TipsService, public router: Router, overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal,private route: ActivatedRoute) {
     this.loadTips();
     overlay.defaultViewContainer = vcRef;
     this.curPage = route.params['_value']['page'];
   }
 
   loadTips() {
-    var a = localStorage.getItem('userData');
+     var a = localStorage.getItem('userData');
     a = JSON.parse(a);
     var b =[];
     b.push(a);
     console.log(b[0].id + 'LOAD');
-    this.tipsService.load(b[0].id)
+    this.tipsService.allTips(b[0].id)
       .then(data => {
         this.tips = data;
       });
@@ -83,14 +83,11 @@ export class tipsListComponent {
       .open();
   }
   pagination(i,p){    
-
     return ((Number(this.curPage)- 1)*this.itemsPPage)+i+1;
-
   }
 
   changePage(event){
     this.router.navigate(['/Tips/'+event]);
     this.curPage = event;
   }
-
 }
