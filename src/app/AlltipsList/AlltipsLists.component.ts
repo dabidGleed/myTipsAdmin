@@ -12,9 +12,10 @@ export class AlltipsListComponent {
   public tips;
   itemsPPage = 10;
   curPage = '1';
-  constructor(public tipsService: TipsService, overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal) {
+  constructor(public tipsService: TipsService, public router: Router, overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal,private route: ActivatedRoute) {
     this.loadTips();
     overlay.defaultViewContainer = vcRef;
+    this.curPage = route.params['_value']['page'];
   }
 
   loadTips() {
@@ -85,4 +86,8 @@ export class AlltipsListComponent {
     return ((Number(this.curPage)- 1)*this.itemsPPage)+i+1;
   }
 
+  changePage(event){
+    this.router.navigate(['/Tips/'+event]);
+    this.curPage = event;
+  }
 }

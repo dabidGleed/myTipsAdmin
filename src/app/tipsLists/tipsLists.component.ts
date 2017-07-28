@@ -1,4 +1,4 @@
-import { Component, ViewContainerRef } from '@angular/core';
+import { Component, ViewContainerRef, NgZone  } from '@angular/core';
 import {TipsService} from '../providers/tipsProvider/tipsProvider';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Overlay } from 'angular2-modal';
@@ -12,9 +12,10 @@ export class tipsListComponent {
   public tips;
   itemsPPage = 10;
   curPage = '1';
-  constructor(public tipsService: TipsService, overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal) {
+  constructor(public tipsService: TipsService, public router: Router, private zone: NgZone, overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal,private route: ActivatedRoute) {
     this.loadTips();
     overlay.defaultViewContainer = vcRef;
+    this.curPage = route.params['_value']['page'];
   }
 
   loadTips() {
@@ -82,7 +83,14 @@ export class tipsListComponent {
       .open();
   }
   pagination(i,p){    
+
     return ((Number(this.curPage)- 1)*this.itemsPPage)+i+1;
+
+  }
+
+  changePage(event){
+    this.router.navigate(['/Tips/'+event]);
+    this.curPage = event;
   }
 
 }

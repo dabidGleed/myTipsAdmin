@@ -10,10 +10,10 @@
 
                 </div>
                 
-                    <div class="form-group row" [ngClass]="textinput.valid || (textinput.pristine && !f.submitted)? '':'has-danger'">
+                    <div class="form-group row" [ngClass]="textinputA.valid || (textinputA.pristine && !f.submitted)? '':'has-danger'">
                         <label class="col-md-2 form-control-label">Tip Title</label>
                         <div class="col-md-10">
-                            <input type="text" name="textinput" class="form-control" [(ngModel)]="tip.title" placeholder="Text" required #textinput="ngModel">
+                            <input type="text" name="textinputA" class="form-control" [(ngModel)]="tip.title" placeholder="Text" required #textinputA="ngModel">
                         </div>
                     </div>
 
@@ -44,13 +44,14 @@
                     <div class="form-group row" *ngIf="tip.postType == 'image'">
                         <label class="col-md-2 form-control-label" for="file-input">Feature Image</label>
                         <div class="col-md-10">
-                            <input type="file" id="file-input" name="file-input" (change)="fileChange($event)" placeholder="Upload file">
+                            <img width="200" src="{{tip.images[0]}}" /> <input type="file" id="file-input" name="file-input" (change)="fileChange($event)" placeholder="Upload file">
                         </div>
                     </div>
 
                     <div class="form-group row" *ngIf="tip.postType == 'video'" [ngClass]="textinput.valid || (textinput.pristine && !f.submitted)? '':'has-danger'">
                         <label class="col-md-2 form-control-label" for="file-input">Feature Video</label>
                         <div class="col-md-10">
+                            <img width="200" style="margin-bottom:10px" src="{{tip.images[0]}}" />
                             <input type="text" id="text-input" name="textinput" [(ngModel)]="tip.videoLink" class="form-control" placeholder="Text" required #textinput="ngModel">
                             <span class="help-block">Add a You Tube Video URL here</span>
                         </div>
@@ -61,12 +62,12 @@
                         <div class="col-md-10">
                             <div class="checkbox">
                                 <label for="checkbox1">
-                  <input type="checkbox" id="checkbox1" name="checkbox1" (change)="setGender('male', $event)"> Men Only
+                  <input type="checkbox" id="checkbox1" name="checkbox1" [(ngModel)]="maleCheck"  (change)="setGender('male', $event)"> Men Only
                 </label>
                             </div>
                             <div class="checkbox">
                                 <label for="checkbox2">
-                  <input type="checkbox" id="checkbox2" name="checkbox2" (change)="setGender('female', $event)"> Women Only
+                  <input type="checkbox" id="checkbox2" name="checkbox2" [(ngModel)]="femaleCheck" (change)="setGender('female', $event)"> Women Only
                 </label>
                             </div>
 
