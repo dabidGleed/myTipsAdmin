@@ -13,4 +13,4 @@ import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
     ],
   declarations: [ AlltipsListComponent ]
 })
-export class AlltipsListsModule { }
+export class AlltipsListsModule {}

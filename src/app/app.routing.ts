@@ -18,7 +18,6 @@ export const routes: Routes = [
       title: 'Home'
     },
     children: [
-
       {
         path: 'dashboard',
         loadChildren: './dashboard/dashboard.module#DashboardModule'
@@ -32,14 +31,14 @@ export const routes: Routes = [
         loadChildren: './tipsLists/tipsLists.module#tipsListsModule'
       },
       {
-        path: 'AllTips ',
+        path: 'AllTips',
         loadChildren: './AlltipsList/AlltipsLists.module#AlltipsListsModule'
       },
       {
         path: 'Categories',
         loadChildren: './categoryList/categoryList.module#categoryListModule'
       },
-       {
+      {
         path: 'TipsAdd',
         loadChildren: './tipsAdd/tipsAdd.module#tipsAddModule'
       },

@@ -27,7 +27,6 @@ export class AlltipsListComponent {
       .then(data => {
         this.tips = data;
       });
-      
   }
   removeTip(tip) {
     var confirmed = confirm("Are you sure to delete?");
