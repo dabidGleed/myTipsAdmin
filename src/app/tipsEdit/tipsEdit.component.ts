@@ -6,16 +6,19 @@ import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
-
+declare const CKEDITOR: any;
 @Component({
   templateUrl: 'tipsEdit.component.html',
   providers: [Modal]
 })
 export class tipsEditComponent {
+  
   showLoading = false;
+  femaleCheck = false;
+  maleCheck = false;
   private tipId: any;
   private categories;
-  tip: any = {};
+  tip: any = {title:'', description:'', images:[],videos:[], category:'',tagsList:'',tags:[], postType:'',genderSpecific:[], videoLink:'',userId:''};
     public config = {toolbarGroups:[
         { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
         { name: 'editing',     groups: [ 'find', 'selection', 'spellchecker' ] },
@@ -42,6 +45,9 @@ export class tipsEditComponent {
     this.loadTipDetails();
     this.loadCategories();
     overlay.defaultViewContainer = vcRef;
+    for (let name in CKEDITOR.instances) {
+        CKEDITOR.instances[name].destroy(true);
+    }
   }
   // Local properties
 
@@ -49,8 +55,36 @@ export class tipsEditComponent {
     // Get all comments
     this.AllTipsService.getOneTip(this.tipId)
         .then(data => {
-        this.tip = data;
-        console.log(this.tip);
+          let b:any = data;
+        this.tip.title = b.title;
+        this.tip.description = b.description;
+        this.tip.images = b.images;
+        this.tip.videos = b.videos;
+        this.tip.category = b.category;
+        // this.tip.tagsList = b.tagsList;
+        this.tip.tags = b.tags;
+        this.tip.postType = b.postType;
+        this.tip.postType = b.postType;
+        if(b.genderSpecific){
+          this.tip.genderSpecific = b.genderSpecific;
+          if(b.genderSpecific.length==2){
+            this.femaleCheck = true;
+            this.maleCheck = true;
+          }else if(b.genderSpecific.length==1 && b.genderSpecific[0]=='male'){
+            this.maleCheck = true;
+          }else if(b.genderSpecific.length==1 && b.genderSpecific[0]=='female'){
+            this.femaleCheck = true;
+          }
+        }else{
+        this.tip.genderSpecific = [];  
+        }
+        if(b.videos.length != 0){
+          this.tip.videoLink = "https://www.youtube.com/watch?v=" + b.videos[0];
+        }else{
+          this.tip.videoLink = '';
+        }
+        this.tip.userId = b.userId;
+        console.log(b);
         });
   }
   loadCategories(){
@@ -123,7 +157,7 @@ export class tipsEditComponent {
 
   tipPublished(){
    this.modal.alert()
-        .size('lg')
+        .size('sm')
         .showClose(true)
         .title('Added Tip')
         .body(`<p>Your Tip is updated successfully</p>`)
