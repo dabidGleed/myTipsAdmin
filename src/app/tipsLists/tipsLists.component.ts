@@ -3,7 +3,7 @@ import {TipsService} from '../providers/tipsProvider/tipsProvider';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Overlay } from 'angular2-modal';
 import { Modal, BSModalContext } from 'angular2-modal/plugins/bootstrap';
-
+import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
 
 @Component({
   templateUrl: 'tipsLists.component.html'
@@ -12,10 +12,17 @@ export class tipsListComponent {
   public tips;
   itemsPPage = 10;
   curPage = '1';
+  searchText = '';
   constructor(public tipsService: TipsService, public router: Router, private zone: NgZone, overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal,private route: ActivatedRoute) {
-    this.loadTips();
+    
     overlay.defaultViewContainer = vcRef;
     this.curPage = route.params['_value']['page'];
+    this.searchText = route.params['_value']['search'];
+    if(this.searchText != ''){
+      this.searchTips(this.searchText);
+    }else{
+      this.loadTips();
+    }
   }
 
   loadTips() {
@@ -29,6 +36,11 @@ export class tipsListComponent {
         this.tips = data;
       });
       
+  }
+  clearSearch(){
+    this.searchText = '';
+    this.router.navigate(['/Tips/'+this.curPage+'/ ']);
+    this.loadTips();    
   }
   removeTip(tip) {
     var confirmed = confirm("Are you sure to delete?");
@@ -45,6 +57,25 @@ export class tipsListComponent {
           });
     }
 
+  }
+
+  searchTips(searchTerm){
+    this.router.navigate(['/Tips/'+this.curPage+'/'+searchTerm]);
+
+    if(searchTerm != ''){
+    this.tipsService.searchTips(searchTerm)
+      .then(
+        data => {   
+          this.tips = data;
+        }, //Bind to view
+        err => {
+          // Log errors if any
+          console.log(err);
+        });
+    } else {
+       this.router.navigate(['/Tips/'+this.curPage+'/ ']);
+       this.loadTips()
+    }
   }
   makePublish(tip){
     this.tipsService.makePublish(tip.id)
@@ -89,7 +120,7 @@ export class tipsListComponent {
   }
 
   changePage(event){
-    this.router.navigate(['/Tips/'+event]);
+    this.router.navigate(['/Tips/'+event+'/'+this.searchText]);
     this.curPage = event;
   }
 

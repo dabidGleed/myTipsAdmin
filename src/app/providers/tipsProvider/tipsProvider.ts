@@ -199,5 +199,20 @@ export class TipsService {
     });
 
   }
+
+
+searchTips(searchVal){
+    return new Promise(resolve => {
+      this.http.get('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/tips/'+ searchVal +'/searchTips')
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
+    });
+  }
+
+
+
 }
 
