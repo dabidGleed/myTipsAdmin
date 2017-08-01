@@ -5,7 +5,7 @@ import { TipsEditRoutingModule } from './tipsEdit-routing.module';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import {FroalaEditorModule, FroalaViewModule} from 'angular2-froala-wysiwyg';
-import { CKEditorModule } from 'ng2-ckeditor';
+import { CKEditorModule, CKEditorComponent } from 'ng2-ckeditor';
 
 
 @NgModule({

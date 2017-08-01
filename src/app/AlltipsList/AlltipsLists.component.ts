@@ -3,7 +3,7 @@ import {TipsService} from '../providers/tipsProvider/tipsProvider';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Overlay } from 'angular2-modal';
 import { Modal, BSModalContext } from 'angular2-modal/plugins/bootstrap';
-
+import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
 
 @Component({
   templateUrl: 'AlltipsLists.component.html'
@@ -12,18 +12,69 @@ export class AlltipsListComponent {
   public tips;
   itemsPPage = 10;
   curPage = '1';
-  constructor(public tipsService: TipsService, overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal) {
-    this.loadTips();
+  Categories:any = [];
+  categoryIdVal:any = "all";
+  searchText = '';
+  constructor(public tipsService: TipsService, public router: Router, overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal,private route: ActivatedRoute) {
     overlay.defaultViewContainer = vcRef;
+    this.curPage = route.params['_value']['page'];
+    this.searchText = route.params['_value']['search'];
+    this.loadCategories();
+    if(this.searchText != ''){
+      this.searchTips(this.searchText);
+    }else{
+      this.loadTips();
+    }
+  }
+  clearSearch(){
+    this.searchText = '';
+    this.router.navigate(['/AllTips/'+this.curPage+'/ ']);
+    this.loadTips();    
   }
 
+  
+  searchTips(searchTerm){
+    this.router.navigate(['/AllTips/'+this.curPage+'/'+searchTerm]);
+     var a = localStorage.getItem('userData');
+    a = JSON.parse(a);
+    var b =[];
+    b.push(a);
+    let c =  b[0].id;
+    if(searchTerm != ''){
+    this.tipsService.searchTips(searchTerm, this.categoryIdVal)
+      .then(
+        data => {   
+          let g:any = data;
+          let b:any =[];          
+          g.forEach(element => {
+            if(element.userId != c){
+               b.push(element);
+            }
+          });   
+          this.tips = b;
+        }, //Bind to view
+        err => {
+          // Log errors if any
+          console.log(err);
+        });
+    } else {
+       this.router.navigate(['/AllTips/'+this.curPage+'/ ']);
+       this.loadTips()
+    }
+  }
+  loadCategories() {
+    this.tipsService.getCategories()
+      .then(data => {      
+        this.Categories = data;
+      });
+  }
   loadTips() {
-    var a = localStorage.getItem('userData');
+     var a = localStorage.getItem('userData');
     a = JSON.parse(a);
     var b =[];
     b.push(a);
     console.log(b[0].id + 'LOAD');
-    this.tipsService.load(b[0].id)
+    this.tipsService.allTips(b[0].id)
       .then(data => {
         this.tips = data;
       });
@@ -84,4 +135,8 @@ export class AlltipsListComponent {
     return ((Number(this.curPage)- 1)*this.itemsPPage)+i+1;
   }
 
+  changePage(event){
+    this.router.navigate(['/AllTips/'+event]);
+    this.curPage = event;
+  }
 }
