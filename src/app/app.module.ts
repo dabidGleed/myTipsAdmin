@@ -66,11 +66,10 @@ import { globalService } from './providers/tipsProvider/globalService';
   providers: [{
     provide: LocationStrategy,
     useClass: HashLocationStrategy,
-
   },
-  TipsService,
+    TipsService,
     AuthService,
-  globalService
+    globalService
   ],
   bootstrap: [ AppComponent ]
 })

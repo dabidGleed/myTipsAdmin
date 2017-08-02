@@ -18,7 +18,6 @@ export const routes: Routes = [
       title: 'Home'
     },
     children: [
-
       {
         path: 'dashboard',
         loadChildren: './dashboard/dashboard.module#DashboardModule'
@@ -39,7 +38,7 @@ export const routes: Routes = [
         path: 'Categories',
         loadChildren: './categoryList/categoryList.module#categoryListModule'
       },
-       {
+      {
         path: 'TipsAdd',
         loadChildren: './tipsAdd/tipsAdd.module#tipsAddModule'
       },
