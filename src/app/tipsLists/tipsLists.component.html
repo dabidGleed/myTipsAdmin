@@ -10,6 +10,7 @@
                     <div class="form-group col-md-2">
                         <select [(ngModel)]="categoryIdVal" class="form-control">
                             <option value="all">All Categories</option>
+                            <option value="unpublished">Unpublished</option>
                             <option *ngFor="let category of Categories" value="{{category.id}}">{{category.name}}</option>
                         </select>
                     </div>
