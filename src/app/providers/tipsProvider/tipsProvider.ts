@@ -194,8 +194,6 @@ export class TipsService {
            this.data = b;
            resolve(this.data);
         });
-
-
     });
 
   }

@@ -39,17 +39,20 @@ export class AddCategoryComponent {
 
 
   saveTip(){
-
+    if(this.tip.imageURL!= ''){
     this.AllTipsService.AddCategory(this.tip)
         .then(
             data => {
               this.tip = {name:'', imageURL:''};
-              this.tipPublished();
+              this.tipPublished('Your Category is saved successfully. You can now add tips to this Category.');
             }, //Bind to view
             err => {
               // Log errors if any
               console.log(err);
             });
+    } else {
+      this.tipPublished('Please uplaod an image to Add Category');
+    }
   }
   myfile:any;
   fileChange(fileInput: any) {
@@ -69,12 +72,12 @@ export class AddCategoryComponent {
       });
   }
 
-  tipPublished(){
+  tipPublished(msg){
    this.modal.alert()
-        .size('lg')
+        .size('sm')
         .showClose(true)
         .title('Added Tip')
-        .body(`<p>Your Tip is saved successfully. You can make it publish</p>`)
+        .body('<p>'+msg+'</p>')
         .open();
   }
 
