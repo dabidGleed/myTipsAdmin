@@ -1,0 +1,68 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <strong>Vendor Details</strong>
+            </div>
+            <div class="card-block loadingOuter">
+                <div class="loadingBar" *ngIf="showLoading">
+
+                </div>
+                <form class="form-horizontal" (ngSubmit)="submitButton()" #f="ngForm" novalidate>
+                    <div class="form-group row">
+                        <label class="col-md-2 form-control-label">First Name</label>
+                        <div class="col-md-10">
+                            <input type="text" name="text-input" class="form-control" name="firstName" [(ngModel)]="userData.firstName" placeholder="first name..." required>
+                        </div>
+                    </div>
+                     <div class="form-group row">
+                        <label class="col-md-2 form-control-label">Last Name</label>
+                        <div class="col-md-10">
+                            <input type="text" name="text-input" class="form-control" name="lastName" [(ngModel)]="userData.lastName" placeholder="last name..." required>
+                        </div>
+                    </div>
+                     <div class="form-group row">
+                        <label class="col-md-2 form-control-label">Mobile Number</label>
+                        <div class="col-md-10">
+                            <input type="text" name="text-input" class="form-control" name="mobileNumber" [(ngModel)]="userData.mobileNumber" placeholder="mobile number..." required>
+                        </div>
+                    </div> 
+                    <div class="form-group row">
+                        <label class="col-md-2 form-control-label">Email</label>
+                        <div class="col-md-10">
+                            <input type="text" name="text-input" class="form-control" name="email" [(ngModel)]="userData.email" placeholder="email..." required>
+                        </div>
+                    </div>
+
+                    <!--<div class="form-group row">
+            <label class="col-md-2 form-control-label" for="textarea-input">Description</label>
+            <div class="col-md-10">
+              <textarea id="textarea-input" [(ngModel)]="tip.description"  name="textarea-input" rows="9" class="form-control" placeholder="Content.."></textarea>
+              <div [froalaEditor]  [(froalaModel)]="tip.description">Hello, Froala!</div>
+            </div>
+
+          </div>-->
+                <div class="form-group row">
+                        <label class="col-md-2 form-control-label">LinkedIn</label>
+                        <div class="col-md-10">
+                            <input type="text" name="text-input" class="form-control" [(ngModel)]="userData.name" placeholder="Linkedin url..." required>
+                        </div>
+                 </div>
+                <div class="form-group row">
+                        <label class="col-md-2 form-control-label">Facebook</label>
+                        <div class="col-md-10">
+                            <input type="text" name="text-input" class="form-control" [(ngModel)]="userData.name" placeholder="facebook url..." required>
+                        </div>
+                </div>
+
+                </form>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-sm btn-primary" (click)="saveTip()" [disabled]="!f.valid"><i class="fa fa-dot-circle-o"></i> Submit</button>
+                <!-- <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button> -->
+            </div>
+            <!--{{tip | json}}-->
+        </div>
+    </div>
+    <!--/.col-->
+</div>

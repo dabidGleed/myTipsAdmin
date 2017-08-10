@@ -99,5 +99,18 @@ export class AuthService {
         });
     });
   }
+
+   public passwordChange(userId,data) { 
+    return new Promise(resolve => {
+      this.http.post('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/user/' + userId + '/change-password',data)
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        }, err =>{
+          resolve(err);
+        });
+    });
+  }
 }
 
