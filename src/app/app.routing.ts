@@ -66,6 +66,10 @@ export const routes: Routes = [
        path: 'changePassword',
         loadChildren: './changePassword/changePassword.module#changePasswordModule'
       },
+      {
+       path: 'vendorsList',
+        loadChildren: './vendorsList/vendorsList.module#vendorsListModule'
+      },
 
       {
         path: 'icons',

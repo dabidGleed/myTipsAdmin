@@ -4,11 +4,10 @@
             <div class="card-header">
                 <strong>Vendor Details</strong>
             </div>
+              <form class="form-horizontal" (ngSubmit)="submitButton()" #f="ngForm" novalidate>
             <div class="card-block loadingOuter">
                 <div class="loadingBar" *ngIf="showLoading">
-
                 </div>
-                <form class="form-horizontal" (ngSubmit)="submitButton()" #f="ngForm" novalidate>
                     <div class="form-group row">
                         <label class="col-md-2 form-control-label">First Name</label>
                         <div class="col-md-10">
@@ -43,6 +42,24 @@
 
           </div>-->
                 <div class="form-group row">
+                        <label class="col-md-2 form-control-label">Adress</label>
+                        <div class="col-md-10">
+                            <textarea type="text" name="text-input" class="form-control" [(ngModel)]="userData.name" placeholder="Adress..." required></textarea>
+                        </div>
+                </div>
+                <div class="form-group row">
+                        <label class="col-md-2 form-control-label">City</label>
+                        <div class="col-md-10">
+                            <input type="text" name="text-input" class="form-control" [(ngModel)]="userData.name" placeholder="city..." required>
+                        </div>
+                </div>
+                <div class="form-group row">
+                        <label class="col-md-2 form-control-label">Pin Code</label>
+                        <div class="col-md-10">
+                            <input type="text" name="text-input" class="form-control" [(ngModel)]="userData.name" placeholder="Pin Code..." required>
+                        </div>
+                </div>
+                <div class="form-group row">
                         <label class="col-md-2 form-control-label">LinkedIn</label>
                         <div class="col-md-10">
                             <input type="text" name="text-input" class="form-control" [(ngModel)]="userData.name" placeholder="Linkedin url..." required>
@@ -54,13 +71,13 @@
                             <input type="text" name="text-input" class="form-control" [(ngModel)]="userData.name" placeholder="facebook url..." required>
                         </div>
                 </div>
-
-                </form>
+            
             </div>
             <div class="card-footer">
-                <button type="submit" class="btn btn-sm btn-primary" (click)="saveTip()" [disabled]="!f.valid"><i class="fa fa-dot-circle-o"></i> Submit</button>
+                <button type="submit" class="btn btn-sm btn-primary" [disabled]="!f.valid"><i class="fa fa-dot-circle-o"></i> Submit</button>
                 <!-- <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button> -->
             </div>
+              </form>
             <!--{{tip | json}}-->
         </div>
     </div>
