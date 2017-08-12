@@ -12,6 +12,7 @@ import { AuthService } from '../providers/tipsProvider/authProvider';
 })
 export class changePasswordComponent {
 private userData: any;
+private data: any;
   constructor(private AllTipsService: TipsService,overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal,private Auth: AuthService){
 
 this.userData = {
@@ -29,18 +30,28 @@ overlay.defaultViewContainer = vcRef;
     a = JSON.parse(a);
     var b =[];
     b.push(a);
-   this.Auth.passwordChange(b[0].id,this.userData);
-   this.userData ={};
-   this.change();
+   this.Auth.passwordChange(b[0].id,this.userData)
+         .then(
+        data => {
+          console.log(data);
+          this.data = data;
+          if (this.data.status === 200) {
+            this.change('Your password is changed successfully.');
+          } else {
+            console.log()
+            this.change(JSON.parse(data['_body']).error);
+          }
+        
+        });
    }
  }
 
-   change(){
+   change(message){
    this.modal.alert()
         .size('sm')
         .showClose(true)
         .title('Added Tip')
-        .body(`<p>Your password is changed successfully.</p>`)
+       .body('<p>'+ message +'</p>')
         .open();
   }
 }
