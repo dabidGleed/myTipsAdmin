@@ -58,6 +58,18 @@ export const routes: Routes = [
         path: 'TipsDeleted',
         loadChildren: './tipsDeleted/tipsDeleted.module#tipsDeletedModule'
       },
+        {
+        path: 'Details',
+        loadChildren: './Details/Details.module#DetailsModule'
+      },
+      {
+       path: 'changePassword',
+        loadChildren: './changePassword/changePassword.module#changePasswordModule'
+      },
+      {
+       path: 'vendorsList',
+        loadChildren: './vendorsList/vendorsList.module#vendorsListModule'
+      },
 
       {
         path: 'icons',

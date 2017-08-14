@@ -22,13 +22,12 @@ export class forgetPasswordComponent {
 
 
 
-  submitEmail(){
-   this.modal.alert()
-        .size('sm')
-        .showClose(true)
-        .title('Added Tip')
-        .body(`<p>We sent you a Reset Password link to your Email.</p>`)
-        .open();
+  submitEmail(message){
+    this.modal.alert()
+      .size('sm')
+      .title('Login Error')
+      .body('<p>'+ message +'</p>')
+      .open();
   }
   // resetPassword(){
   //      this.router.navigate(['/pages/resetpassword']);
@@ -36,10 +35,17 @@ export class forgetPasswordComponent {
      resetPassword(validVal: NgForm) {
     let role ='VENDOR';
     if(validVal.valid){
-    this.Auth.forgetPassword(role,this.userData);
-    console.log(this.userData);
-    validVal.resetForm();
-    this.submitEmail();
+    this.Auth.forgetPassword(role,this.userData)
+         .then(
+        data => {
+          if (this.data.status === 200) {
+            this.submitEmail('We sent you a Reset Password link to your Email.');
+          } else {
+            this.submitEmail('user doesnt exist');
+          }
+        
+        });
   }
      }
 }
+    
