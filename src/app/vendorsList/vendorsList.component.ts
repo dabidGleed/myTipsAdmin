@@ -43,7 +43,7 @@ export class vendorsListComponent {
       .then(
         data => {
           this.tips[this.tips.indexOf(vendor)].status = 'ACTIVE';
-          this.status();
+          this.loadVendors();
           console.log(data);
         }, //Bind to view
         err => {
