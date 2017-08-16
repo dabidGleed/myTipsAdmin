@@ -9,63 +9,56 @@ import { Modal, BSModalContext } from 'angular2-modal/plugins/bootstrap';
   templateUrl: 'vendorsList.component.html'
 })
 export class vendorsListComponent {
-  public Categories;
+  public vendors;
   public tips;
   itemsPPage = 10;
   curPage = '1';
   constructor(public tipsService: TipsService, overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal) {
-    this.loadCategories();
+    this.loadVendors();
     overlay.defaultViewContainer = vcRef;
   }
+  hideRole(role){
+  var a = localStorage.getItem('userData');
+  a = JSON.parse(a);
+  var b =[];
+  b.push(a);
+  if(b[0].role[0] == role){
+    return false;
+  }
+  else{
+    return true;
+  }
+      }
 
-  loadCategories() {
-    this.tipsService.getCategories()
+  loadVendors() {
+    this.tipsService.getVendorList()
       .then(data => {
-      
-        this.Categories = data;
+        this.vendors = data;
       });
   }
 
-  tipPublished(){
-    this.modal.alert()
-      .size('lg')
-      .showClose(true)
-      .title('Added Tip')
-      .body(`<p>Your Tip is published successfully</p>`)
-      .open();
+  vendorBlock(vendor){
+    console.log(vendor.id);
+    this.tipsService.vendorBlock(vendor.id)
+      .then(
+        data => {
+          this.tips[this.tips.indexOf(vendor)].status = 'ACTIVE';
+          this.status();
+          console.log(data);
+        }, //Bind to view
+        err => {
+          // Log errors if any
+          console.log(err);
+        });
   }
 
-    DelCategory(category) {
-      console.log(category);
-
-    // var confirmed = confirm("Are you sure to delete?");
-    if(category.count == 0){
-         this.modal.alert()
-        .size('lg')
-        .showClose(true)
-        .title('Added Tip')
-        .body(`<p>Category is deleted successfully.</p>`)
-        .open();
-      this.tipsService.deleteCategory(category.id)
-        .then(
-          data => {
-            this.Categories.splice(this.Categories.indexOf(category),1);
-            console.log(data);
-          }, //Bind to view
-          err => {
-            // Log errors if any
-            console.log(err);
-          });
-    }
-    else{
-      this.modal.alert()
-        .size('lg')
-        .showClose(true)
-        .title('Added Tip')
-        .body(`<p>Category cannot be deleted, As it has some Tips added.</p>`)
-        .open();
-    }
-
+  status(){
+    this.modal.alert()
+      .size('sm')
+      .showClose(true)
+      .title('Added Tip')
+      .body(`<p>Vendor is Enabled</p>`)
+      .open();
   }
 
     pagination(i,p){

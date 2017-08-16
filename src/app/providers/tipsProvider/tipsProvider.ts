@@ -221,6 +221,30 @@ export class TipsService {
     }
 
   }
+
+  public getVendorList() {  
+    return new Promise(resolve => {
+      this.http.get('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/user/userVendorDetails')
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
+    });
+
+  }
+
+  public vendorBlock(userId){  
+    return new Promise(resolve => {
+      this.http.get('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/user/'+userId+'/userBlockActive')
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
+    });
+
+  }
   
 }
 

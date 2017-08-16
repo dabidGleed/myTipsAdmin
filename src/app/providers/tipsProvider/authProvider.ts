@@ -87,7 +87,7 @@ export class AuthService {
     });
   }
 
-      public changePassword(token,data) { 
+    public changePassword(token,data) { 
     return new Promise(resolve => {
       this.http.post('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/user/reset-password?token='+ token,data)
         .map(res => res.json())
@@ -99,6 +99,20 @@ export class AuthService {
         });
     });
   }
+
+  public vendorDetails(userId,data) { 
+    return new Promise(resolve => {
+      this.http.post('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/user/'+ userId +'/updateUser',data)
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        }, err =>{
+          resolve(err);
+        });
+    });
+  }
+
 
    public passwordChange(userId,data) { 
     return new Promise(resolve => {
