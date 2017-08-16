@@ -12,12 +12,14 @@ export class AlltipsListComponent {
   public tips;
   itemsPPage = 10;
   curPage = '1';
+  Categories:any = [];
+  categoryIdVal:any = "all";
   searchText = '';
   constructor(public tipsService: TipsService, public router: Router, overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal,private route: ActivatedRoute) {
-    
     overlay.defaultViewContainer = vcRef;
     this.curPage = route.params['_value']['page'];
     this.searchText = route.params['_value']['search'];
+    this.loadCategories();
     if(this.searchText != ''){
       this.searchTips(this.searchText);
     }else{
@@ -29,6 +31,8 @@ export class AlltipsListComponent {
     this.router.navigate(['/AllTips/'+this.curPage+'/ ']);
     this.loadTips();    
   }
+
+  
   searchTips(searchTerm){
     this.router.navigate(['/AllTips/'+this.curPage+'/'+searchTerm]);
      var a = localStorage.getItem('userData');
@@ -37,7 +41,7 @@ export class AlltipsListComponent {
     b.push(a);
     let c =  b[0].id;
     if(searchTerm != ''){
-    this.tipsService.searchTips(searchTerm)
+    this.tipsService.searchTips(searchTerm, this.categoryIdVal)
       .then(
         data => {   
           let g:any = data;
@@ -58,7 +62,12 @@ export class AlltipsListComponent {
        this.loadTips()
     }
   }
-
+  loadCategories() {
+    this.tipsService.getCategories()
+      .then(data => {      
+        this.Categories = data;
+      });
+  }
   loadTips() {
      var a = localStorage.getItem('userData');
     a = JSON.parse(a);
@@ -69,7 +78,6 @@ export class AlltipsListComponent {
       .then(data => {
         this.tips = data;
       });
-      
   }
   removeTip(tip) {
     var confirmed = confirm("Are you sure to delete?");

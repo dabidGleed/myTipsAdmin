@@ -7,10 +7,10 @@ import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 
 
 @Component({
-  templateUrl: 'AddCategory.component.html',
+  templateUrl: 'Details.component.html',
   providers: [Modal]
 })
-export class AddCategoryComponent {
+export class DetailsComponent {
   private categories;
   private tip = {name:'', imageURL:''};
   private hello;

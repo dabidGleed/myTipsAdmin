@@ -13,13 +13,16 @@ export class tipsListComponent {
   itemsPPage = 10;
   curPage = '1';
   searchText = '';
+  Categories:any = [];
+  categoryIdVal:any = "all";
   constructor(public tipsService: TipsService, public router: Router, private zone: NgZone, overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal,private route: ActivatedRoute) {
     
     overlay.defaultViewContainer = vcRef;
     this.curPage = route.params['_value']['page'];
     this.searchText = route.params['_value']['search'];
+    this.loadCategories();
     if(this.searchText != ''){
-      this.searchTips(this.searchText);
+      this.searchTips(this.searchText,'all');
     }else{
       this.loadTips();
     }
@@ -34,14 +37,23 @@ export class tipsListComponent {
     this.tipsService.load(b[0].id)
       .then(data => {
         this.tips = data;
-      });
-      
+      });      
   }
+
   clearSearch(){
     this.searchText = '';
     this.router.navigate(['/Tips/'+this.curPage+'/ ']);
     this.loadTips();    
   }
+
+  loadCategories(){
+    this.tipsService.getCategories()
+      .then(data => {
+      
+        this.Categories = data;
+      });
+  }
+
   removeTip(tip) {
     var confirmed = confirm("Are you sure to delete?");
     if(confirmed){
@@ -59,11 +71,11 @@ export class tipsListComponent {
 
   }
 
-  searchTips(searchTerm){
+  searchTips(searchTerm,categoryIdVal){
     this.router.navigate(['/Tips/'+this.curPage+'/'+searchTerm]);
 
     if(searchTerm != ''){
-    this.tipsService.searchTips(searchTerm)
+    this.tipsService.searchTips(searchTerm, categoryIdVal)
       .then(
         data => {   
           this.tips = data;

@@ -18,7 +18,6 @@ export const routes: Routes = [
       title: 'Home'
     },
     children: [
-
       {
         path: 'dashboard',
         loadChildren: './dashboard/dashboard.module#DashboardModule'
@@ -39,7 +38,7 @@ export const routes: Routes = [
         path: 'Categories',
         loadChildren: './categoryList/categoryList.module#categoryListModule'
       },
-       {
+      {
         path: 'TipsAdd',
         loadChildren: './tipsAdd/tipsAdd.module#tipsAddModule'
       },
@@ -58,6 +57,18 @@ export const routes: Routes = [
       {
         path: 'TipsDeleted',
         loadChildren: './tipsDeleted/tipsDeleted.module#tipsDeletedModule'
+      },
+        {
+        path: 'Details',
+        loadChildren: './Details/Details.module#DetailsModule'
+      },
+      {
+       path: 'changePassword',
+        loadChildren: './changePassword/changePassword.module#changePasswordModule'
+      },
+      {
+       path: 'vendorsList',
+        loadChildren: './vendorsList/vendorsList.module#vendorsListModule'
       },
 
       {
