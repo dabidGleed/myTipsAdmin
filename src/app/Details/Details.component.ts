@@ -15,88 +15,54 @@ export class DetailsComponent {
   private tip = {name:'', imageURL:''};
   private hello;
   data;
-  private userDetails: any;
+  private userDetails: any = [];
   showLoading = false;
   public showMe = false;
   constructor(private AllTipsService: TipsService,overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal,private Auth: AuthService){
-    this.loadCategories();
-    this.userDetails ={
-      firstname:'',
-      lastname:'',
-      adress:'',
-      state:'',
-      country:'',
-      city:'',
-      linkedin:'',
-      facebook:'',
-      mobilenumber:'',
-      pincode:''
-    };
+   
+    var a = localStorage.getItem('userData');
+     a = JSON.parse(a);
+     var b =[];
+     b.push(a);
+    this.Auth.getVendor(b[0].id)
+    .then(
+         data => {
+           this.userDetails = data[0];     
+           console.log();
+         });
+    // this.userDetails ={
+    //   firstname:'',
+    //   lastname:'',
+    //   adress:'',
+    //   state:'',
+    //   country:'',
+    //   city:'',
+    //   linkedin:'',
+    //   facebook:'',
+    //   mobilenumber:'',
+    //   pincode:''
+    // };
 
     ;
     overlay.defaultViewContainer = vcRef;
   }
   // Local properties
 
-  loadCategories(){
-    // Get all comments
-    this.AllTipsService.getCategories()
-        .then(
-            data => {
-              console.log(data);
-              this.categories = data
-            }, //Bind to view
-            err => {
-              // Log errors if any
-              console.log(err);
-            });
-  }
-  submitButton(validVal: NgForm){
+
+  editProfile(validVal: NgForm){
      var a = localStorage.getItem('userData');
      a = JSON.parse(a);
      var b =[];
      b.push(a);
+
+     var sendData = this.userDetails;
+     delete sendData.email;
     this.Auth.vendorDetails(b[0].id,this.userDetails)
           .then(
          data => {
-           console.log(data);
+           this.tipPublished("Successfully Updated")
            this.data = data;     
          });  
-  }
-
-
-  saveTip(){
-    if(this.tip.imageURL!= ''){
-    this.AllTipsService.AddCategory(this.tip)
-        .then(
-            data => {
-              this.tip = {name:'', imageURL:''};
-              this.tipPublished('Your Category is saved successfully. You can now add tips to this Category.');
-            }, //Bind to view
-            err => {
-              // Log errors if any
-              console.log(err);
-            });
-    } else {
-      this.tipPublished('Please uplaod an image to Add Category');
-    }
-  }
-  myfile:any;
-  fileChange(fileInput: any) {
-    this.showLoading = true;
-    this.myfile = fileInput.target.files[0];
-    //let fileList: FileList = event.target.files;
-      this.AllTipsService.fileUpload(this.myfile)
-      .then(data => {
-        //console.log(data);
-        this.tip.imageURL = '';
-        this.tip.imageURL = (data['files'][0].url);
-         this.showLoading = false;
-      }, //Bind to view
-      err => {
-        // Log errors if any
-        console.log(err);
-      });
   }
 
   tipPublished(msg){
@@ -107,7 +73,5 @@ export class DetailsComponent {
         .body('<p>'+msg+'</p>')
         .open();
   }
-
-
   
 }

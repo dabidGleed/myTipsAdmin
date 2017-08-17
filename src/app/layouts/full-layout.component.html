@@ -79,9 +79,7 @@
                         <li class="nav-item">
                             <a class="nav-link" routerLinkActive="active" [routerLink]="['/changePassword']"><i class="icon-plus"></i>Change Password</a>
                         </li>
-                        <li *ngIf="hideRole('VENDOR')" class="nav-item">
-                            <a class="nav-link" routerLinkActive="active" [routerLink]="['/vendorsList']"><i class="icon-list"></i>Vendors List</a>
-                        </li>
+                     
                     </ul>
                 </li>
                 <li class="nav-item nav-dropdown" routerLinkActive="open">
@@ -118,6 +116,14 @@
                             <a class="nav-link" routerLinkActive="active" [routerLink]="['/AddCategory']"><i class="icon-plus"></i>  Add Category </a>
                         </li>
 
+                    </ul>
+                </li>
+                 <li *ngIf="hideRole('VENDOR')" class="nav-item nav-dropdown" routerLinkActive="open">
+                    <a class="nav-link nav-dropdown-toggle" href="javascript:void()"><i class="icon-layers"></i>Vendor Manage</a>
+                    <ul class="nav-dropdown-items">
+                        <li class="nav-item">
+                            <a class="nav-link" routerLinkActive="active" [routerLink]="['/vendorsList']"><i class="icon-list"></i>Vendors List</a>
+                        </li>
                     </ul>
                 </li>
  
