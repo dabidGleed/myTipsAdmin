@@ -113,6 +113,18 @@ export class AuthService {
     });
   }
 
+      public getVendor(vendorID) {
+    return new Promise(resolve => {
+      this.http.get('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/user/'+ vendorID +'/listUser')
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        }, err =>{
+          resolve(err);
+        });
+    });
+  }
 
    public passwordChange(userId,data) { 
     return new Promise(resolve => {

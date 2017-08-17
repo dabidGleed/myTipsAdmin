@@ -42,10 +42,8 @@ export class vendorsListComponent {
     this.tipsService.vendorBlock(vendor.id)
       .then(
         data => {
-          this.tips[this.tips.indexOf(vendor)].status = 'ACTIVE';
           this.loadVendors();
-          console.log(data);
-        }, //Bind to view
+      }, //Bind to view
         err => {
           // Log errors if any
           console.log(err);
