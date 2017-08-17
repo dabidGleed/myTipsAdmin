@@ -2,9 +2,9 @@ import { Component, ViewContainerRef } from '@angular/core';
 import { Overlay } from 'angular2-modal';
 import { Modal, BSModalContext } from 'angular2-modal/plugins/bootstrap';
 import { TipsService } from '../providers/tipsProvider/tipsProvider';
-import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder,NgForm }  from '@angular/forms';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
-
+import { AuthService } from '../providers/tipsProvider/authProvider';
 
 @Component({
   templateUrl: 'Details.component.html',
@@ -14,10 +14,26 @@ export class DetailsComponent {
   private categories;
   private tip = {name:'', imageURL:''};
   private hello;
+  data;
+  private userDetails: any;
   showLoading = false;
   public showMe = false;
-  constructor(private AllTipsService: TipsService,overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal){
+  constructor(private AllTipsService: TipsService,overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal,private Auth: AuthService){
     this.loadCategories();
+    this.userDetails ={
+      firstname:'',
+      lastname:'',
+      adress:'',
+      state:'',
+      country:'',
+      city:'',
+      linkedin:'',
+      facebook:'',
+      mobilenumber:'',
+      pincode:''
+    };
+
+    ;
     overlay.defaultViewContainer = vcRef;
   }
   // Local properties
@@ -35,7 +51,18 @@ export class DetailsComponent {
               console.log(err);
             });
   }
-
+  submitButton(validVal: NgForm){
+     var a = localStorage.getItem('userData');
+     a = JSON.parse(a);
+     var b =[];
+     b.push(a);
+    this.Auth.vendorDetails(b[0].id,this.userDetails)
+          .then(
+         data => {
+           console.log(data);
+           this.data = data;     
+         });  
+  }
 
 
   saveTip(){
