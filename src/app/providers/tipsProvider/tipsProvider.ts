@@ -182,7 +182,7 @@ export class TipsService {
 
     allTips(userId) {
     return new Promise(resolve => { 
-      this.http.get('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/tips/list/all')
+      this.http.get('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/tips/'+ userId +'/list/allUser')
         .map(res => res.json())
         .subscribe(data => {
           let b =[];
