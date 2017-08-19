@@ -35,13 +35,14 @@ overlay.defaultViewContainer = vcRef;
         data => {
           console.log(data);
           this.data = data;
-          if (this.data.status === 200) {
+          if (this.data.status != 500) {
+            validVal.resetForm();
+            this.userData = {};
             this.change('Your password is changed successfully.');
           } else {
             console.log()
             this.change(JSON.parse(data['_body']).error);
-          }
-        
+          }        
         });
    }
  }
