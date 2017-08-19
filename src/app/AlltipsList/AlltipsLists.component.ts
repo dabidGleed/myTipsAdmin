@@ -42,7 +42,7 @@ export class AlltipsListComponent {
     b.push(a);
     let c =  b[0].id;
     if(searchTerm != ''){
-    this.tipsService.searchTips(searchTerm, this.categoryIdVal)
+    this.tipsService.searchTipsAll(searchTerm, this.categoryIdVal)
       .then(
         data => {   
           let g:any = data;
