@@ -12,25 +12,25 @@
                     <div class="form-group row">
                         <label class="col-md-2 form-control-label">First Name</label>
                         <div class="col-md-10">
-                            <input type="text" name="text-input" class="form-control" name="firstName" [(ngModel)]="user.firstName" placeholder="first name..." required>
+                            <input type="text" class="form-control" name="firstName" [(ngModel)]="user.firstName" placeholder="first name..." required #firstName="ngModel">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2 form-control-label">Last Name</label>
                         <div class="col-md-10">
-                            <input type="text" name="text-input" class="form-control" name="lastName" [(ngModel)]="user.lastName" placeholder="last name..." required>
+                            <input type="text" class="form-control" name="lastName" [(ngModel)]="user.lastName" placeholder="last name..." required #lastName="ngModel">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2 form-control-label">Mobile Number</label>
                         <div class="col-md-10">
-                            <input type="text" name="text-input" class="form-control" name="mobileNumber" [(ngModel)]="user.mobileNumber" placeholder="mobile number..." required>
+                            <input type="text" class="form-control" name="mobileNumber" [(ngModel)]="user.mobileNumber" placeholder="mobile number..." required #mobileNumber="ngModel">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2 form-control-label">Email</label>
                         <div class="col-md-10">
-                            <input type="text" disabled [(ngModel)]="user.email" name="text-input" class="form-control" name="email" placeholder="email...">
+                            <input type="text" disabled [(ngModel)]="user.email" class="form-control" name="email" placeholder="email...">
                         </div>
                     </div>
 
@@ -44,43 +44,43 @@
                     <div class="form-group row">
                         <label class="col-md-2 form-control-label">Address</label>
                         <div class="col-md-10">
-                            <textarea type="text" name="text-input" class="form-control" [(ngModel)]="user.userDetails.address" placeholder="Adress..." required></textarea>
+                            <textarea type="text" name="address" class="form-control" [(ngModel)]="user.userDetails.address" placeholder="Adress..."></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2 form-control-label">Country</label>
                         <div class="col-md-10">
-                            <input type="text" name="text-input" class="form-control" [(ngModel)]="user.userDetails.country" placeholder="country..." required>
+                            <input type="text" name="country" class="form-control" [(ngModel)]="user.userDetails.country" placeholder="country...">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2 form-control-label">State</label>
                         <div class="col-md-10">
-                            <input type="text" name="text-input" class="form-control" [(ngModel)]="user.userDetails.state" placeholder="state..." required>
+                            <input type="text" name="state" class="form-control" [(ngModel)]="user.userDetails.state" placeholder="state...">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2 form-control-label">City</label>
                         <div class="col-md-10">
-                            <input type="text" name="text-input" class="form-control" [(ngModel)]="user.userDetails.city" placeholder="city..." required>
+                            <input type="text" name="city" class="form-control" [(ngModel)]="user.userDetails.city" placeholder="city...">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2 form-control-label">Pin Code</label>
                         <div class="col-md-10">
-                            <input type="text" name="text-input" class="form-control" [(ngModel)]="user.userDetails.pincode" placeholder="Pin Code..." required>
+                            <input type="text" name="pincode" class="form-control" [(ngModel)]="user.userDetails.pincode" placeholder="Pin Code...">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2 form-control-label">LinkedIn</label>
                         <div class="col-md-10">
-                            <input type="text" name="text-input" class="form-control" [(ngModel)]="user.userDetails.linkedin" placeholder="Linkedin url...">
+                            <input type="text" name="linkedin" class="form-control" [(ngModel)]="user.userDetails.linkedin" placeholder="Linkedin url...">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2 form-control-label">Facebook</label>
                         <div class="col-md-10">
-                            <input type="text" name="text-input" class="form-control" [(ngModel)]="user.userDetails.facebook" placeholder="facebook url...">
+                            <input type="text" name="facebook" class="form-control" [(ngModel)]="user.userDetails.facebook" placeholder="facebook url...">
                         </div>
                     </div>
 
