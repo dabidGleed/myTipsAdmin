@@ -198,8 +198,29 @@ export class TipsService {
 
   }
 
-
-  searchTips(searchVal, categoryIdVal){
+ searchTips(searchVal, categoryIdVal, userId){
+    if(categoryIdVal == 'all'){
+      return new Promise(resolve => {
+        this.http.get('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/tips/'+ userId +'/'+ searchVal +'/userWiseTipsSearch')
+          .map(res => res.json())
+          .subscribe(data => {
+            this.data = data;
+            resolve(this.data);
+          });
+      });
+    } else if(categoryIdVal != 'all'){
+       return new Promise(resolve => {
+        this.http.get('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/tips/'+categoryIdVal+'/'+searchVal+'/categoryTipsSearch')
+          .map(res => res.json())
+          .subscribe(data => {
+            this.data = data;
+            resolve(this.data);
+          });
+      });
+    }
+ }
+ 
+  searchTipsAll(searchVal, categoryIdVal){
     if(categoryIdVal == 'all'){
       return new Promise(resolve => {
         this.http.get('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/tips/'+ searchVal +'/searchTips')

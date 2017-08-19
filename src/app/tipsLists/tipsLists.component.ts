@@ -12,7 +12,7 @@ export class tipsListComponent {
   public tips;
   itemsPPage = 10;
   curPage = '1';
-  searchText = '';
+  searchText:any = ' ';
   Categories:any = [];
   categoryIdVal:any = "all";
   constructor(public tipsService: TipsService, public router: Router, private zone: NgZone, overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal,private route: ActivatedRoute) {
@@ -21,19 +21,22 @@ export class tipsListComponent {
     this.curPage = route.params['_value']['page'];
     this.searchText = route.params['_value']['search'];
     this.loadCategories();
-    if(this.searchText != ''){
+    if(this.searchText != ' '){
+      var b = this.getUserId(); 
       this.searchTips(this.searchText,'all');
-    }else{
+    } else {
       this.loadTips();
     }
   }
-
-  loadTips() {
+  getUserId = function(){
     var a = localStorage.getItem('userData');
     a = JSON.parse(a);
     var b =[];
     b.push(a);
-    console.log(b[0].id + 'LOAD');
+    return b;
+  }
+  loadTips() {
+    var b = this.getUserId();    
     this.tipsService.load(b[0].id)
       .then(data => {
         this.tips = data;
@@ -73,9 +76,9 @@ export class tipsListComponent {
 
   searchTips(searchTerm,categoryIdVal){
     this.router.navigate(['/Tips/'+this.curPage+'/'+searchTerm]);
-
+    var b = this.getUserId(); 
     if(searchTerm != ''){
-    this.tipsService.searchTips(searchTerm, categoryIdVal)
+    this.tipsService.searchTips(searchTerm, categoryIdVal,b[0].id)
       .then(
         data => {   
           this.tips = data;
