@@ -17,7 +17,7 @@
                     </thead>
 
                     <tbody>
-                        <tr *ngFor="let vendor of vendors">
+                        <tr *ngFor="let vendor of vendors | paginate: { itemsPerPage: itemsPPage, currentPage: curPage };let i = index">
                             <td><span class="categoryTitle">{{vendor.firstName}}</span></td>
                             <td><span class="categoryTitle">{{vendor.mobileNumber}}</span></td>
                             <td><span class="categoryTitle">{{vendor.email}}</span></td>
@@ -31,6 +31,7 @@
                         </tr>
                     </tbody>
                 </table>
+                <pagination-controls (pageChange)="changePage($event)" autoHide="true" previousLabel="" nextLabel=""></pagination-controls>
 
             </div>
         </div>
