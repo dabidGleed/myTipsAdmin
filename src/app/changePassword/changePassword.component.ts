@@ -37,7 +37,7 @@ overlay.defaultViewContainer = vcRef;
           this.data = data;
           if (this.data.status != 500) {
             validVal.resetForm();
-            this.userData = {};
+            // this.userData = {};
             this.change('Your password is changed successfully.');
           } else {
             console.log()

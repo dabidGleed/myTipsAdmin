@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-
+import {Router, NavigationExtras} from '@angular/router';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './full-layout.component.html'
 })
 export class FullLayoutComponent implements OnInit {
-
+  public userData:any = JSON.parse(localStorage.getItem('userData'));
   public disabled: boolean = false;
   public status: {isopen: boolean} = {isopen: false};
 
@@ -17,6 +17,9 @@ export class FullLayoutComponent implements OnInit {
     $event.preventDefault();
     $event.stopPropagation();
     this.status.isopen = !this.status.isopen;
+  }
+  constructor(public router: Router){
+
   }
 
   ngOnInit(): void {}
@@ -34,5 +37,9 @@ export class FullLayoutComponent implements OnInit {
     else{
       return true;
     }
+  }
+  logout(){
+    localStorage.removeItem('userData');
+     this.router.navigate(['/login/']);
   }
 }
