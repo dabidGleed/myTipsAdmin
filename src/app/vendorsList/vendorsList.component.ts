@@ -13,8 +13,9 @@ export class vendorsListComponent {
   public tips;
   itemsPPage = 10;
   curPage = '1';
-  constructor(public tipsService: TipsService, overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal) {
+  constructor(public tipsService: TipsService, public router: Router, overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal,private route: ActivatedRoute) {
     this.loadVendors();
+    this.curPage = route.params['_value']['page'];
     overlay.defaultViewContainer = vcRef;
   }
   hideRole(role){
@@ -59,9 +60,15 @@ export class vendorsListComponent {
       .open();
   }
 
-    pagination(i,p){
-    
+pagination(i,p){    
+
     return ((Number(this.curPage)- 1)*this.itemsPPage)+i+1;
+
+  }
+
+  changePage(event){
+    this.router.navigate(['/vendorsList/'+event]);
+    this.curPage = event;
   }
 
 }

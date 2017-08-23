@@ -15,7 +15,9 @@ export class DetailsComponent {
   private tip = {name:'', imageURL:''};
   private hello;
   data;
-  private userDetails: any = [];
+  private user: any = {
+    userDetails:{}
+  };
   showLoading = false;
   public showMe = false;
   constructor(private AllTipsService: TipsService,overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal,private Auth: AuthService){
@@ -27,8 +29,8 @@ export class DetailsComponent {
     this.Auth.getVendor(b[0].id)
     .then(
          data => {
-           this.userDetails = data[0];     
-           console.log();
+           this.user = data[0];     
+           console.log( this.user);
          });
     // this.userDetails ={
     //   firstname:'',
@@ -55,9 +57,9 @@ export class DetailsComponent {
      var b =[];
      b.push(a);
 
-     var sendData = this.userDetails;
+     var sendData = this.user;
      delete sendData.email;
-    this.Auth.vendorDetails(b[0].id,this.userDetails)
+    this.Auth.vendorDetails(b[0].id,this.user)
           .then(
          data => {
            this.tipPublished("Successfully Updated")

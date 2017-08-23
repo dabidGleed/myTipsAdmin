@@ -20,6 +20,7 @@ export class AlltipsListComponent {
     this.curPage = route.params['_value']['page'];
     this.searchText = route.params['_value']['search'];
     this.loadCategories();
+    // this.changePage(this.curPage);
     if(this.searchText != ''){
       this.searchTips(this.searchText);
     }else{
@@ -41,7 +42,7 @@ export class AlltipsListComponent {
     b.push(a);
     let c =  b[0].id;
     if(searchTerm != ''){
-    this.tipsService.searchTips(searchTerm, this.categoryIdVal)
+    this.tipsService.searchTipsAll(searchTerm, this.categoryIdVal)
       .then(
         data => {   
           let g:any = data;
@@ -59,7 +60,7 @@ export class AlltipsListComponent {
         });
     } else {
        this.router.navigate(['/AllTips/'+this.curPage+'/ ']);
-       this.loadTips()
+       this.loadTips();
     }
   }
   loadCategories() {

@@ -24,6 +24,7 @@ import { BreadcrumbsComponent } from './shared/breadcrumb.component';
 
 // Routing Module
 import { AppRoutingModule } from './app.routing';
+import { AuthGuard } from './_guards/index';
 
 // Layouts
 import { FullLayoutComponent } from './layouts/full-layout.component';
@@ -69,7 +70,8 @@ import { globalService } from './providers/tipsProvider/globalService';
   },
     TipsService,
     AuthService,
-    globalService
+    globalService,
+    AuthGuard
   ],
   bootstrap: [ AppComponent ]
 })
