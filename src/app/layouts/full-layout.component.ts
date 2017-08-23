@@ -39,7 +39,7 @@ export class FullLayoutComponent implements OnInit {
     }
   }
   logout(){
+    this.router.navigate(['/pages/login']);
     localStorage.removeItem('userData');
-     this.router.navigate(['/login/']);
   }
 }

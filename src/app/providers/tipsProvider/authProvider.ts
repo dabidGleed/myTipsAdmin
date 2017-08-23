@@ -74,7 +74,7 @@ export class AuthService {
         });
     });
   }
-      public resetPassword(token) {
+  public resetPassword(token) {
     return new Promise(resolve => {
       this.http.get('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/user/verify/token/'+ token)
         .map(res => res.json())
