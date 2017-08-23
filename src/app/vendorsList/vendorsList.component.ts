@@ -11,7 +11,7 @@ import { Modal, BSModalContext } from 'angular2-modal/plugins/bootstrap';
 export class vendorsListComponent {
   public vendors;
   public tips;
-  itemsPPage = 5;
+  itemsPPage = 10;
   curPage = '1';
   constructor(public tipsService: TipsService, public router: Router, overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal,private route: ActivatedRoute) {
     this.loadVendors();
