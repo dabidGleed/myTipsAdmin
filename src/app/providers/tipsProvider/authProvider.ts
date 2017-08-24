@@ -10,7 +10,7 @@ export class AuthService {
   options;
   imageData;
 
-  public  baseURL :"http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/";
+  baseURL:String = "http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/";
 
   constructor(public http: Http, public globalservices:globalService) {
     console.log(this.baseURL);
@@ -25,7 +25,7 @@ export class AuthService {
 
   public login(data) {
     return new Promise(resolve => {
-      this.http.post('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/user/login', data)
+      this.http.post(this.baseURL+'user/login', data)
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;
@@ -38,7 +38,7 @@ export class AuthService {
 
     public register(data) {
     return new Promise(resolve => {
-      this.http.post('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/user/register', data)
+      this.http.post(this.baseURL+'user/register', data)
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;
@@ -51,7 +51,7 @@ export class AuthService {
 
     public forgetPassword(role,data) {   
     return new Promise(resolve => {
-      this.http.post('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/user/'+ role +'/forgot-password',data)
+      this.http.post(this.baseURL+'user/'+ role +'/forgot-password',data)
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;
@@ -64,7 +64,7 @@ export class AuthService {
 
   public emailVerification(token) {
     return new Promise(resolve => {
-      this.http.get('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/user/verify/'+ token)
+      this.http.get(this.baseURL+'user/verify/'+ token)
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;
@@ -74,9 +74,9 @@ export class AuthService {
         });
     });
   }
-      public resetPassword(token) {
+  public resetPassword(token) {
     return new Promise(resolve => {
-      this.http.get('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/user/verify/token/'+ token)
+      this.http.get(this.baseURL+'user/verify/token/'+ token)
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;
@@ -89,7 +89,7 @@ export class AuthService {
 
     public changePassword(token,data) { 
     return new Promise(resolve => {
-      this.http.post('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/user/reset-password?token='+ token,data)
+      this.http.post(this.baseURL+'user/reset-password?token='+ token,data)
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;
@@ -102,7 +102,7 @@ export class AuthService {
 
   public vendorDetails(userId,data) { 
     return new Promise(resolve => {
-      this.http.post('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/user/'+ userId +'/updateUser',data)
+      this.http.post(this.baseURL+'user/'+ userId +'/updateUser',data)
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;
@@ -115,7 +115,7 @@ export class AuthService {
 
       public getVendor(vendorID) {
     return new Promise(resolve => {
-      this.http.get('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/user/'+ vendorID +'/listUser')
+      this.http.get(this.baseURL+'user/'+ vendorID +'/listUser')
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;
@@ -128,7 +128,7 @@ export class AuthService {
 
    public passwordChange(userId,data) { 
     return new Promise(resolve => {
-      this.http.post('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/user/' + userId + '/change-password',data)
+      this.http.post(this.baseURL+'user/' + userId + '/change-password',data)
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;

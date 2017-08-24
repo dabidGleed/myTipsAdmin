@@ -4,19 +4,19 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {PagesRoutingModule} from './pages-routing.module';
 // import {FroalaEditorModule, FroalaViewModule} from 'angular2-froala-wysiwyg';
 import { DatePickerModule } from 'ng2-datepicker';
-
+import { SharedAssetsModule } from '../shared-assets/shared-assets.module';
 
 import {P404Component} from './404.component';
 import {P500Component} from './500.component';
 import {loginComponent} from './login.component';
 import {RegisterComponent} from './register.component';
-import { EqualValidator } from './equalValidator.directive';  // import validator
+
 import { emailVerificationComponent } from './emailVerification.component';
 import { forgetPasswordComponent } from './forgetPassword.component';
 import { resetPasswordComponent } from './reset.component';
 @NgModule({
   imports: [PagesRoutingModule, CommonModule,DatePickerModule,
-    FormsModule, ReactiveFormsModule, 
+    FormsModule, ReactiveFormsModule, SharedAssetsModule
     // FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()
     ],
   declarations: [
@@ -26,8 +26,7 @@ import { resetPasswordComponent } from './reset.component';
     RegisterComponent,
     emailVerificationComponent,
     forgetPasswordComponent,
-    resetPasswordComponent,
-    EqualValidator
+    resetPasswordComponent
   ]
 })
 export class PagesModule {

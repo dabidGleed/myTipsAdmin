@@ -28,19 +28,19 @@ export class loginComponent {
           console.log(data);
             this.data = data;
           if (this.data.status === 200) {
+            var userInfo ={
+              "firstName":tempData[0].user.firstName,
+              "id":tempData[0].user.id,
+              "lastName":tempData[0].user.lastName,
+              "tokenId":tempData[0].user.tokenId,
+              "role":tempData[0].user.role
+            }
+            localStorage.setItem('userData', JSON.stringify(userInfo));
             this.router.navigate(['/Tips/1/ ']);
           } else {
             this.tipPublished('Invalid Login Credentials');
           }
-          var userInfo ={
-            "firstName":tempData[0].user.firstName,
-            "id":tempData[0].user.id,
-            "lastName":tempData[0].user.lastName,
-            "tokenId":tempData[0].user.tokenId,
-            "role":tempData[0].user.role
-          }
-          localStorage.setItem('userData', JSON.stringify(userInfo));
-        
+
         });
     }
   }

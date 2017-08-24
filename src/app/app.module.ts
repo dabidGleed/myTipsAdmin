@@ -24,6 +24,7 @@ import { BreadcrumbsComponent } from './shared/breadcrumb.component';
 
 // Routing Module
 import { AppRoutingModule } from './app.routing';
+import { AuthGuard } from './_guards/index';
 
 // Layouts
 import { FullLayoutComponent } from './layouts/full-layout.component';
@@ -31,6 +32,7 @@ import { SimpleLayoutComponent } from './layouts/simple-layout.component';
 import { TipsService } from './providers/tipsProvider/tipsProvider';
 import { AuthService } from './providers/tipsProvider/authProvider';
 import { globalService } from './providers/tipsProvider/globalService';
+
 
 
 
@@ -61,7 +63,7 @@ import { globalService } from './providers/tipsProvider/globalService';
     SIDEBAR_TOGGLE_DIRECTIVES,
     AsideToggleDirective,
     //tipsListComponent
-    AsideToggleDirective
+    AsideToggleDirective,
   ],
   providers: [{
     provide: LocationStrategy,
@@ -69,7 +71,8 @@ import { globalService } from './providers/tipsProvider/globalService';
   },
     TipsService,
     AuthService,
-    globalService
+    globalService,
+    AuthGuard
   ],
   bootstrap: [ AppComponent ]
 })

@@ -3,9 +3,8 @@ header.navbar {
   flex-direction: row;
   height: $navbar-height;
   padding: 0;
-  background-color: $navbar-bg;
-  @include borders($navbar-border);
-
+  background: #7388a8;
+ border-bottom: 1px solid #2d4161;
 
   .navbar-brand {
     display: inline-block;
@@ -71,7 +70,7 @@ header.navbar {
 
 .navbar-nav {
   .nav-link {
-    color: $navbar-color;
+      color: rgba(255, 255, 255, 1);
 
     @include hover-focus {
       color: $navbar-hover-color;
