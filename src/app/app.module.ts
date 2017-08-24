@@ -63,7 +63,7 @@ import { globalService } from './providers/tipsProvider/globalService';
     SIDEBAR_TOGGLE_DIRECTIVES,
     AsideToggleDirective,
     //tipsListComponent
-    AsideToggleDirective
+    AsideToggleDirective,
   ],
   providers: [{
     provide: LocationStrategy,
