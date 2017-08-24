@@ -35,6 +35,7 @@ import { globalService } from './providers/tipsProvider/globalService';
 
 
 
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -62,7 +63,7 @@ import { globalService } from './providers/tipsProvider/globalService';
     SIDEBAR_TOGGLE_DIRECTIVES,
     AsideToggleDirective,
     //tipsListComponent
-    AsideToggleDirective
+    AsideToggleDirective,
   ],
   providers: [{
     provide: LocationStrategy,
