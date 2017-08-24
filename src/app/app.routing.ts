@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './_guards/index';
 
 // Layouts
 import { FullLayoutComponent } from './layouts/full-layout.component';
@@ -14,6 +15,7 @@ export const routes: Routes = [
   {
     path: '',
     component: FullLayoutComponent,
+    canActivate: [AuthGuard],
     data: {
       title: 'Home'
     },
@@ -67,7 +69,7 @@ export const routes: Routes = [
         loadChildren: './changePassword/changePassword.module#changePasswordModule'
       },
       {
-       path: 'vendorsList',
+       path: 'vendorsList/:page',
         loadChildren: './vendorsList/vendorsList.module#vendorsListModule'
       },
 
