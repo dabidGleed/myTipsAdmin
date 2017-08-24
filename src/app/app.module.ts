@@ -35,6 +35,7 @@ import { globalService } from './providers/tipsProvider/globalService';
 
 
 
+
 @NgModule({
   imports: [
     BrowserModule,

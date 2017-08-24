@@ -13,6 +13,8 @@ import {AuthService} from '../providers/tipsProvider/authProvider';
 export class loginComponent {
   private userData: any;
   private data: any;
+  showSpinner: boolean = false;
+  showPage: boolean = true;
   constructor(public router: Router, private Auth: AuthService, overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal) {
     this.userData = {"identifier": "", "password": ""};
     overlay.defaultViewContainer = vcRef;
@@ -20,11 +22,15 @@ export class loginComponent {
 
   login(val) {
     if(val){
+      this.showSpinner = true;
+      this.showPage = false;
     this.Auth.login(this.userData)
       .then(
         data => {
           var tempData =[];
           tempData.push(data);
+          this.showSpinner = false;
+          this.showPage = true;
           console.log(data);
             this.data = data;
           if (this.data.status === 200) {

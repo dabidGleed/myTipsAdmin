@@ -14,6 +14,7 @@ import { EqualValidator } from './equalValidator.directive';  // import validato
 import { emailVerificationComponent } from './emailVerification.component';
 import { forgetPasswordComponent } from './forgetPassword.component';
 import { resetPasswordComponent } from './reset.component';
+import { LoaderComponent } from '../loader/loader.component';
 @NgModule({
   imports: [PagesRoutingModule, CommonModule,DatePickerModule,
     FormsModule, ReactiveFormsModule, 
@@ -27,7 +28,8 @@ import { resetPasswordComponent } from './reset.component';
     emailVerificationComponent,
     forgetPasswordComponent,
     resetPasswordComponent,
-    EqualValidator
+    EqualValidator,
+    LoaderComponent
   ]
 })
 export class PagesModule {
