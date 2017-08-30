@@ -110,3 +110,26 @@ modal-title{
 .navbar-nav{
     padding: 0 20px;
 }
+.profileImgBlock{
+    position: relative;
+}
+.profilePic{
+    max-width: 150px;
+    position: relative;
+}
+.profileEdit{
+    position: absolute;
+    top: 60%;
+    right: 30%;
+    font-size: 20px;
+    .editBox{
+        position: relative;
+        .editIcon{
+           position: absolute;
+            top: 9px;
+            opacity: 0;
+            width: 16px;
+            height: 12px;
+        }
+    }
+}

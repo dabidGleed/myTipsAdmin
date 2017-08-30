@@ -62,12 +62,12 @@ export class DetailsComponent {
     this.Auth.vendorDetails(b[0].id,this.user)
           .then(
          data => {
-           this.tipPublished("Successfully Updated")
+           this.vendor("Successfully Updated")
            this.data = data;     
          });  
   }
 
-  tipPublished(msg){
+  vendor(msg){
    this.modal.alert()
         .size('sm')
         .showClose(true)
