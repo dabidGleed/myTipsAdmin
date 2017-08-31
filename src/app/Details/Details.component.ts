@@ -12,6 +12,7 @@ import { AuthService } from '../providers/tipsProvider/authProvider';
 })
 export class DetailsComponent {
   private categories;
+  show = false;
   private tip = {name:'', imageURL:''};
   private hello;
   data;
@@ -49,6 +50,24 @@ export class DetailsComponent {
     overlay.defaultViewContainer = vcRef;
   }
   // Local properties
+
+  myfile:any;
+  fileChange(fileInput: any) {
+    this.showLoading = true;
+    this.myfile = fileInput.target.files[0];
+    //let fileList: FileList = event.target.files;
+      this.AllTipsService.fileUpload(this.myfile)
+      .then(data => {
+        //console.log(data);
+        this.tip.imageURL = '';
+        this.user.userDetails.image = (data['files'][0].url);
+         this.showLoading = false;
+      }, //Bind to view
+      err => {
+        // Log errors if any
+        console.log(err);
+      });
+  }
 
 
   editProfile(validVal: NgForm){
