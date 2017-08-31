@@ -4,18 +4,17 @@ import {changePasswordComponent} from './changePassword.component';
 import {changePasswordRoutingModule} from './changePassword-routing.module';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { EqualValidator } from '../pages/equalValidator.directive';  // import validator
 // import {FroalaEditorModule, FroalaViewModule} from 'angular2-froala-wysiwyg';
-
+import { SharedAssetsModule } from '../shared-assets/shared-assets.module';
 
 @NgModule({
   imports: [
     changePasswordRoutingModule,
     CommonModule,
-    FormsModule,
+    FormsModule, SharedAssetsModule
     // FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()
   ],
-  declarations: [changePasswordComponent, EqualValidator]
+  declarations: [changePasswordComponent]
 })
 export class changePasswordModule {
 }
