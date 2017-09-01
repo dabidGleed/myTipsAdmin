@@ -220,7 +220,7 @@ export class TipsService {
     }
  }
  
-  searchTipsAll(searchVal, categoryIdVal){
+  searchTipsAll(searchVal, categoryIdVal){      
     if(categoryIdVal == 'all'){
       return new Promise(resolve => {
         this.http.get('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/tips/'+ searchVal +'/searchTips')
