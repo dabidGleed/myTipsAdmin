@@ -33,9 +33,6 @@ import { TipsService } from './providers/tipsProvider/tipsProvider';
 import { AuthService } from './providers/tipsProvider/authProvider';
 import { globalService } from './providers/tipsProvider/globalService';
 
-
-
-
 @NgModule({
   imports: [
     BrowserModule,
