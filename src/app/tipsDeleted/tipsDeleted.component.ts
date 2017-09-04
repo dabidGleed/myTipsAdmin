@@ -13,11 +13,49 @@ export class tipsDeletedComponent {
   Categories;
   itemsPPage = 10;
   curPage = '1';
-  constructor(public tipsService: TipsService, overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal) {
+  searchText = '';
+  categoryIdVal:any = "all";
+  constructor(public tipsService: TipsService, public router: Router, overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal) {
     this.loadCategories();
     this.getDelTips();
+    if(this.searchText != ''){
+      this.searchTips(this.searchText);
+    }else{
+      this.getDelTips();
+    }
     
    }
+   searchTips(searchTerm){
+     var a = localStorage.getItem('userData');
+    a = JSON.parse(a);
+    var b =[];
+    b.push(a);
+    let c =  b[0].id;
+    if(searchTerm != ''){
+    this.tipsService.searchUserDelTips(searchTerm, this.categoryIdVal, c)
+      .then(
+        data => {   
+          let g:any = data;
+          let b:any =[];          
+          g.forEach(element => {
+            if(element.userId != c){
+               b.push(element);
+            }
+          });   
+          this.tips = b;
+        }, //Bind to view
+        err => {
+          // Log errors if any
+          console.log(err);
+        });
+    } else {
+       this.getDelTips();
+    }
+  }
+   clearSearch(){
+    this.searchText = '';
+    this.getDelTips();    
+  }
 
     getDelTips() {
     var a = localStorage.getItem('userData');

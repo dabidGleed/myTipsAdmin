@@ -4,7 +4,6 @@ import { Modal, BSModalContext } from 'angular2-modal/plugins/bootstrap';
 import { TipsService } from '../providers/tipsProvider/tipsProvider';
 import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
-import { LoaderComponent } from '../loader/loader.component';
 
 @Component({
   templateUrl: 'tipsAdd.component.html',
@@ -12,7 +11,6 @@ import { LoaderComponent } from '../loader/loader.component';
 })
 export class tipsAddComponent {
   private categories;
-  showSpinner: boolean = true;
   ckeditorContent;
  showLoading = false;
   private tip = {title:'', description:'',images:[], videos:[],category:'',tagsList:'',tags:[], postType:'',genderSpecific:[],videoLink:''};

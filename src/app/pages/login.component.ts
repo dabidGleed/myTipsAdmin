@@ -48,6 +48,8 @@ export class loginComponent {
           }
 
         });
+    } else {
+      this.enterDetails('Enter Login credentials');
     }
   }
 
@@ -60,6 +62,9 @@ export class loginComponent {
       .title('Login Error')
       .body('<p>'+ message +'</p>')
       .open();
+  }
+  enterDetails(message) {
+    this.modal.alert().size('sm').title('Login Error').body('<p>'+ message +'</p>').open();
   }
 
   forgetPassword(){
