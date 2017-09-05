@@ -38,7 +38,7 @@ export class loginComponent {
             localStorage.setItem('userData', JSON.stringify(userInfo));
             this.router.navigate(['/Tips/1/ ']);
           } else {
-            this.tipPublished('Invalid Login Credentials');
+            this.loginMessage('Invalid Login Credentials');
           }
 
         });
@@ -48,7 +48,7 @@ export class loginComponent {
     Register() {
         this.router.navigate(['/pages/register']);
      }
-  tipPublished(message){
+  loginMessage(message){
     this.modal.alert()
       .size('sm')
       .title('Login Error')

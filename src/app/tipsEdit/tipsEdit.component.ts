@@ -129,7 +129,7 @@ export class tipsEditComponent {
         .then(
             data => {
             //  this.tip = {title:'', description:'', images:[],videos:[], category:'',tagsList:'',tags:[], postType:'',genderSpecific:[], videoLink:''};
-              this.tipPublished();
+              this.tipEdit();
             }, //Bind to view
             err => {
               // Log errors if any
@@ -155,7 +155,7 @@ export class tipsEditComponent {
       });
   }
 
-  tipPublished(){
+  tipEdit(){
    this.modal.alert()
         .size('sm')
         .showClose(true)
