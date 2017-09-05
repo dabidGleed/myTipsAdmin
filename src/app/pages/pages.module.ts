@@ -14,7 +14,7 @@ import {RegisterComponent} from './register.component';
 import { emailVerificationComponent } from './emailVerification.component';
 import { forgetPasswordComponent } from './forgetPassword.component';
 import { resetPasswordComponent } from './reset.component';
-import { LoaderComponent } from '../loader/loader.component';
+import { LoaderComponent } from './loader.component';
 @NgModule({
   imports: [PagesRoutingModule, CommonModule,DatePickerModule,
     FormsModule, ReactiveFormsModule, SharedAssetsModule

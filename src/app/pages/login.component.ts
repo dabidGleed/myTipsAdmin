@@ -48,7 +48,7 @@ export class loginComponent {
 
         });
     } else {
-      this.tipPublished('Invalid Login Credentials');
+      this.tipPublished('Enter Login Credentials');
     }
   }
 
@@ -62,6 +62,7 @@ export class loginComponent {
       .body('<p>' + message + '</p>')
       .open();
   }
+ 
 
   forgetPassword() {
     this.router.navigate(['/pages/forgetpassword']);
