@@ -47,5 +47,8 @@ export class forgetPasswordComponent {
         });
   }
      }
+     login(){
+      this.router.navigate(['/pages/login']);
+    }
 }
     
