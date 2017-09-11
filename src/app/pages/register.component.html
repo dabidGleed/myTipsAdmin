@@ -1,7 +1,7 @@
 <div class="app flex-row align-items-center">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-6">
+            <div class="col-lg-6 col-md-10 col-sm-12 col-xs-12">
                 <div class="card mx-2">
                     <div class="card-block p-2">
                         <h1>Register</h1>
@@ -46,7 +46,7 @@
                                 </small> -->
 
                             </div>
-                          
+
                             <div class="form-group" [ngClass]="password.valid || (password.pristine && !f.submitted)? '':'has-danger'">
                                 <div class="input-group mb-1">
                                     <span class="input-group-addon"><i class="icon-lock"></i></span>
@@ -67,13 +67,23 @@
                                         Password mismatch
                                 </small>
                             </div>
+                            <!-- <div class="form-group" [ngClass]="mobileNumber.valid || (mobileNumber.pristine && !f.submitted)? '':'has-danger'">
+                                <div class="input-group mb-2">
+                                    <span class="input-group-addon"><i class="icon-phone"></i></span>
+                                    <input type="number" class="form-control" name="mobileNumber" [(ngModel)]="userData.mobileNumber" placeholder="MobileNumber" required #mobileNumber="ngModel">
+                                </div>
+                                <!--<small [hidden]="mobileNumber.valid || (mobileNumber.pristine && !f.submitted)" class="text-danger">
+                                        Mobile Required
+                                </small>   -->
+                            <!-- </div> -->
+
 
                             <!-- <button type="button" (click)="verification()">verify</button> -->
                             <button type="submit" class="btn btn-block btn-success">Create Account</button>
 
 
                         </form>
-                    
+
                         <div class="row">
                             <div class="col-6">
                               <button class="btn btn-link px-0" type="button" (click)="login()">Login</button>
@@ -82,9 +92,9 @@
                               <button type="button" (click)="forgetPassword()" class="btn btn-link px-0">Forgot password?</button>
                             </div>
                           </div>
-                    
+
                     </div>
-                   
+
                     <!--<div class="card-footer p-2">
                         <div class="row">
                             <div class="col-6">
