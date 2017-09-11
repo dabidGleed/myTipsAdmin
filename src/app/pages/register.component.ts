@@ -50,11 +50,26 @@ this.userData = {
      this.userData.role ='VENDOR';
      let TempData = this.userData;
     //  delete TempData.confirmPassword;
-    this.Auth.register(TempData);
-    console.log(this.userData);
-   this.userData = {};
-   validVal.resetForm();
-   this.createdAccount();
+    this.Auth.register(TempData).then( data => {
+      this.data = data;
+      if(this.data.status === 412) {
+        this.errOf('user alredy existed');
+      }
+      else {     
+        console.log(this.userData);
+        this.userData = {};
+        validVal.resetForm();
+        this.createdAccount();
+      }
+    });
+    
+  }
+  errOf(message){
+    this.modal.alert()
+      .size('sm')
+      .title('register Error')
+      .body('<p>'+ message +'</p>')
+      .open();
   }
   submitButton(validVal: NgForm){
     console.log(validVal);
@@ -73,6 +88,12 @@ this.userData = {
       .title('Added Tip')
       .body(`<p>Your Account is created successfully.We send you a Verification email so we'll know that you are really you.</p>`)
       .open(); 
+}
+forgetPassword(){
+  this.router.navigate(['/pages/forgetpassword']);
+}
+login(){
+  this.router.navigate(['/pages/login']);
 }
 }
 

@@ -8,6 +8,7 @@ import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms
 @Component({
   templateUrl: 'AlltipsLists.component.html'
 })
+
 export class AlltipsListComponent {
   public tips;
   itemsPPage = 10;
@@ -15,14 +16,21 @@ export class AlltipsListComponent {
   Categories:any = [];
   categoryIdVal:any = "all";
   searchText = '';
+  public abc;
+ 
   constructor(public tipsService: TipsService, public router: Router, overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal,private route: ActivatedRoute) {
     overlay.defaultViewContainer = vcRef;
     this.curPage = route.params['_value']['page'];
     this.searchText = route.params['_value']['search'];
     this.loadCategories();
+    var a = localStorage.getItem('userData');
+     this.abc = JSON.parse(a);
+
+  
     // this.changePage(this.curPage);
     if(this.searchText != ''){
       this.searchTips(this.searchText);
+      
     }else{
       this.loadTips();
     }
@@ -68,10 +76,11 @@ export class AlltipsListComponent {
       .then(data => {      
         this.Categories = data;
       });
-  }
+    }
   loadTips() {
      var a = localStorage.getItem('userData');
     a = JSON.parse(a);
+    console.log(a)
     var b =[];
     b.push(a);
     console.log(b[0].id + 'LOAD');
@@ -87,7 +96,6 @@ export class AlltipsListComponent {
         .then(
           data => {
             this.tips.splice(this.tips.indexOf(tip),1);
-            console.log(data);
           }, //Bind to view
           err => {
             // Log errors if any
@@ -102,7 +110,6 @@ export class AlltipsListComponent {
         data => {
           this.tips[this.tips.indexOf(tip)].status = 'ACTIVE';
           this.tipPublished();
-          console.log(data);
         }, //Bind to view
         err => {
           // Log errors if any

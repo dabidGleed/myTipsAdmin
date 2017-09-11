@@ -5,7 +5,6 @@ import { TipsService } from '../providers/tipsProvider/tipsProvider';
 import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 
-
 @Component({
   templateUrl: 'tipsAdd.component.html',
   providers: [Modal]
@@ -48,7 +47,6 @@ export class tipsAddComponent {
     this.AllTipsService.getCategories()
         .then(
             data => {
-              console.log(data);
               this.categories = data
             }, //Bind to view
             err => {
@@ -66,6 +64,12 @@ export class tipsAddComponent {
   }
 
   saveTip(){
+    console.log(this.tip);
+    if(this.tip.title === "" || this.tip.description === "" || this.tip.category === ""){
+      this.populateError("Please Enter mandatory fields");
+    }
+    else {      
+    
     if(this.tip.tagsList){
       this.tip.tags = this.tip.tagsList.split(',');
       delete this.tip.tagsList;
@@ -96,6 +100,10 @@ export class tipsAddComponent {
               console.log(err);
             });
   }
+  
+    
+  
+}
   myfile:any;
   fileChange(fileInput: any) {
     this.showLoading = true;
@@ -103,7 +111,6 @@ export class tipsAddComponent {
     //let fileList: FileList = event.target.files;
       this.AllTipsService.fileUpload(this.myfile)
       .then(data => {
-        //console.log(data);
         this.tip.images = [];
         this.tip.images.push(data['files'][0].url);
         this.showLoading = false;
@@ -122,4 +129,11 @@ export class tipsAddComponent {
         .body(`<p>Your Tip is Added successfully.</p>`)
         .open();
   }
+  populateError(message){
+    this.modal.alert()
+    .size('sm')
+    .title('Error in Adding Tip')
+    .body('<p>' + message + '</p>')
+    .open();
+   }
 }
