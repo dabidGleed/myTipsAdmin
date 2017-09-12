@@ -9,18 +9,18 @@
                 </div>
                 <form class="form-horizontal" (ngSubmit)="saveTip(f)" #f="ngForm" novalidate>
                     <div class="form-group row">
-                        <label class="col-md-2 form-control-label">Tip Title</label>
+                        <label class="col-md-2 form-control-label">Tip Title*</label>
                         <div class="col-md-10">
-                            <input type="text" name="text-input" class="form-control" [(ngModel)]="tip.title" placeholder="Text" required>
+                            <input type="text" name="title" class="form-control" [(ngModel)]="tip.title" placeholder="Text" required>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-md-2 form-control-label" for="textarea-input">Description</label>
+                        <label class="col-md-2 form-control-label" for="textarea-input">Description*</label>
                         <div class="col-md-10">
                             <!--<textarea id="textarea-input" [(ngModel)]="tip.description"  name="textarea-input" rows="9" class="form-control" placeholder="Content.."></textarea>-->
                             <!--<div [froalaEditor] [(froalaModel)]="tip.description">Hello, Froala!</div>-->
-                            <ckeditor [(ngModel)]="tip.description" [ngModelOptions]="{standalone: true}" [config]="config" debounce="500" required>
+                            <ckeditor [(ngModel)]="tip.description" [ngModelOptions]="{standalone: true}" name="description" [config]="config" debounce="500" required>
                                 <p>Hello <strong>world</strong></p>
                             </ckeditor>
                             <!--<div [innerHTML]="content"></div>-->
@@ -70,9 +70,9 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-md-2 form-control-label" for="select">Tip Category</label>
+                        <label class="col-md-2 form-control-label" for="select">Tip Category*</label>
                         <div class="col-md-10">
-                            <select id="select" name="select" [(ngModel)]="tip.category" class="form-control" size="1" required>
+                            <select id="select" name="category" [(ngModel)]="tip.category" class="form-control" size="1" required>
                 <option value="0">Please select</option>
                 <option *ngFor="let cat of categories" value="{{cat.id}}">{{cat.name}}</option>
               </select>
@@ -86,12 +86,13 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-sm btn-primary"  [disabled]="!f.valid"><i class="fa fa-dot-circle-o"></i> Submit</button>
+                        <button type="submit" class="btn btn-sm btn-primary" (click)="saveTip()" [disabled]="!f.valid"><i class="fa fa-dot-circle-o"></i> Submit</button>
                         <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
                     </div>
                 </form>
             </div>
-          
+
+
             <!--{{tip | json}}-->
         </div>
     </div>

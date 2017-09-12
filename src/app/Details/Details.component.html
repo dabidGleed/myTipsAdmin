@@ -15,7 +15,7 @@
                                 <img src="{{user.userDetails.image ? user.userDetails.image : 'assets/img/avatars/profile.png'}}" class="img-avatar profilePic" alt="profile">
                                 <div class="profileEdit">
                                     <div class="editBox">
-                                        <input type="file" id="file-input" class="editIcon" name="file-input" (change)="fileChange($event)" placeholder="Upload file" required>
+                                        <input type="file" id="file-input" class="editIcon" name="file-input" (change)="fileChange($event)" placeholder="Upload file">
                                         <i class="fa fa-pencil icon" aria-hidden="true"></i>
                                     </div>
                                 </div>
@@ -126,7 +126,7 @@
 
                 </div>
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-sm btn-primary" [disabled]="!f.valid"><i class="fa fa-dot-circle-o"></i> Save</button>
+                    <button type="submit" class="btn btn-sm btn-primary" [disabled]="!f.form.valid"><i class="fa fa-dot-circle-o"></i> Save</button>
                     <!-- <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button> -->
                 </div>
             </form>

@@ -1,0 +1,75 @@
+input[type=number]
+{
+  -moz-appearance: textfield;
+}
+@media only screen and (max-width: 1200px) {
+    .card-block {
+        padding-right: 27px;
+    }
+    .table.table-bordered.table-striped.table-condensed {
+        display: block;
+        overflow-x: auto;
+    }
+    .main .container-fluid {
+        padding: 0 15px;
+    }
+    .btn.btn-all {
+        margin: 3px 0 0 3px;
+        padding: 3px;
+    }
+    .breadcrumb-menu {
+        right: 3rem;
+    }
+    header.navbar .dropdown-menu {
+        overflow-y: scroll;
+        height: 400px;
+    }
+    .aside-menu-fixed .main,
+    .aside-menu-fixed .app-footer {
+        margin-right: 0px;
+    }
+    .breadcrumb-menu {
+    right: 4rem;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .app-header .navbar-toggler {
+        left: 90px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .card-group .card {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 0px;
+        flex: auto;
+    }
+    .card-group.card-total {
+        margin: 50px 0;
+        flex-direction: column-reverse;
+        display: flex;
+    }
+    .card.mx-2 {
+        margin: 0 !important;
+    }
+}
+@media only screen and (max-width: 1024) {
+    .card-block .table.table-bordered.table-striped.table-condensed{
+        display: none;
+    }
+}
+
+
+@media only screen and (max-width: 575px) {
+    .container {
+        width: 540px;
+        max-width: 100%;
+    }
+}
+
+@media only screen and (max-width: 413px) {
+    .card-group .card.p-2 {
+        padding: 0 !important;
+    }
+}

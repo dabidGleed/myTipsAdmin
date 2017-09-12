@@ -30,8 +30,10 @@ export class DetailsComponent {
     this.Auth.getVendor(b[0].id)
     .then(
          data => {
-           this.user = data[0];     
-           console.log( this.user);
+           this.user = data[0];   
+           if(!this.user.userDetails){
+             this.user.userDetails = {};
+           }  
          });
     // this.userDetails ={
     //   firstname:'',
@@ -82,7 +84,7 @@ export class DetailsComponent {
           .then(
          data => {
            this.vendor("Successfully Updated")
-           this.data = data;     
+           this.data = data;    
          });  
   }
 

@@ -219,6 +219,30 @@ export class TipsService {
       });
     }
  }
+
+ searchUserDelTips(searchVal, categoryIdVal, userId){
+  if(categoryIdVal == 'all'){
+    return new Promise(resolve => {
+      this.http.get('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/tips/'+ userId +'/deletedUserTips?str='+ searchVal )
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+          console.log(this.data);
+          
+        });
+    });
+  // } else if(categoryIdVal != 'all'){
+  //    return new Promise(resolve => {
+  //     this.http.get('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/tips/'+categoryIdVal+'/'+searchVal+'/categoryTipsSearch')
+  //       .map(res => res.json())
+  //       .subscribe(data => {
+  //         this.data = data;
+  //         resolve(this.data);
+  //       });
+  //   });
+   }
+}
  
   searchTipsAll(searchVal, categoryIdVal){      
     if(categoryIdVal == 'all'){
