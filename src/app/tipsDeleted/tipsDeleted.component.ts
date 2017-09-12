@@ -10,7 +10,7 @@ import { Modal, BSModalContext } from 'angular2-modal/plugins/bootstrap';
 export class tipsDeletedComponent {
 
   public tips;
-  Categories;
+  Categories:any;
   itemsPPage = 10;
   curPage = '1';
   searchText = '';
@@ -72,6 +72,7 @@ export class tipsDeletedComponent {
     loadCategories() {
     this.tipsService.getCategories()
       .then(data => {
+        console.log(data);
        this.Categories = data;
       });
   }

@@ -151,6 +151,7 @@ modal-title {
             height: 100%;
             top: 9px;
             opacity: 0;
+            z-index: 2;
         }
         .icon {
             position: absolute;
@@ -165,6 +166,7 @@ modal-title {
             -webkit-transition: all 0.3s;
             /* Safari */
             transition: all 0.3s;
+             z-index: 1;
         }
     }
 }
