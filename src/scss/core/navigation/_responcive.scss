@@ -7,7 +7,7 @@ input[type=number]
         padding-right: 27px;
     }
     .table.table-bordered.table-striped.table-condensed {
-        display: block;
+        // display: block;
         overflow-x: auto;
     }
     .main .container-fluid {
@@ -22,7 +22,7 @@ input[type=number]
     }
     header.navbar .dropdown-menu {
         overflow-y: scroll;
-        height: 400px;
+        // height: 400px;
     }
     .aside-menu-fixed .main,
     .aside-menu-fixed .app-footer {
@@ -56,7 +56,7 @@ input[type=number]
 }
 @media only screen and (max-width: 1024) {
     .card-block .table.table-bordered.table-striped.table-condensed{
-        display: none;
+        display: block;
     }
 }
 
@@ -68,8 +68,24 @@ input[type=number]
     }
 }
 
-@media only screen and (max-width: 413px) {
+@media only screen and (max-width: 445px) {
     .card-group .card.p-2 {
         padding: 0 !important;
+    }
+    .app-footer{
+        padding: 8px 0px;
+        text-align: center;
+        line-height: 22px !important;
+    }
+      .float-right{
+        float: none !important;
+        display: block;
+    }
+
+}
+
+@media only screen and (max-width: 991px) {
+    .logoHead img{
+        margin-left: 20px;
     }
 }
