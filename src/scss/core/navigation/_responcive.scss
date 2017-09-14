@@ -68,7 +68,7 @@ input[type=number]
     }
 }
 
-@media only screen and (max-width: 445px) {
+@media only screen and (max-width: 540px) {
     .card-group .card.p-2 {
         padding: 0 !important;
     }
@@ -84,6 +84,31 @@ input[type=number]
 
 }
 
+@media only screen and (max-width: 767px) {
+    .profileImgBlock{
+        max-width: 180px;
+    }
+}
+@media only screen and (max-width: 1100px) {
+    th.fav{
+     display:none;
+    }
+    td.fav{
+        display:none;
+    }
+    th.like{
+     display:none;
+    }
+    td.like{
+     display:none;
+    }
+    td.gender{
+      display:none;
+    }
+     th.gender{
+      display:none;
+    }
+}
 @media only screen and (max-width: 991px) {
     .logoHead img{
         margin-left: 20px;
