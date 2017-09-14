@@ -21,12 +21,7 @@ export class tipsListComponent {
     this.curPage = route.params['_value']['page'];
     this.searchText = route.params['_value']['search'];
     this.loadCategories();
-    if(this.searchText != ' '){
-      var b = this.getUserId(); 
-      this.searchTips(this.searchText,'all');
-    } else {
-      this.loadTips();
-    }
+   
   }
   getUserId = function(){
     var a = localStorage.getItem('userData');
@@ -54,6 +49,12 @@ export class tipsListComponent {
       .then(data => {
       
         this.Categories = data;
+         if(this.searchText != ' '){
+      var b = this.getUserId(); 
+      this.searchTips(this.searchText,'all');
+    } else {
+      this.loadTips();
+    }
       });
   }
 
