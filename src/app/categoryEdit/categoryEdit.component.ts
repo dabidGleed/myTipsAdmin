@@ -37,7 +37,7 @@ export class CategoryEditComponent {
         });
   }
 
-  saveTip(val){
+  saveCategory(val){
     if(val){
        this.AllTipsService.updateCategory(this.categoryId,this.category)
         .then(

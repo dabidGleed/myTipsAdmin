@@ -41,21 +41,22 @@ export class loginComponent {
             }
             localStorage.setItem('userData', JSON.stringify(userInfo));
           } else {
-            this.showSpinner = false;
-            this.showPage = true;
-            this.tipPublished('Invalid Login Credentials');
+            this.loginMessage('Invalid Login Credentials');
+            // this.showSpinner = false;
+            // this.showPage = true;
           }
 
         });
     } else {
-      this.tipPublished('Enter Login Credentials');
+      this.loginMessage('Enter Login Credentials');
     }
   }
 
-  Register() {
-    this.router.navigate(['/pages/register']);
-  }
-  tipPublished(message) {
+    Register() {
+        this.router.navigate(['/pages/register']);
+     }
+  loginMessage(message){
+
     this.modal.alert()
       .size('sm')
       .title('Login Error')

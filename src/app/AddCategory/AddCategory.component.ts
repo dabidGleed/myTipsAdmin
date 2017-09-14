@@ -38,20 +38,20 @@ export class AddCategoryComponent {
 
 
 
-  saveTip(){
+  saveCategory(){
     if(this.tip.imageURL!= ''){
     this.AllTipsService.AddCategory(this.tip)
         .then(
             data => {
               this.tip = {name:'', imageURL:''};
-              this.tipPublished('Your Category is saved successfully. You can now add tips to this Category.');
+              this.CategoryPublished('Your Category is saved successfully. You can now add tips to this Category.');
             }, //Bind to view
             err => {
               // Log errors if any
               console.log(err);
             });
     } else {
-      this.tipPublished('Please uplaod an image to Add Category');
+      this.CategoryPublished('Please uplaod an image to Add Category');
     }
   }
   myfile:any;
@@ -72,7 +72,7 @@ export class AddCategoryComponent {
       });
   }
 
-  tipPublished(msg){
+  CategoryPublished(msg){
    this.modal.alert()
         .size('sm')
         .showClose(true)
@@ -80,7 +80,4 @@ export class AddCategoryComponent {
         .body('<p>'+msg+'</p>')
         .open();
   }
-
-
-  
 }
