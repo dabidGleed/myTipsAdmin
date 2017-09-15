@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-lg-12">
+  <div class="col-lg-11 col-md-9">
         <div class="card">
             <div class="card-header">
                 <i class="fa fa-align-justify"></i> Search
@@ -7,14 +7,14 @@
             <div class="card-block">
 
                 <div class="row">
-                    <div class="form-group col-md-2">
+                    <div class="form-group col-md-3">
                         <select [(ngModel)]="categoryIdVal" class="form-control">
                             <option value="all">All Categories</option>
                             <option value="unpublished">Unpublished</option>
                             <option *ngFor="let category of Categories" value="{{category.id}}">{{category.name}}</option>
                         </select>
                     </div>
-                    <div class="form-group col-md-7">
+                    <div class="form-group col-md-6">
                         <input type="text" class="form-control" [(ngModel)]="searchText" id="searchText" placeholder="Search">
                     </div>
                     <div class="form-group col-md-3">
@@ -53,13 +53,16 @@
                             <td>{{tip.likes.length}}</td>
                             <td>{{tip.favourites.length}}</td>
                             <td>
+
                                 <button class="btn btn-success btn-sm point" type="button" [routerLink]="['/TipsEdit',tip.id]">Edit</button>
                                 <button class="btn btn-danger btn-sm point" type="button" (click)="removeTip(tip)">Delete</button>
                                 <template [ngIf]="tip.status === 'UNPUBLISH' && hideRole('VENDOR')">
                                     <button class="btn btn-primary btn-sm" type="button" (click)="makePublish(tip)">Publish</button>
+
+                               
                                 </template>
                                 <template [ngIf]="tip.status === 'ACTIVE'">
-                                     <button class="btn btn-info btn-sm" type="button">Active</button>
+                                     <button class="btn btn-info btn-sm btn-all" type="button">Active</button>
                                 </template>
 
                             </td>
