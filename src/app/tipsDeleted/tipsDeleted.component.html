@@ -16,8 +16,8 @@
                                 <input type="text" class="form-control" [(ngModel)]="searchText" id="searchText" placeholder="Search">
                             </div>
                             <div class="form-group col-md-3">
-                                <button (click)="searchTips(searchText)" type="button" class="btn btn-default">Search</button>
-                                <button (click)="clearSearch()" type="button" class="btn btn-default">Clear</button>
+                                <button (click)="searchTips(searchText)" type="button" class="btn btn-default point">Search</button>
+                                <button (click)="clearSearch()" type="button" class="btn btn-default point">Clear</button>
                             </div>
         
         
@@ -49,7 +49,7 @@
                             <td>{{categoryName(tip.category)}}</td>
                             <td>
                                 <!--<button class="btn btn-success btn-sm" type="button" [routerLink]="['/TipsEdit',tip.id]">Edit</button>-->
-                                <button class="btn btn-danger btn-sm" type="button" (click)="DelTip(tip)">Trash</button>
+                                <button class="btn btn-danger btn-sm point" type="button" (click)="DelTip(tip)">Trash</button>
                                 <!--<template [ngIf]="tip.status === 'UNPUBLISH'">-->
                                 <!--<button  class="btn btn-primary btn-sm" type="button" (click)="makePublish(tip)">make Publish</button>-->
                                 <!--</template>-->

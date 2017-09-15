@@ -21,8 +21,8 @@
                             <td><span class="categoryTitle">{{Category.name}}</span></td>
                             <td>{{Category.count}}</td>
                             <td>
-                                <button class="btn btn-success btn-sm" type="button" [routerLink]="['/CategoryEdit',Category.id]">Edit</button>
-                                <button class="btn btn-danger btn-sm" type="button" (click)="DelCategory(Category)">Delete</button>
+                                <button class="btn btn-success btn-sm point" type="button" [routerLink]="['/CategoryEdit',Category.id]">Edit</button>
+                                <button class="btn btn-danger btn-sm point" type="button" (click)="DelCategory(Category)">Delete</button>
                                 <!--<template [ngIf]="Category.status === 'UNPUBLISH'">
                     <button  class="btn btn-primary btn-sm" type="button" (click)="makePublish(tip)">make Publish</button>
                   </template>-->
