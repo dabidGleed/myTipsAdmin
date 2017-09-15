@@ -35,10 +35,10 @@
                             <th>Index</th>
                             <th>Post Image</th>
                             <th>Title</th>
-                            <th>Gender</th>
+                            <th class="gender">Gender</th>
                             <th>Category</th>
-                            <th>Likes</th>
-                            <th>Favs</th>
+                            <th class="like">Likes</th>
+                            <th class="fav">Favs</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -48,10 +48,10 @@
                             <td data-th="Index">{{pagination(i,curPage)}}</td>
                             <td data-th="Post Image"><img width="50" [src]="tip.images"></td>
                             <td data-th="Title"><span class="tipTitle">{{tip.title}}</span></td>
-                            <td data-th="Gender">{{tip.genderSpecific}}</td>
+                            <td class="gender" data-th="Gender">{{tip.genderSpecific}}</td>
                             <td data-th="Category">{{tip.category}}</td>
-                            <td data-th="Likes">{{tip.likes.length}}</td>
-                            <td data-th="Favs">{{tip.favourites.length}}</td>
+                            <td class="like" data-th="Likes">{{tip.likes.length}}</td>
+                            <td class="fav" data-th="Favs">{{tip.favourites.length}}</td>
                             <td data-th="Actions">
                                 <button class="btn btn-success btn-sm btn-all" type="button" [routerLink]="['/TipsEdit',tip.id]">Edit</button>
                                 <button class="btn btn-danger btn-sm btn-all" type="button" (click)="removeTip(tip)">Delete</button>

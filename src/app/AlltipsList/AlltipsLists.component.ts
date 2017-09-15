@@ -28,12 +28,7 @@ export class AlltipsListComponent {
 
   
     // this.changePage(this.curPage);
-    if(this.searchText != ''){
-      this.searchTips(this.searchText);
-      
-    }else{
-      this.loadTips();
-    }
+   
   }
   clearSearch(){
     this.searchText = '';
@@ -75,6 +70,12 @@ export class AlltipsListComponent {
     this.tipsService.getCategories()
       .then(data => {      
         this.Categories = data;
+         if(this.searchText != ''){
+      this.searchTips(this.searchText);
+      
+    }else{
+      this.loadTips();
+    }
       });
     }
   loadTips() {
