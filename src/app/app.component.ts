@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CKEditorComponent } from 'ng2-ckeditor/src/ckeditor.component';
 import { NgModule } from '@angular/core';
+import {ImageCropperComponent, CropperSettings, Bounds} from 'ng2-img-cropper';
 
 @Component({
   // tslint:disable-next-line
@@ -13,6 +14,7 @@ import { NgModule } from '@angular/core';
     ],
     exports: [
         CKEditorComponent,
-           ]
+           ],
+           
 })
 export class AppComponent { }

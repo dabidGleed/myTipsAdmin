@@ -57,20 +57,50 @@ export class DetailsComponent {
   fileChange(fileInput: any) {
     this.showLoading = true;
     this.myfile = fileInput.target.files[0];
+    //  console.log(fileInput);
     //let fileList: FileList = event.target.files;
-      this.AllTipsService.fileUpload(this.myfile)
-      .then(data => {
-        //console.log(data);
-        this.tip.imageURL = '';
-        this.user.userDetails.image = (data['files'][0].url);
-         this.showLoading = false;
-      }, //Bind to view
-      err => {
-        // Log errors if any
-        console.log(err);
-      });
+
+    // chack file upload width
+          var reader = new FileReader();
+          var width, height;
+          var tip = this.tip;
+          var AllTipsService = this.AllTipsService;
+          var myfile = this.myfile;
+          var user = this.user;
+          var tip = this.tip;
+          var showLoading = this.showLoading;
+          reader.onload = function (e) {
+            
+            var img = document.createElement("img");
+            img.onload = function() {
+                width  = img.naturalWidth  || img.width;
+                height = img.naturalHeight || img.height;
+                console.log(width+" /// "+height);
+               if(width && height && width === height){
+                  AllTipsService.fileUpload(myfile)
+                  .then(data => {     
+                  tip.imageURL = '';
+                  user.userDetails.image = (data['files'][0].url);
+                  showLoading = false;
+                  }, //Bind to view
+                  err => {
+                  // Log errors if any
+                  console.log(err);
+                  });
+               }  
+            }
+            
+            console.log(e);
+            img.src = reader.result;
+            // $('body').append(img);
+          }
+
+          reader.readAsDataURL(fileInput.target.files[0]);
   }
 
+   public uploadImageFile(){
+     
+}
 
   editProfile(validVal: NgForm){
      var a = localStorage.getItem('userData');
@@ -83,7 +113,7 @@ export class DetailsComponent {
     this.Auth.vendorDetails(b[0].id,this.user)
           .then(
          data => {
-           this.vendor("Successfully Updated")
+           this.vendor("Successfully Updated");
            this.data = data;    
          });  
   }
