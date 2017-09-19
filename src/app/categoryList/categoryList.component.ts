@@ -25,16 +25,6 @@ export class categoryListComponent {
         this.Categories = data;
       });
   }
-
-  tipPublished(){
-    this.modal.alert()
-      .size('lg')
-      .showClose(true)
-      .title('Added Tip')
-      .body(`<p>Your Tip is published successfully</p>`)
-      .open();
-  }
-
     DelCategory(category) {
       console.log(category);
 

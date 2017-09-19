@@ -7,7 +7,7 @@
             <div class="card-block loadingOuter">
                 <div class="loadingBar" *ngIf="showLoading">
                 </div>
-                <form class="form-horizontal" #formCtrl="ngForm" name="tipForm" novalidate>
+                <form class="form-horizontal" (ngSubmit)="saveTip(f)" #f="ngForm" novalidate>
                     <div class="form-group row">
                         <label class="col-md-2 form-control-label">Tip Title*</label>
                         <div class="col-md-10">
@@ -87,12 +87,14 @@
                             <span class="help-block">Please enter Tags seperated by Coma's</span>
                         </div>
                     </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-sm btn-primary" (click)="saveTip()" [disabled]="!f.valid"><i class="fa fa-dot-circle-o"></i> Submit</button>
+                        <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
+                    </div>
                 </form>
             </div>
-            <div class="card-footer">
-                <button type="submit" class="btn btn-sm btn-primary" (click)="saveTip()" > Submit</button>
-                <button type="reset" class="btn btn-sm btn-danger">Reset</button>
-            </div>
+
+
             <!--{{tip | json}}-->
         </div>
     </div>

@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-lg-11 col-md-9">
+  <div class="col-md-12 col-sm-12">
         <div class="card">
             <div class="card-header">
                 <i class="fa fa-align-justify"></i> Search
@@ -26,34 +26,34 @@
         </div>
         <div class="card">
             <div class="card-header">
-                <i class="fa fa-align-justify"></i> List of All Tips
+                <i class="fa fa-align-justify"></i> List of All the Tips
             </div>
             <div class="card-block">
-                <table class="table table-bordered table-striped table-condensed">
+                <table class="rwd-table table table-bordered table-striped table-condensed">
                     <thead>
                         <tr>
                             <th>Index</th>
                             <th>Post Image</th>
                             <th>Title</th>
-                            <th>Gender</th>
+                            <th class="gender">Gender</th>
                             <th>Category</th>
-                            <th>Likes</th>
-                            <th>Favs</th>
+                            <th class="like">Likes</th>
+                            <th class="fav">Favs</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
 
                         <tr *ngFor="let tip of tips  | paginate: { itemsPerPage: itemsPPage, currentPage: curPage };let i = index" [attr.data-index]="i">
-                            <td>{{pagination(i,curPage)}}</td>
-                            <td><img width="50" [src]="tip.images"></td>
-                            <td><span class="tipTitle">{{tip.title}}</span></td>
-                            <td>{{tip.genderSpecific}}</td>
-                            <td>{{tip.category}}</td>
-                            <td>{{tip.likes.length}}</td>
-                            <td>{{tip.favourites.length}}</td>
-                            <td>
-
+                           
+                            <td data-th="Index">{{pagination(i,curPage)}}</td>
+                            <td data-th="Post Image"><img width="50" [src]="tip.images"></td>
+                            <td data-th="Title"><span class="tipTitle">{{tip.title}}</span></td>
+                            <td class="gender" data-th="Gender">{{tip.genderSpecific}}</td>
+                            <td data-th="Category">{{tip.category}}</td>
+                            <td class="like" data-th="Likes">{{tip.likes.length}}</td>
+                            <td class="fav" data-th="Favs">{{tip.favourites.length}}</td>
+                            <td data-th="Actions">
                                 <button class="btn btn-success btn-sm point" type="button" [routerLink]="['/TipsEdit',tip.id]">Edit</button>
                                 <button class="btn btn-danger btn-sm point" type="button" (click)="removeTip(tip)">Delete</button>
                                 <template [ngIf]="tip.status === 'UNPUBLISH' && hideRole('VENDOR')">
