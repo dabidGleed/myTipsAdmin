@@ -33,7 +33,7 @@ import { TipsService } from './providers/tipsProvider/tipsProvider';
 import { AuthService } from './providers/tipsProvider/authProvider';
 import { globalService } from './providers/tipsProvider/globalService';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TagInputModule } from 'ng2-tag-input';
+import { TagInputModule } from 'ngx-chips';
 
 @NgModule({
   imports: [
@@ -51,7 +51,8 @@ import { TagInputModule } from 'ng2-tag-input';
     // FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),
     NgxPaginationModule,
     DatePickerModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    TagInputModule
     
   ],
   declarations: [

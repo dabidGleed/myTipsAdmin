@@ -4,7 +4,7 @@ import { Modal, BSModalContext } from 'ngx-modialog/plugins/bootstrap';
 import { TipsService } from '../providers/tipsProvider/tipsProvider';
 import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
-import { TagInputModule } from 'ng2-tag-input';
+//import { TagInputModule } from 'ng2-tag-input';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/map';
 

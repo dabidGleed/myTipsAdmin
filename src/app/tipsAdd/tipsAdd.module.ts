@@ -7,7 +7,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 // import {FroalaEditorModule, FroalaViewModule} from 'angular2-froala-wysiwyg';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TagInputModule } from 'ng2-tag-input';
+import { TagInputModule } from 'ngx-chips';
 
 
 
