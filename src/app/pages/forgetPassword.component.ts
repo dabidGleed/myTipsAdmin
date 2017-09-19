@@ -1,6 +1,6 @@
 import {Component, ViewContainerRef} from '@angular/core';
-import {Overlay} from 'angular2-modal';
-import {Modal, BSModalContext} from 'angular2-modal/plugins/bootstrap';
+import {Overlay} from 'ngx-modialog';
+import {Modal, BSModalContext} from 'ngx-modialog/plugins/bootstrap';
 import {Router, NavigationExtras} from '@angular/router';
 import { NgForm,FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {AuthService} from '../providers/tipsProvider/authProvider';
@@ -16,7 +16,6 @@ export class forgetPasswordComponent {
     this.userData ={
         email:''
     };
-    overlay.defaultViewContainer = vcRef;
  
   }
 

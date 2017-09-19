@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Overlay } from 'ngx-modialog';
 import {Router, NavigationExtras} from '@angular/router';
+import { AuthService } from '../providers/tipsProvider/authProvider';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './full-layout.component.html'
@@ -18,8 +20,24 @@ export class FullLayoutComponent implements OnInit {
     $event.stopPropagation();
     this.status.isopen = !this.status.isopen;
   }
-  constructor(public router: Router){
-
+  private user: any = {
+    userDetails:{}
+  }
+  constructor(public router: Router,private Auth: AuthService,overlay: Overlay, vcRef: ViewContainerRef,){
+   var a = localStorage.getItem('userData');
+   a = JSON.parse(a);
+   var b = [];
+   b.push(a);
+   this.Auth.getVendor(b[0].id)
+   .then(
+     data => {
+       this.user = data[0];
+       if(!this.user.userDetails){
+        this.user.userDetails = {};
+       }
+     }
+   )
+   
   }
 
   ngOnInit(): void {}
