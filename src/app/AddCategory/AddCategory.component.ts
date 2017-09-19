@@ -1,6 +1,6 @@
 import { Component, ViewContainerRef } from '@angular/core';
-import { Overlay } from 'angular2-modal';
-import { Modal, BSModalContext } from 'angular2-modal/plugins/bootstrap';
+import { Overlay } from 'ngx-modialog';
+import { Modal, BSModalContext } from 'ngx-modialog/plugins/bootstrap';
 import { TipsService } from '../providers/tipsProvider/tipsProvider';
 import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
@@ -16,9 +16,8 @@ export class AddCategoryComponent {
   private hello;
   showLoading = false;
   public showMe = false;
-  constructor(private AllTipsService: TipsService,overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal){
+  constructor(private AllTipsService: TipsService, public modal: Modal){
     this.loadCategories();
-    overlay.defaultViewContainer = vcRef;
   }
   // Local properties
 
@@ -38,20 +37,20 @@ export class AddCategoryComponent {
 
 
 
-  saveTip(){
+  saveCategory(){
     if(this.tip.imageURL!= ''){
     this.AllTipsService.AddCategory(this.tip)
         .then(
             data => {
               this.tip = {name:'', imageURL:''};
-              this.tipPublished('Your Category is saved successfully. You can now add tips to this Category.');
+              this.CategoryPublished('Your Category is saved successfully. You can now add tips to this Category.');
             }, //Bind to view
             err => {
               // Log errors if any
               console.log(err);
             });
     } else {
-      this.tipPublished('Please uplaod an image to Add Category');
+      this.CategoryPublished('Please uplaod an image to Add Category');
     }
   }
   myfile:any;
@@ -72,7 +71,7 @@ export class AddCategoryComponent {
       });
   }
 
-  tipPublished(msg){
+  CategoryPublished(msg){
    this.modal.alert()
         .size('sm')
         .showClose(true)
@@ -80,7 +79,4 @@ export class AddCategoryComponent {
         .body('<p>'+msg+'</p>')
         .open();
   }
-
-
-  
 }

@@ -1,6 +1,6 @@
 import { Component, ViewContainerRef } from '@angular/core';
-import { Overlay } from 'angular2-modal';
-import { Modal, BSModalContext } from 'angular2-modal/plugins/bootstrap';
+import { Overlay } from 'ngx-modialog';
+import { Modal, BSModalContext } from 'ngx-modialog/plugins/bootstrap';
 import { Router, NavigationExtras } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../providers/tipsProvider/authProvider';
@@ -17,7 +17,6 @@ export class loginComponent {
   showPage: boolean = true;
   constructor(public router: Router, private Auth: AuthService, overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal) {
     this.userData = { "identifier": "", "password": "" };
-    overlay.defaultViewContainer = vcRef;
   }
 
   login(val) {
@@ -41,21 +40,22 @@ export class loginComponent {
             }
             localStorage.setItem('userData', JSON.stringify(userInfo));
           } else {
-            this.showSpinner = false;
-            this.showPage = true;
-            this.tipPublished('Invalid Login Credentials');
+            this.loginMessage('Invalid Login Credentials');
+            // this.showSpinner = false;
+            // this.showPage = true;
           }
 
         });
     } else {
-      this.tipPublished('Enter Login Credentials');
+      this.loginMessage('Enter Login Credentials');
     }
   }
 
-  Register() {
-    this.router.navigate(['/pages/register']);
-  }
-  tipPublished(message) {
+    Register() {
+        this.router.navigate(['/pages/register']);
+     }
+  loginMessage(message){
+
     this.modal.alert()
       .size('sm')
       .title('Login Error')

@@ -6,27 +6,27 @@
         <li class="nav-item">
             <a class="nav-link navbar-toggler sidebar-toggler" href="javascript:void()">&#9776;</a>
         </li>
-        
+
     </ul>
     <ul class="nav navbar-nav ml-auto">
-       
+
 
         <li class="nav-item dropdown" dropdown (onToggle)="toggled($event)">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="javascript:void()" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle>
-                <img src="assets/img/avatars/avatar.png" class="img-avatar" alt="admin@bootstrapmaster.com">
+                <img src="{{user.userDetails.image ? user.userDetails.image : 'assets/img/avatars/profile.png'}}" class="img-avatar" alt="admin@bootstrapmaster.com">
                 <span class="hidden-md-down">{{userData.firstName}}</span>
             </a>
 
-            <div class="dropdown-menu dropdown-menu-right" dropdownMenu aria-labelledby="simple-dropdown">
-             
+            <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
+
                 <div class="dropdown-header text-center"><strong>Settings</strong></div>
-            <a class="dropdown-item" routerLinkActive="active" [routerLink]="[ '/Details']"><i class="fa fa-user"></i>Edit Profile</a>
+                <a class="dropdown-item" routerLinkActive="active" [routerLink]="[ '/Details']"><i class="fa fa-user"></i>Edit Profile</a>
                 <a class="dropdown-item" routerLinkActive="active " [routerLink]="[ '/changePassword'] "><i class="fa fa-shield "></i>Change Password</a>
                 <a (click)="logout()" class="dropdown-item" href=""><i class="fa fa-lock"></i> Logout</a>
                 <!-- <a class="dropdown-item" href="javascript:void()"><i class="fa fa-file"></i> Projects<span class="badge badge-primary">42</span></a> -->
                 <!-- <div class="divider"></div> -->
                 <!-- <a class="dropdown-item" href="javascript:void()"><i class="fa fa-shield"></i> Lock account</a> -->
-            <!-- <a class="dropdown-item" href="#"><i class="fa fa-lock"></i> Logout</a> -->
+                <!-- <a class="dropdown-item" href="#"><i class="fa fa-lock"></i> Logout</a> -->
             </div>
         </li>
         <!-- <li (click)="logout()" class="nav-item">
@@ -53,7 +53,7 @@
                 <li class="nav-title ">
                     Admin Pages
                 </li>
-                 <!-- <li class="nav-item nav-dropdown " routerLinkActive="open ">
+                <!-- <li class="nav-item nav-dropdown " routerLinkActive="open ">
                     <a class="nav-link nav-dropdown-toggle " href="javascript:void() "><i class="icon-layers "></i> My Profile</a>
                     <ul class="nav-dropdown-items ">
 
@@ -71,20 +71,20 @@
                     <a class="nav-link nav-dropdown-toggle " href="javascript:void() "><i class="icon-layers "></i> Tips</a>
                     <ul class="nav-dropdown-items ">
                         <li class="nav-item ">
-                            <a class="nav-link " routerLinkActive="active " [routerLink]="[ '/Tips/1/ '] "><i class="icon-list "></i> My Tips</a>
+                            <a class="nav-link mobile-sidebar-toggler" routerLinkActive="active " [routerLink]="[ '/Tips/1/ '] "><i class="icon-list "></i> My Tips</a>
                         </li>
 
                         <li *ngIf="hideRole( 'VENDOR') " class="nav-item ">
-                            <a class="nav-link " routerLinkActive="active " [routerLink]="[ '/AllTips/1/ '] "><i class="icon-list "></i>Vendors Tips List</a>
+                            <a class="nav-link mobile-sidebar-toggler" routerLinkActive="active " [routerLink]="[ '/AllTips/1/ '] "><i class="icon-list "></i>Vendors Tips List</a>
 
                         </li>
 
                         <li class="nav-item ">
-                            <a class="nav-link " routerLinkActive="active " [routerLink]="[ '/TipsAdd'] "><i class="icon-plus "></i>Add Tip</a>
+                            <a class="nav-link mobile-sidebar-toggler" routerLinkActive="active " [routerLink]="[ '/TipsAdd'] "><i class="icon-plus "></i>Add Tip</a>
                         </li>
 
                         <li class="nav-item ">
-                            <a class="nav-link " routerLinkActive="active " [routerLink]="[ '/TipsDeleted'] "><i class="icon-trash "></i>Deleted Tips</a>
+                            <a class="nav-link mobile-sidebar-toggler" routerLinkActive="active " [routerLink]="[ '/TipsDeleted'] "><i class="icon-trash "></i>Deleted Tips</a>
                         </li>
                     </ul>
                 </li>
@@ -94,11 +94,11 @@
                     <ul class="nav-dropdown-items ">
 
                         <li class="nav-item ">
-                            <a class="nav-link " routerLinkActive="active " [routerLink]="[ '/Categories'] "><i class="icon-list "></i> List Categories</a>
+                            <a class="nav-link mobile-sidebar-toggler" routerLinkActive="active " [routerLink]="[ '/Categories'] "><i class="icon-list "></i> List Categories</a>
                         </li>
 
                         <li class="nav-item ">
-                            <a class="nav-link " routerLinkActive="active " [routerLink]="[ '/AddCategory'] "><i class="icon-plus "></i>  Add Category </a>
+                            <a class="nav-link mobile-sidebar-toggler" routerLinkActive="active " [routerLink]="[ '/AddCategory'] "><i class="icon-plus "></i>  Add Category </a>
                         </li>
 
                     </ul>
@@ -107,7 +107,7 @@
                     <a class="nav-link nav-dropdown-toggle " href="javascript:void() "><i class="icon-layers "></i>Vendor Manage</a>
                     <ul class="nav-dropdown-items ">
                         <li class="nav-item ">
-                            <a class="nav-link " routerLinkActive="active " [routerLink]="[ '/vendorsList/1'] "><i class="icon-list "></i>Vendors List</a>
+                            <a class="nav-link mobile-sidebar-toggler" routerLinkActive="active " [routerLink]="[ '/vendorsList/1'] "><i class="icon-list "></i>Vendors List</a>
                         </li>
                     </ul>
                 </li>

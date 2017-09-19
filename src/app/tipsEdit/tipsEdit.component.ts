@@ -1,6 +1,6 @@
 import { Component, ViewContainerRef, OnInit, OnDestroy } from '@angular/core';
-import { Overlay } from 'angular2-modal';
-import { Modal, BSModalContext } from 'angular2-modal/plugins/bootstrap';
+import { Overlay } from 'ngx-modialog';
+import { Modal, BSModalContext } from 'ngx-modialog/plugins/bootstrap';
 import { TipsService } from '../providers/tipsProvider/tipsProvider';
 import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
@@ -44,7 +44,6 @@ export class tipsEditComponent {
     }
     this.loadTipDetails();
     this.loadCategories();
-    overlay.defaultViewContainer = vcRef;
     for (let name in CKEDITOR.instances) {
         CKEDITOR.instances[name].destroy(true);
     }
@@ -129,7 +128,7 @@ export class tipsEditComponent {
         .then(
             data => {
             //  this.tip = {title:'', description:'', images:[],videos:[], category:'',tagsList:'',tags:[], postType:'',genderSpecific:[], videoLink:''};
-              this.tipPublished();
+              this.tipEdit();
             }, //Bind to view
             err => {
               // Log errors if any
@@ -155,7 +154,7 @@ export class tipsEditComponent {
       });
   }
 
-  tipPublished(){
+  tipEdit(){
    this.modal.alert()
         .size('sm')
         .showClose(true)
