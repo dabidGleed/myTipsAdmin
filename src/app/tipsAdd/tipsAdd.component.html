@@ -11,7 +11,7 @@
                     <div class="form-group row">
                         <label class="col-md-2 form-control-label">Tip Title*</label>
                         <div class="col-md-10">
-                            <input type="text" name="title" class="form-control" [(ngModel)]="tip.title" placeholder="Text" required>
+                            <input type="text" name="title" class="form-control" [(ngModel)]="tip.title" placeholder="Title of the Tip" required>
                         </div>
                     </div>
 
@@ -73,16 +73,24 @@
                         <label class="col-md-2 form-control-label" for="select">Tip Category*</label>
                         <div class="col-md-10">
                             <select id="select" name="category" [(ngModel)]="tip.category" class="form-control" size="1" required>
-                <option value="0">Please select</option>
-                <option *ngFor="let cat of categories" value="{{cat.id}}">{{cat.name}}</option>
-              </select>
+                                    <option value="">Please select</option>                                    
+                                    <option *ngFor="let cat of categories" value="{{cat.id}}">{{cat.name}}</option>
+                            </select>
+                            
+                                  
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2 form-control-label" for="email-input">Tags</label>
-                        <div class="col-md-10">
-                            <input type="text" id="email-input" [(ngModel)]="tip.tagsList" name="email-input" class="form-control" placeholder="Enter Tags">
-                            <span class="help-block">Please enter Tags seperated by Coma's</span>
+                        <div class="col-md-10 tags">
+                            <!-- <input type="text" id="email-input" [(ngModel)]="tip.tagsList" name="email-input" class="form-control" placeholder="Enter Tags"> -->
+                            <tag-input [ngModel]="tip.tagsList" name="tags" class="tag-block"
+                                    [addOnBlur]="true"
+                                  [clearOnBlur]="true">
+                                 <tag-input-dropdown [autocompleteItems]="autocompleteItems">
+                                 </tag-input-dropdown>
+                            </tag-input>
+                            <span class="help-block">Please enter Tags seperated by clicking Enter</span>
                         </div>
                     </div>
                     <div class="card-footer">
