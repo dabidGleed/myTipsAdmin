@@ -3,6 +3,9 @@ import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 import { vendorsListComponent } from './vendorsList.component';
 import { vendorsListRoutingModule } from './vendorsList-routing.module';
 import { CommonModule } from '@angular/common';
+import { LoaderComponent } from '../loader/loader.component';
+
+
 
 
 @NgModule({
@@ -11,6 +14,6 @@ import { CommonModule } from '@angular/common';
       CommonModule,
       NgxPaginationModule
     ],
-  declarations: [ vendorsListComponent ]
+  declarations: [ vendorsListComponent, LoaderComponent ]
 })
 export class vendorsListModule { }
