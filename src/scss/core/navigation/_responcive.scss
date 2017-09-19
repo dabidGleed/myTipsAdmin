@@ -1,7 +1,7 @@
-input[type=number]
-{
-  -moz-appearance: textfield;
+input[type=number] {
+    -moz-appearance: textfield;
 }
+
 @media only screen and (max-width: 1200px) {
     .card-block {
         padding-right: 27px;
@@ -29,7 +29,7 @@ input[type=number]
         margin-right: 0px;
     }
     .breadcrumb-menu {
-    right: 4rem;
+        right: 4rem;
     }
 }
 
@@ -54,12 +54,12 @@ input[type=number]
         margin: 0 !important;
     }
 }
+
 @media only screen and (max-width: 1024) {
-    .card-block .table.table-bordered.table-striped.table-condensed{
+    .card-block .table.table-bordered.table-striped.table-condensed {
         display: block;
     }
 }
-
 
 @media only screen and (max-width: 575px) {
     .container {
@@ -68,24 +68,52 @@ input[type=number]
     }
 }
 
-@media only screen and (max-width: 445px) {
+@media only screen and (max-width: 540px) {
     .card-group .card.p-2 {
         padding: 0 !important;
     }
-    .app-footer{
+    .app-footer {
         padding: 8px 0px;
         text-align: center;
         line-height: 22px !important;
     }
-      .float-right{
+    .float-right {
         float: none !important;
         display: block;
     }
+}
 
+@media only screen and (max-width: 767px) {
+    .profileImgBlock {
+        max-width: 180px;
+        left: 50%;
+        margin-left: -90px;
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    th.fav {
+        display: none;
+    }
+    td.fav {
+        display: none;
+    }
+    th.like {
+        display: none;
+    }
+    td.like {
+        display: none;
+    }
+    td.gender {
+        display: none;
+    }
+    th.gender {
+        display: none;
+    }
 }
 
 @media only screen and (max-width: 991px) {
-    .logoHead img{
+    .logoHead img {
         margin-left: 20px;
     }
 }

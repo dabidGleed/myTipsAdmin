@@ -17,12 +17,8 @@ export class tipsDeletedComponent {
   categoryIdVal:any = "all";
   constructor(public tipsService: TipsService, public router: Router, overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal) {
     this.loadCategories();
-    this.getDelTips();
-    if(this.searchText != ''){
-      this.searchTips(this.searchText);
-    }else{
-      this.getDelTips();
-    }
+   // this.getDelTips();
+   
     
    }
    searchTips(searchTerm){
@@ -74,6 +70,11 @@ export class tipsDeletedComponent {
       .then(data => {
         console.log(data);
        this.Categories = data;
+        if(this.searchText != ''){
+      this.searchTips(this.searchText);
+    }else{
+      this.getDelTips();
+    }
       });
   }
 
