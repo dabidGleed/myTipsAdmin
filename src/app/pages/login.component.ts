@@ -37,7 +37,8 @@ export class loginComponent {
               "id": tempData[0].user.id,
               "lastName": tempData[0].user.lastName,
               "tokenId": tempData[0].user.tokenId,
-              "role": tempData[0].user.role
+              "role": tempData[0].user.role,
+              // "userDetails": tempData[0].user.userDetails
             }
             localStorage.setItem('userData', JSON.stringify(userInfo));
           } else {
