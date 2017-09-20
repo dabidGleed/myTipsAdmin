@@ -3,7 +3,7 @@ import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 import { vendorsListComponent } from './vendorsList.component';
 import { vendorsListRoutingModule } from './vendorsList-routing.module';
 import { CommonModule } from '@angular/common';
-import { LoaderComponent } from '../loader/loader.component';
+import { loaderModule } from '../loader/loader.module';
 
 
 
@@ -12,8 +12,9 @@ import { LoaderComponent } from '../loader/loader.component';
   imports: [
       vendorsListRoutingModule,
       CommonModule,
-      NgxPaginationModule
+      NgxPaginationModule,
+      loaderModule
     ],
-  declarations: [ vendorsListComponent, LoaderComponent ]
+  declarations: [ vendorsListComponent]
 })
 export class vendorsListModule { }

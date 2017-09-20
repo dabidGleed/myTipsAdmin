@@ -4,6 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Overlay } from 'ngx-modialog';
 import { Modal, BSModalContext } from 'ngx-modialog/plugins/bootstrap';
 import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
+import { LoaderComponent } from '../loader/loader.component';
+
 
 @Component({
   templateUrl: 'tipsLists.component.html'
@@ -15,6 +17,9 @@ export class tipsListComponent {
   searchText:any = ' ';
   Categories:any = [];
   categoryIdVal:any = "all";
+  showSpinner: boolean = true;
+  showPage: boolean = false;
+
   constructor(public tipsService: TipsService, public router: Router, private zone: NgZone, overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal,private route: ActivatedRoute) {
     
     this.curPage = route.params['_value']['page'];
@@ -34,6 +39,8 @@ export class tipsListComponent {
     this.tipsService.load(b[0].id)
       .then(data => {
         this.tips = data;
+        this.showSpinner = false;
+        this.showPage = true;
       });      
   }
 

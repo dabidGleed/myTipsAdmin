@@ -24,7 +24,8 @@
                         </div>
                     </div>
                 </div>
-        <div class="card">
+                <my-loader *ngIf="showSpinner"></my-loader>
+        <div class="card" *ngIf="showPage">
             <div class="card-header">
                 <i class="fa fa-align-justify"></i> List of Deleted Tips
             </div>
