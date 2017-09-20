@@ -17,16 +17,17 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let Category of Categories">
-                            <td><img width="50" [src]="Category.imageURL"></td>
-                            <td><span class="categoryTitle">{{Category.name}}</span></td>
-                            <td>{{Category.count}}</td>
-                            <td>
+
+                            <td data-th="Image"><img width="50" [src]="Category.imageURL"></td>
+                            <td data-th="Title"><span class="categoryTitle">{{Category.name}}</span></td>
+                            <td data-th="No of items">{{Category.count}}</td>
+                            <td data-th="Actions">
                                 <button class="btn btn-success btn-sm point" type="button" [routerLink]="['/CategoryEdit',Category.id]">Edit</button>
                                 <button class="btn btn-danger btn-sm point" type="button" (click)="DelCategory(Category)">Delete</button>
-                                <!--<template [ngIf]="Category.status === 'UNPUBLISH'">
+                                <!--<template *ngIf="Category.status === 'UNPUBLISH'">
                     <button  class="btn btn-primary btn-sm" type="button" (click)="makePublish(tip)">make Publish</button>
                   </template>-->
-                                <template [ngIf]="Category.status === 'ACTIVE'">
+                                <template *ngIf="Category.status === 'ACTIVE'">
                     <button  class="btn btn-info btn-sm" type="button">Active</button>
                   </template>
                             </td>

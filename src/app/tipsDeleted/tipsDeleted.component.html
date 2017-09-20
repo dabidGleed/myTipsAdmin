@@ -48,15 +48,8 @@
                             <td data-th="Gender Specific">{{tip.genderSpecific}}</td>
                              <td data-th="Actions">{{categoryName(tip.category)}}</td> 
                             <td>
-                                <!--<button class="btn btn-success btn-sm" type="button" [routerLink]="['/TipsEdit',tip.id]">Edit</button>-->
-                                <button class="btn btn-danger btn-sm point" type="button" (click)="DelTip(tip)">Trash</button>
-                                <!--<template [ngIf]="tip.status === 'UNPUBLISH'">-->
-                                <!--<button  class="btn btn-primary btn-sm" type="button" (click)="makePublish(tip)">make Publish</button>-->
-                                <!--</template>-->
-                                <!--<template [ngIf]="tip.status === 'ACTIVE'">
-                    <button  class="btn btn-info btn-sm" type="button">Active</button>
-                  </template>-->
 
+                                <button class="btn btn-danger btn-sm point" type="button" (click)="DelTip(tip)">Trash</button>
                             </td>
                         </tr>
                     </tbody>

@@ -1,8 +1,8 @@
 import { Component, ViewContainerRef } from '@angular/core';
 import {TipsService} from '../providers/tipsProvider/tipsProvider';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Overlay } from 'angular2-modal';
-import { Modal, BSModalContext } from 'angular2-modal/plugins/bootstrap';
+import { Overlay } from 'ngx-modialog';
+import { Modal, BSModalContext } from 'ngx-modialog/plugins/bootstrap';
 
 @Component({
   templateUrl: 'tipsDeleted.component.html'
