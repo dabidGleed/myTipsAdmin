@@ -9,6 +9,7 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/map';
 
 
+
 @Component({
   templateUrl: 'tipsAdd.component.html',
   providers: [Modal]
@@ -39,6 +40,7 @@ export class tipsAddComponent {
     removeDialogTabs:'image:advanced;link:advanced'
   };
 
+
   constructor(private AllTipsService: TipsService,overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal){
     this.loadCategories();
     this.ckeditorContent = '<p>My HTML</p>';
@@ -51,6 +53,7 @@ export class tipsAddComponent {
         .then(
             data => {
               this.categories = data
+
             }, //Bind to view
             err => {
               // Log errors if any

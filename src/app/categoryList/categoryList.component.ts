@@ -3,6 +3,8 @@ import {TipsService} from '../providers/tipsProvider/tipsProvider';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Overlay } from 'ngx-modialog';
 import { Modal, BSModalContext } from 'ngx-modialog/plugins/bootstrap';
+import { LoaderComponent } from '../loader/loader.component';
+
 
 
 @Component({
@@ -13,15 +15,19 @@ export class categoryListComponent {
   public tips;
   itemsPPage = 10;
   curPage = '1';
+  showSpinner: boolean = true;
+  showPage: boolean = false;
+
   constructor(public tipsService: TipsService, public modal: Modal) {
     this.loadCategories();
   }
 
   loadCategories() {
     this.tipsService.getCategories()
-      .then(data => {
-      
+      .then(data => {     
         this.Categories = data;
+        this.showSpinner = false;
+        this.showPage = true;
       });
   }
     DelCategory(category) {

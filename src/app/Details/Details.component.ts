@@ -1,16 +1,28 @@
-import { Component, ViewContainerRef } from '@angular/core';
+import { Component, ViewContainerRef, ViewChild } from '@angular/core';
 import { Overlay } from 'ngx-modialog';
 import { Modal, BSModalContext } from 'ngx-modialog/plugins/bootstrap';
 import { TipsService } from '../providers/tipsProvider/tipsProvider';
 import { FormGroup, FormControl, Validators, FormBuilder,NgForm }  from '@angular/forms';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { AuthService } from '../providers/tipsProvider/authProvider';
+import {ImageCropperComponent, CropperSettings, Bounds} from 'ng2-img-cropper';
+
 
 @Component({
   templateUrl: 'Details.component.html',
   providers: [Modal]
 })
 export class DetailsComponent {
+
+  name:string;
+  data1:any;
+  cropperSettings1:CropperSettings;
+  croppedWidth:number;
+  croppedHeight:number;
+  
+  @ViewChild('cropper', undefined) cropper:ImageCropperComponent;
+  
+
   private categories;
   show = false;
   private tip = {name:'', imageURL:''};
@@ -21,6 +33,8 @@ export class DetailsComponent {
   };
   showLoading = false;
   public showMe = false;
+  abc = false;
+  cba = true;
   constructor(private AllTipsService: TipsService,overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal,private Auth: AuthService){
    
     var a = localStorage.getItem('userData');
@@ -47,10 +61,52 @@ export class DetailsComponent {
     //   mobilenumber:'',
     //   pincode:''
     // };
+    this.name = 'Angular2'
+    this.cropperSettings1 = new CropperSettings();
+    this.cropperSettings1.width = 200;
+    this.cropperSettings1.height = 200;
 
-    ;
+    this.cropperSettings1.croppedWidth = 200;
+    this.cropperSettings1.croppedHeight = 200;
+
+    this.cropperSettings1.canvasWidth = 250;
+    this.cropperSettings1.canvasHeight = 150;
+
+    this.cropperSettings1.minWidth = 10;
+    this.cropperSettings1.minHeight = 10;
+
+    this.cropperSettings1.rounded = false;
+    this.cropperSettings1.keepAspect = false;
+
+    this.cropperSettings1.cropperDrawSettings.strokeColor = 'rgba(255,255,255,1)';
+    this.cropperSettings1.cropperDrawSettings.strokeWidth = 2;
+
+    this.data1 = {};
   }
   // Local properties
+  cropped(bounds:Bounds) {
+    this.croppedHeight =bounds.bottom-bounds.top;
+    this.croppedWidth = bounds.right-bounds.left;
+  }
+
+  set() {
+    this.abc = true;
+    this.cba = false;
+  }
+  
+  fileChangeListener($event) {
+    var image:any = new Image();
+    var file:File = $event.target.files[0];
+    var myReader:FileReader = new FileReader();
+    var that = this;
+    myReader.onloadend = function (loadEvent:any) {
+        image.src = loadEvent.target.result;
+        that.cropper.setImage(image);
+
+    };
+    myReader.readAsDataURL(file);
+    }
+
 
   myfile:any;
   fileChange(fileInput: any) {

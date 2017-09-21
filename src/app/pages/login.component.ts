@@ -41,8 +41,8 @@ export class loginComponent {
             localStorage.setItem('userData', JSON.stringify(userInfo));
           } else {
             this.loginMessage('Invalid Login Credentials');
-            // this.showSpinner = false;
-            // this.showPage = true;
+            this.showSpinner = false;
+            this.showPage = true;
           }
 
         });
