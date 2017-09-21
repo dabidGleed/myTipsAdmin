@@ -1,6 +1,6 @@
 import { Component, ViewContainerRef } from '@angular/core';
-import { Overlay } from 'angular2-modal';
-import { Modal, BSModalContext } from 'angular2-modal/plugins/bootstrap';
+import { Overlay } from 'ngx-modialog';
+import { Modal, BSModalContext } from 'ngx-modialog/plugins/bootstrap';
 import { TipsService } from '../providers/tipsProvider/tipsProvider';
 import { FormGroup, FormControl, Validators, FormBuilder,NgForm }  from '@angular/forms';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
@@ -51,7 +51,9 @@ export class DetailsComponent {
     //   mobilenumber:'',
     //   pincode:''
     // };
-    overlay.defaultViewContainer = vcRef;
+
+    // overlay.defaultViewContainer = vcRef;
+
   }
   // Local properties
 

@@ -1,9 +1,13 @@
 import { Component, ViewContainerRef } from '@angular/core';
-import { Overlay } from 'angular2-modal';
-import { Modal, BSModalContext } from 'angular2-modal/plugins/bootstrap';
+import { Overlay } from 'ngx-modialog';
+import { Modal, BSModalContext } from 'ngx-modialog/plugins/bootstrap';
 import { TipsService } from '../providers/tipsProvider/tipsProvider';
 import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+//import { TagInputModule } from 'ng2-tag-input';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/map';
+
 
 @Component({
   templateUrl: 'tipsAdd.component.html',
@@ -37,7 +41,6 @@ export class tipsAddComponent {
 
   constructor(private AllTipsService: TipsService,overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal){
     this.loadCategories();
-    overlay.defaultViewContainer = vcRef;
     this.ckeditorContent = '<p>My HTML</p>';
   }
   // Local properties

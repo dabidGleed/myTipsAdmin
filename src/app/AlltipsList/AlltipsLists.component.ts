@@ -1,8 +1,8 @@
 import { Component, ViewContainerRef } from '@angular/core';
 import {TipsService} from '../providers/tipsProvider/tipsProvider';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Overlay } from 'angular2-modal';
-import { Modal, BSModalContext } from 'angular2-modal/plugins/bootstrap';
+import { Overlay } from 'ngx-modialog';
+import { Modal, BSModalContext } from 'ngx-modialog/plugins/bootstrap';
 import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
 
 @Component({
@@ -16,10 +16,12 @@ export class AlltipsListComponent {
   Categories:any = [];
   categoryIdVal:any = "all";
   searchText = '';
-  // public abc;
-  vendors;
-  constructor(public tipsService: TipsService, public router: Router, overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal,private route: ActivatedRoute) {
-    overlay.defaultViewContainer = vcRef;
+  vendors:any ="";
+
+  public abc;
+ 
+  constructor(public tipsService: TipsService, public router: Router, public modal: Modal, private route: ActivatedRoute) {
+
     this.curPage = route.params['_value']['page'];
     this.searchText = route.params['_value']['search'];
     this.loadVendors();

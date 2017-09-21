@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
-import { Overlay } from 'angular2-modal';
+import { Overlay } from 'ngx-modialog';
 import {Router, NavigationExtras} from '@angular/router';
 import { AuthService } from '../providers/tipsProvider/authProvider';
 @Component({
@@ -37,7 +37,6 @@ export class FullLayoutComponent implements OnInit {
        }
      }
    )
-   overlay.defaultViewContainer = vcRef;
    
   }
 
