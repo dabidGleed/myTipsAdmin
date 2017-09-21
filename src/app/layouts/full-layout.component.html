@@ -13,12 +13,11 @@
 
         <li class="nav-item dropdown" dropdown (onToggle)="toggled($event)">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="javascript:void()" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle>
-                <img src="assets/img/avatars/avatar.png" class="img-avatar" alt="admin@bootstrapmaster.com">
+                <img src="{{user.userDetails ? user.userDetails.image : 'assets/img/avatars/profile.png'}}" class="img-avatar" alt="user">
                 <span class="hidden-md-down">{{userData.firstName}}</span>
             </a>
 
             <div class="dropdown-menu dropdown-menu-right" dropdownMenu aria-labelledby="simple-dropdown">
-
                 <div class="dropdown-header text-center"><strong>Settings</strong></div>
                 <a class="dropdown-item" routerLinkActive="active" [routerLink]="[ '/Details']"><i class="fa fa-user"></i>Edit Profile</a>
                 <a class="dropdown-item" routerLinkActive="active " [routerLink]="[ '/changePassword'] "><i class="fa fa-shield "></i>Change Password</a>

@@ -8,9 +8,11 @@ import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
 // import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
 import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 import { CKEditorModule,CKEditorComponent  } from 'ng2-ckeditor';
+
+
 import { DatePickerModule } from 'ng2-datepicker';
 // import { ReactiveFormsModule } from '@angular/forms';
-import {ImageCropperComponent, CropperSettings, Bounds} from 'ng2-img-cropper';
+
 
 import { AppComponent } from './app.component';
 import { DropdownModule } from 'ng2-bootstrap/dropdown';
@@ -47,6 +49,7 @@ import { globalService } from './providers/tipsProvider/globalService';
     TabsModule.forRoot(),
     ChartsModule,
     CKEditorModule,
+    // ImageCropperModule,
     // FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),
     NgxPaginationModule,
     DatePickerModule,
@@ -60,7 +63,6 @@ import { globalService } from './providers/tipsProvider/globalService';
     BreadcrumbsComponent,
     SIDEBAR_TOGGLE_DIRECTIVES,
     AsideToggleDirective,
-    ImageCropperComponent,
     //tipsListComponent
     AsideToggleDirective,
   ],

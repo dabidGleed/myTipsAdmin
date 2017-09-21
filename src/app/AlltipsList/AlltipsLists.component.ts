@@ -16,20 +16,31 @@ export class AlltipsListComponent {
   Categories:any = [];
   categoryIdVal:any = "all";
   searchText = '';
-  public abc;
- 
+  // public abc;
+  vendors;
   constructor(public tipsService: TipsService, public router: Router, overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal,private route: ActivatedRoute) {
     overlay.defaultViewContainer = vcRef;
     this.curPage = route.params['_value']['page'];
     this.searchText = route.params['_value']['search'];
-    this.loadCategories();
-    var a = localStorage.getItem('userData');
-     this.abc = JSON.parse(a);
-
-  
-    // this.changePage(this.curPage);
+    this.loadVendors();
    
+
+    // var a = localStorage.getItem('userData');
+    // this.abc = JSON.parse(a);
+    // this.changePage(this.curPage);
   }
+
+
+  loadVendors() {
+    this.tipsService.getVendorList()
+      .then(data => {
+        this.vendors = data;
+        this.loadCategories();
+      });
+       
+  }
+
+
   clearSearch(){
     this.searchText = '';
     this.router.navigate(['/AllTips/'+this.curPage+'/ ']);
@@ -88,6 +99,14 @@ export class AlltipsListComponent {
     this.tipsService.allTips(b[0].id)
       .then(data => {
         this.tips = data;
+
+        this.tips.foreach(tip =>{
+          this.vendors.foreach(vendor => {
+            if(tip.userId == vendor.id){
+              tip['vendorName'] = vendor.firstName;
+            }
+          })
+        })
       });
   }
   removeTip(tip) {

@@ -288,8 +288,6 @@ export class TipsService {
           resolve(this.data);
         });
     });
-
   }
-  
 }
 
