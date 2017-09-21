@@ -4,9 +4,10 @@ import { Modal, BSModalContext } from 'ngx-modialog/plugins/bootstrap';
 import { TipsService } from '../providers/tipsProvider/tipsProvider';
 import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
-import { TagInputModule } from 'ng2-tag-input';
+//import { TagInputModule } from 'ng2-tag-input';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/map';
+
 
 
 @Component({
@@ -39,6 +40,7 @@ export class tipsAddComponent {
     removeDialogTabs:'image:advanced;link:advanced'
   };
 
+
   constructor(private AllTipsService: TipsService,overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal){
     this.loadCategories();
     this.ckeditorContent = '<p>My HTML</p>';
@@ -51,6 +53,7 @@ export class tipsAddComponent {
         .then(
             data => {
               this.categories = data
+
             }, //Bind to view
             err => {
               // Log errors if any

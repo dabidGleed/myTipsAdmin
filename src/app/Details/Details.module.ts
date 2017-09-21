@@ -4,6 +4,9 @@ import {DetailsComponent} from './Details.component';
 import {DetailsRoutingModule} from './Details-routing.module';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ImageCropperComponent} from 'ng2-img-cropper';
+
+
 // import {FroalaEditorModule, FroalaViewModule} from 'angular2-froala-wysiwyg';
 
 
@@ -12,9 +15,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     DetailsRoutingModule,
     CommonModule,
     FormsModule,
+    
     // FroalaEditorModule.forRoot(), FroalaViewModule.forRoot()
   ],
-  declarations: [DetailsComponent]
+  declarations: [DetailsComponent, ImageCropperComponent]
 })
 export class DetailsModule {
 }

@@ -4,6 +4,8 @@ import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
 import { tipsDeletedComponent } from './tipsDeleted.component';
 import { TipsDeletedRoutingModule } from './tipsDeleted-routing.module';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { loaderModule } from '../loader/loader.module';
+
 
 
 
@@ -12,7 +14,8 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
       TipsDeletedRoutingModule,
       CommonModule,
       NgxPaginationModule,
-      FormsModule
+      FormsModule,
+      loaderModule
     ],
   declarations: [ tipsDeletedComponent ]
 })

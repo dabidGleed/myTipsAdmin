@@ -3,6 +3,8 @@ import {TipsService} from '../providers/tipsProvider/tipsProvider';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Overlay } from 'ngx-modialog';
 import { Modal, BSModalContext } from 'ngx-modialog/plugins/bootstrap';
+import { LoaderComponent } from '../loader/loader.component';
+
 
 @Component({
   templateUrl: 'tipsDeleted.component.html'
@@ -15,6 +17,9 @@ export class tipsDeletedComponent {
   curPage = '1';
   searchText = '';
   categoryIdVal:any = "all";
+  showSpinner: boolean = true;
+  showPage: boolean = false;
+
   constructor(public tipsService: TipsService, public router: Router, overlay: Overlay, vcRef: ViewContainerRef, public modal: Modal) {
     this.loadCategories();
    // this.getDelTips();
@@ -62,6 +67,8 @@ export class tipsDeletedComponent {
     this.tipsService.getdeletedTip(b[0].id)
       .then(data => {
         this.tips = data;
+        this.showSpinner = false;
+        this.showPage = true;
       });
   }
 
