@@ -4,6 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Overlay } from 'ngx-modialog';
 import { Modal, BSModalContext } from 'ngx-modialog/plugins/bootstrap';
 import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
+import { LoaderComponent } from '../loader/loader.component';
+
 
 @Component({
   templateUrl: 'AlltipsLists.component.html'
@@ -19,13 +21,19 @@ export class AlltipsListComponent {
   vendors:any ="";
 
   public abc;
+  showSpinner: boolean = true;
+  showPage: boolean = false;
  
   constructor(public tipsService: TipsService, public router: Router, public modal: Modal, private route: ActivatedRoute) {
 
     this.curPage = route.params['_value']['page'];
     this.searchText = route.params['_value']['search'];
-    this.loadVendors();
-   
+
+    this.loadCategories();
+    this.loadTips();
+    var a = localStorage.getItem('userData');
+     this.abc = JSON.parse(a);
+
 
     // var a = localStorage.getItem('userData');
     // this.abc = JSON.parse(a);
@@ -91,10 +99,9 @@ export class AlltipsListComponent {
     }
       });
     }
-  loadTips() {
-     var a = localStorage.getItem('userData');
+  loadTips() {   
+    var a = localStorage.getItem('userData');
     a = JSON.parse(a);
-    console.log(a)
     var b =[];
     b.push(a);
     console.log(b[0].id + 'LOAD');
@@ -102,13 +109,9 @@ export class AlltipsListComponent {
       .then(data => {
         this.tips = data;
 
-        this.tips.foreach(tip =>{
-          this.vendors.foreach(vendor => {
-            if(tip.userId == vendor.id){
-              tip['vendorName'] = vendor.firstName;
-            }
-          })
-        })
+        this.showSpinner = false;
+        this.showPage = true;
+
       });
   }
   removeTip(tip) {

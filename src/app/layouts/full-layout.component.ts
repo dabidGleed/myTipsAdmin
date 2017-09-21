@@ -23,6 +23,18 @@ export class FullLayoutComponent implements OnInit {
   public user: any = {
     userDetails:{}
   }
+
+  getUsername(){
+    var sample:any = "";
+    var a:any = JSON.parse(localStorage.getItem('userData'));
+    console.log("Changes in code");
+    if(a){
+      sample = a.firstname;
+    } else {
+      sample = "undefined"
+    }
+    return sample;
+  }
   constructor(public router: Router,private Auth: AuthService,overlay: Overlay, vcRef: ViewContainerRef,){
    var a = localStorage.getItem('userData');
    a = JSON.parse(a);

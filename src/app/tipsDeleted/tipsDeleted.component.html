@@ -22,43 +22,44 @@
 
 
                 </div>
+
+                <my-loader *ngIf="showSpinner"></my-loader>
+                <div class="card" *ngIf="showPage">
+
+                    <div class="card-header">
+                        <i class="fa fa-align-justify"></i> List of Deleted Tips
+                    </div>
+                    <div class="card-block">
+                        <table class="rwd-table table table-bordered table-striped table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>S.no</th>
+                                    <th>Post Image</th>
+                                    <th>Title</th>
+                                    <th>Gender Specific</th>
+                                    <th>Category</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let tip of tips | paginate: { itemsPerPage: itemsPPage, currentPage: curPage };let i = index" [attr.data-index]="i">
+                                    <td data-th="S.no">{{pagination(i,curPage)}}</td>
+                                    <td data-th="Post Image"><img width="50" [src]="tip.images"></td>
+                                    <td data-th="Title"><span class="tipTitle">{{tip.title}}</span></td>
+                                    <td data-th="Gender Specific">{{tip.genderSpecific}}</td>
+                                    <td data-th="Actions">{{categoryName(tip.category)}}</td>
+                                    <td>
+
+                                        <button class="btn btn-danger btn-sm point" type="button" (click)="DelTip(tip)">Trash</button>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <pagination-controls (pageChange)="curPage = $event" autoHide="true" previousLabel="" nextLabel=""></pagination-controls>
+                    </div>
+                </div>
             </div>
+            <!--/.col-->
         </div>
-        <div class="card">
-            <div class="card-header">
-                <i class="fa fa-align-justify"></i> List of Deleted Tips
-            </div>
-            <div class="card-block">
-                <table class="rwd-table table table-bordered table-striped table-condensed">
-                    <thead>
-                        <tr>
-                            <th>S.no</th>
-                            <th>Post Image</th>
-                            <th>Title</th>
-                            <th>Gender Specific</th>
-                            <th>Category</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let tip of tips | paginate: { itemsPerPage: itemsPPage, currentPage: curPage };let i = index" [attr.data-index]="i">
-                            <td data-th="S.no">{{pagination(i,curPage)}}</td>
-                            <td data-th="Post Image"><img width="50" [src]="tip.images"></td>
-                            <td data-th="Title"><span class="tipTitle">{{tip.title}}</span></td>
-                            <td data-th="Gender Specific">{{tip.genderSpecific}}</td>
-                            <td data-th="Actions">{{categoryName(tip.category)}}</td>
-                            <td>
-
-                                <button class="btn btn-danger btn-sm point" type="button" (click)="DelTip(tip)">Trash</button>
-
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <pagination-controls (pageChange)="curPage = $event" autoHide="true" previousLabel="" nextLabel=""></pagination-controls>
-            </div>
-        </div>
-    </div>
-    <!--/.col-->
-</div>
