@@ -18,6 +18,8 @@ export class AlltipsListComponent {
   Categories:any = [];
   categoryIdVal:any = "all";
   searchText = '';
+  vendors:any ="";
+
   public abc;
   showSpinner: boolean = true;
   showPage: boolean = false;
@@ -26,15 +28,29 @@ export class AlltipsListComponent {
 
     this.curPage = route.params['_value']['page'];
     this.searchText = route.params['_value']['search'];
+
     this.loadCategories();
     this.loadTips();
     var a = localStorage.getItem('userData');
      this.abc = JSON.parse(a);
 
-  
+
+    // var a = localStorage.getItem('userData');
+    // this.abc = JSON.parse(a);
     // this.changePage(this.curPage);
-   
   }
+
+
+  loadVendors() {
+    this.tipsService.getVendorList()
+      .then(data => {
+        this.vendors = data;
+        this.loadCategories();
+      });
+       
+  }
+
+
   clearSearch(){
     this.searchText = '';
     this.router.navigate(['/AllTips/'+this.curPage+'/ ']);
@@ -92,8 +108,10 @@ export class AlltipsListComponent {
     this.tipsService.allTips(b[0].id)
       .then(data => {
         this.tips = data;
+
         this.showSpinner = false;
         this.showPage = true;
+
       });
   }
   removeTip(tip) {

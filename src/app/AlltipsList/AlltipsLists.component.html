@@ -49,7 +49,7 @@
 
                         <tr *ngFor="let tip of tips  | paginate: { itemsPerPage: itemsPPage, currentPage: curPage };let i = index" [attr.data-index]="i">
                             <td data-th="Index">{{pagination(i,curPage)}}</td>
-                            <td data-th="Vendor Name">{{abc.firstName}} {{abc.lastName}}</td>
+                            <td data-th="Vendor Name">{{tip.vendorName}}</td>
                             <td data-th="Post Image"><img width="50" [src]="tip.images"></td>
                             <td data-th="Title"><span class="tipTitle">{{tip.title}}</span></td>
                             <td class="gender" data-th="Gender">{{tip.genderSpecific}}</td>

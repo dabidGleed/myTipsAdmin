@@ -10,26 +10,20 @@
                     <div class="loadingBar" *ngIf="showLoading">
                     </div>
                     <div class="row">
-                        <div class="col-md-2 ">
-                            <!-- <div class="profileImgBlock">
+                        <div class="col-md-2 imageBlockNew">
+                            <my-loader *ngIf="showSpinner"></my-loader>
+                            <div class="profileImgBlock">
                                 <img src="{{user.userDetails.image ? user.userDetails.image : 'assets/img/avatars/profile.png'}}" class="img-avatar profilePic" alt="profile">
                                 <div class="profileEdit">
                                     <div class="editBox">
-                                        <input type="file" id="file-input" class="editIcon" name="file-input" (change)="fileChange($event)" placeholder="Upload file">
+                                        <button type="button" class="editIcon" (click)="modal.open()">Open me!</button>
+                                        <!--<input type="file" id="file-input" class="editIcon" name="file-input" (change)="fileChange($event)" placeholder="Upload file">-->
                                         <i class="fa fa-pencil icon" aria-hidden="true"></i>
                                     </div>
                                 </div>
-                            </div> -->
-                    <!-- <div class="profileImgBlock">                            
-                        <img src="data1.image" class="img-avatar profilePic" alt="profile">
-                            <div class="profileEdit">
-                                <div class="editBox">
-                                    <input type="file" id="file-input" class="editIcon" name="file-input" [image]="data1" [settings]="cropperSettings1" (onCrop)="cropped($event)" placeholder="Upload file">
-                                    <i class="fa fa-pencil icon" aria-hidden="true"></i>
-                                </div>
                             </div>
-                     </div> -->
-                            <div>                             
+
+                            <!--<div>                             
                                 <div *ngIf="cba">  
                                  <img-cropper [image]="data1" [settings]="cropperSettings1" (onCrop)="cropped($event)" class="img-avatar profilePic"></img-cropper>
                                 
@@ -40,9 +34,12 @@
                                         [width]="croppedWidth" 
                                         [height]="croppedHeight" class="img-avatar profilePic" alt="profile">
                                     </span>                                                       
-                            </div> 
-                       
+                            </div> -->
+
                         </div>
+
+
+
                         <div class="col-md-10">
                             <div class="form-group row">
                                 <label class="col-md-2 form-control-label">First Name</label>
@@ -152,8 +149,33 @@
                     <!-- <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button> -->
                 </div>
             </form>
+
             <!--{{tip | json}}-->
         </div>
     </div>
     <!--/.col-->
 </div>
+
+
+
+
+<modal #modal>
+    <modal-header [show-close]="true">
+        <h4 class="modal-title">Upload Profile Pic</h4>
+    </modal-header>
+    <modal-body>
+        <div>
+            <div>
+                <img-cropper [image]="data1" [settings]="cropperSettings1" (onCrop)="cropped($event)"></img-cropper>
+                <br>
+                <span class="result" *ngIf="data1.image">
+                    <img class="img-avatar" [src]="data1.image" width="120" height="120">
+                </span>
+                <br>
+                <button *ngIf="data1.image" (click)="uploadImageFile(data1.image); modal.close()">Upload Image</button>
+            </div>
+
+        </div>
+    </modal-body>
+
+</modal>
