@@ -1,64 +1,65 @@
 <div class="row">
     <div class="col-md-12 col-sm-12">
-            <div class="card">
-                    <div class="card-header">
-                        <i class="fa fa-align-justify"></i> Search
-                    </div>
-                    <div class="card-block">
-                        <div class="row">
-                            <div class="form-group col-md-2">
-                                <select class="form-control">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-align-justify"></i> Search
+            </div>
+            <div class="card-block">
+                <div class="row">
+                    <div class="form-group col-md-2">
+                        <select class="form-control">
                                     <option value="all">All Categories</option>
                                     <!-- <option *ngFor="let category of Categories">{{category.name}}</option> -->
                                 </select>
-                            </div>
-                            <div class="form-group col-md-7">
-                                <input type="text" class="form-control" [(ngModel)]="searchText" id="searchText" placeholder="Search">
-                            </div>
-                            <div class="form-group col-md-3">
-                                <button (click)="searchTips(searchText)" type="button" class="btn btn-default point">Search</button>
-                                <button (click)="clearSearch()" type="button" class="btn btn-default point">Clear</button>
-                            </div>
-        
-        
-                        </div>
+                    </div>
+                    <div class="form-group col-md-7">
+                        <input type="text" class="form-control" [(ngModel)]="searchText" id="searchText" placeholder="Search">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <button (click)="searchTips(searchText)" type="button" class="btn btn-default point">Search</button>
+                        <button (click)="clearSearch()" type="button" class="btn btn-default point">Clear</button>
+                    </div>
+
+
+                </div>
+
+                <my-loader *ngIf="showSpinner"></my-loader>
+                <div class="card" *ngIf="showPage">
+
+                    <div class="card-header">
+                        <i class="fa fa-align-justify"></i> List of Deleted Tips
+                    </div>
+                    <div class="card-block">
+                        <table class="rwd-table table table-bordered table-striped table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>S.no</th>
+                                    <th>Post Image</th>
+                                    <th>Title</th>
+                                    <th>Gender Specific</th>
+                                    <th>Category</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let tip of tips | paginate: { itemsPerPage: itemsPPage, currentPage: curPage };let i = index" [attr.data-index]="i">
+                                    <td data-th="S.no">{{pagination(i,curPage)}}</td>
+                                    <td data-th="Post Image"><img width="50" [src]="tip.images"></td>
+                                    <td data-th="Title"><span class="tipTitle">{{tip.title}}</span></td>
+                                    <td data-th="Gender Specific">{{tip.genderSpecific}}</td>
+                                    <td data-th="Actions">{{categoryName(tip.category)}}</td>
+                                    <td>
+
+                                        <button class="btn btn-danger btn-sm point" type="button" (click)="DelTip(tip)">Trash</button>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <pagination-controls (pageChange)="curPage = $event" autoHide="true" previousLabel="" nextLabel=""></pagination-controls>
                     </div>
                 </div>
-                <my-loader *ngIf="showSpinner"></my-loader>
-        <div class="card" *ngIf="showPage">
-            <div class="card-header">
-                <i class="fa fa-align-justify"></i> List of Deleted Tips
             </div>
-            <div class="card-block">
-                <table class="rwd-table table table-bordered table-striped table-condensed">
-                    <thead>
-                        <tr>
-                            <th>S.no</th>
-                            <th>Post Image</th>
-                            <th>Title</th>
-                            <th>Gender Specific</th>
-                            <th>Category</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let tip of tips | paginate: { itemsPerPage: itemsPPage, currentPage: curPage };let i = index" [attr.data-index]="i">
-                            <td data-th="S.no">{{pagination(i,curPage)}}</td>
-                            <td data-th="Post Image"><img width="50" [src]="tip.images"></td>
-                            <td data-th="Title"><span class="tipTitle">{{tip.title}}</span></td>
-                            <td data-th="Gender Specific">{{tip.genderSpecific}}</td>
-                             <td data-th="Actions">{{categoryName(tip.category)}}</td> 
-                            <td>
-
-                                <button class="btn btn-danger btn-sm point" type="button" (click)="DelTip(tip)">Trash</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <pagination-controls (pageChange)="curPage = $event" autoHide="true" previousLabel="" nextLabel=""></pagination-controls>
-            </div>
+            <!--/.col-->
         </div>
-    </div>
-    <!--/.col-->
-</div>

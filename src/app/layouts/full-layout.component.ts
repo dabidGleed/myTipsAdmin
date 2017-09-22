@@ -20,8 +20,20 @@ export class FullLayoutComponent implements OnInit {
     $event.stopPropagation();
     this.status.isopen = !this.status.isopen;
   }
-  private user: any = {
+  public user: any = {
     userDetails:{}
+  }
+
+  getUsername(){
+    var sample:any = "";
+    var a:any = JSON.parse(localStorage.getItem('userData'));
+    console.log("Changes in code");
+    if(a){
+      sample = a.firstname;
+    } else {
+      sample = "undefined"
+    }
+    return sample;
   }
   constructor(public router: Router,private Auth: AuthService,overlay: Overlay, vcRef: ViewContainerRef,){
    var a = localStorage.getItem('userData');
