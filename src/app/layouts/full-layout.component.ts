@@ -27,9 +27,21 @@ export class FullLayoutComponent implements OnInit {
   getUsername(){
     var sample:any = "";
     var a:any = JSON.parse(localStorage.getItem('userData'));
-    console.log("Changes in code");
+    console.log("Changes in code"+ a.firstName);
     if(a){
-      sample = a.firstname;
+      sample = a.firstName;
+    } else {
+      sample = "undefined"
+    }
+    return sample;
+  }
+
+  getImage(){
+    var sample:any = "";
+    var a:any = JSON.parse(localStorage.getItem('userImage'));
+    console.log("Changes in code"+ a.firstName);
+    if(a){
+      sample = a;
     } else {
       sample = "undefined"
     }
@@ -46,7 +58,9 @@ export class FullLayoutComponent implements OnInit {
        this.user = data[0];
        if(!this.user.userDetails){
         this.user.userDetails = {};
+        
        }
+       localStorage.setItem('userImage', JSON.stringify(this.user.userDetails.image));
      }
    )
    
