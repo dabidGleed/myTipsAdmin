@@ -204,6 +204,41 @@ export class TipsService {
 
   }
 
+  vendorTips() {
+    return new Promise(resolve => { 
+      this.http.get('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/tips/vendorTips')
+        .map(res => res.json())
+        .subscribe(data => {
+           resolve(data);
+        });
+    });
+
+  }
+
+  searchVendorsTipsAll(searchVal, categoryIdVal){   
+    console.log(searchVal)   
+    if(categoryIdVal == 'all'){
+      return new Promise(resolve => {
+        this.http.get('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/tips/vendorTips?str='+searchVal)
+          .map(res => res.json())
+          .subscribe(data => {
+            this.data = data;
+            resolve(this.data);            
+          });
+      });
+    } else if(categoryIdVal != 'all'){
+       return new Promise(resolve => {
+        this.http.get('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/tips/vendorTips?str='+searchVal+'&categoryId='+categoryIdVal)
+          .map(res => res.json())
+          .subscribe(data => {
+            this.data = data;
+            resolve(this.data);
+          });
+      });
+    }
+
+  }
+
  searchTips(searchVal, categoryIdVal, userId){
     if(categoryIdVal == 'all'){
       return new Promise(resolve => {
