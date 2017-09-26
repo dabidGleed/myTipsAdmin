@@ -107,7 +107,7 @@ export class TipsService {
         });
     });
   }
-  fileUpload(file) {
+  fileUploadBase64(file) {
     console.log(file);
     // let headers = new Headers();
     // let formData: FormData = new FormData();
@@ -122,6 +122,30 @@ export class TipsService {
       // this.http.post('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/file/uploads3', formData, {
         // headers: headers
       // })
+        .map(res => res.json())
+        .subscribe(data => {
+          // console.log(data)
+          this.data = data;
+          resolve(this.data);
+        })
+    });
+  }
+
+   fileUpload(file) {
+    console.log(file);
+    let headers = new Headers();
+    let formData: FormData = new FormData();
+    formData.append('content', file);
+
+    var data:any = {
+      imgbase64:file
+    }
+
+    return new Promise(resolve => {
+      // this.http.post('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/file/base64/upload', data)
+      this.http.post('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/file/uploads3', formData, {
+        headers: headers
+      })
         .map(res => res.json())
         .subscribe(data => {
           // console.log(data)

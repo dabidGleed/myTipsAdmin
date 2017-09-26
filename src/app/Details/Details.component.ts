@@ -127,7 +127,7 @@ export class DetailsComponent {
    public uploadImageFile(fileVal){
       // this.modalBig.close();
       this.showSpinner = true;
-      this.AllTipsService.fileUpload(fileVal)
+      this.AllTipsService.fileUploadBase64(fileVal)
       .then(data => {     
         this.myfile = data;
         this.tip.imageURL = '';
