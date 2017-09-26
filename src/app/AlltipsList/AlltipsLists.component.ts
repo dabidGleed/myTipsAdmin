@@ -66,7 +66,7 @@ export class AlltipsListComponent {
     b.push(a);
     let c =  b[0].id;
     if(searchTerm != ''){
-    this.tipsService.searchTipsAll(searchTerm, this.categoryIdVal)
+    this.tipsService.searchVendorsTipsAll(searchTerm, this.categoryIdVal)
       .then(
         data => {   
           let g:any = data;
@@ -105,13 +105,11 @@ export class AlltipsListComponent {
     var b =[];
     b.push(a);
     console.log(b[0].id + 'LOAD');
-    this.tipsService.allTips(b[0].id)
+    this.tipsService.vendorTips()
       .then(data => {
         this.tips = data;
-
         this.showSpinner = false;
         this.showPage = true;
-
       });
   }
   removeTip(tip) {
