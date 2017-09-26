@@ -160,7 +160,8 @@ export class DetailsComponent {
               "lastName": this.user.lastName,
               "tokenId": custom.tokenId,
               "role": this.user.role
-            }
+            };
+            
             localStorage.setItem('userData', JSON.stringify(userInfo));
             localStorage.setItem('userImage', JSON.stringify(this.user.userDetails.image));
            this.vendor("Successfully Updated");
