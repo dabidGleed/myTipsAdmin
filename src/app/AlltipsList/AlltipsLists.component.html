@@ -49,7 +49,7 @@
 
                         <tr *ngFor="let tip of tips  | paginate: { itemsPerPage: itemsPPage, currentPage: curPage };let i = index" [attr.data-index]="i">
                             <td data-th="Index">{{pagination(i,curPage)}}</td>
-                            <td data-th="Vendor Name">{{abc.firstName}} {{abc.lastName}}</td>
+                            <td data-th="Vendor Name">{{tip.firstName}}</td>
                             <td data-th="Post Image"><img width="50" [src]="tip.images"></td>
                             <td data-th="Title"><span class="tipTitle">{{tip.title}}</span></td>
                             <td class="gender" data-th="Gender">{{tip.genderSpecific}}</td>
@@ -59,12 +59,12 @@
                             <td data-th="Actions">
                                 <!-- <button class="btn btn-success btn-sm" type="button" [routerLink]="['/TipsEdit',tip.id]">Edit</button> -->
                                 <button class="btn btn-danger btn-sm point" type="button" (click)="removeTip(tip)">Delete</button>
-                                <template *ngIf="tip.status === 'UNPUBLISH' && hideRole('VENDOR')">
-                                    <button class="btn btn-primary btn-sm point" type="button" (click)="makePublish(tip)">make Publish</button>
-                                </template>
-                                <template *ngIf="tip.status === 'ACTIVE'">
-                                     <button class="btn btn-info btn-sm" type="button">Active</button>
-                                </template>
+                                
+                                    <button *ngIf="tip.status === 'UNPUBLISH' && hideRole('VENDOR')" class="btn btn-primary btn-sm point" type="button" (click)="makePublish(tip)">make Publish</button>
+                               
+                               
+                                     <button *ngIf="tip.status === 'ACTIVE'" class="btn btn-info btn-sm" type="button">Active</button>
+                               
 
                             </td>
                         </tr>

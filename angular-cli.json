@@ -24,7 +24,8 @@
             "../node_modules/chart.js/dist/Chart.min.js",
             "../node_modules/jquery/dist/jquery.min.js",
             "../node_modules/froala-editor/js/froala_editor.pkgd.min.js",
-            "../node_modules/froala-editor/js/plugins/image.min.js"
+            "../node_modules/froala-editor/js/plugins/image.min.js",
+            "../node_modules/ng2-bs3-modal/bundles/ng2-bs3-modal.js"
         ],
 
         "environmentSource": "environments/environment.ts",

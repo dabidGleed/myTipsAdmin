@@ -18,6 +18,8 @@ export class AlltipsListComponent {
   Categories:any = [];
   categoryIdVal:any = "all";
   searchText = '';
+  vendors:any ="";
+
   public abc;
   showSpinner: boolean = true;
   showPage: boolean = false;
@@ -26,15 +28,29 @@ export class AlltipsListComponent {
 
     this.curPage = route.params['_value']['page'];
     this.searchText = route.params['_value']['search'];
+
     this.loadCategories();
     this.loadTips();
     var a = localStorage.getItem('userData');
      this.abc = JSON.parse(a);
 
-  
+
+    // var a = localStorage.getItem('userData');
+    // this.abc = JSON.parse(a);
     // this.changePage(this.curPage);
-   
   }
+
+
+  loadVendors() {
+    this.tipsService.getVendorList()
+      .then(data => {
+        this.vendors = data;
+        this.loadCategories();
+      });
+       
+  }
+
+
   clearSearch(){
     this.searchText = '';
     this.router.navigate(['/AllTips/'+this.curPage+'/ ']);
@@ -50,7 +66,7 @@ export class AlltipsListComponent {
     b.push(a);
     let c =  b[0].id;
     if(searchTerm != ''){
-    this.tipsService.searchTipsAll(searchTerm, this.categoryIdVal)
+    this.tipsService.searchVendorsTipsAll(searchTerm, this.categoryIdVal)
       .then(
         data => {   
           let g:any = data;
@@ -89,7 +105,7 @@ export class AlltipsListComponent {
     var b =[];
     b.push(a);
     console.log(b[0].id + 'LOAD');
-    this.tipsService.allTips(b[0].id)
+    this.tipsService.vendorTips()
       .then(data => {
         this.tips = data;
         this.showSpinner = false;
