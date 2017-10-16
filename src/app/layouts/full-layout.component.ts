@@ -20,8 +20,32 @@ export class FullLayoutComponent implements OnInit {
     $event.stopPropagation();
     this.status.isopen = !this.status.isopen;
   }
-  private user: any = {
+  public user: any = {
     userDetails:{}
+  }
+
+  getUsername(){
+    var sample:any = "";
+    var a:any = JSON.parse(localStorage.getItem('userData'));
+   // console.log("Changes in code"+ a.firstName);
+    if(a){
+      sample = a.firstName;
+    } else {
+      sample = "undefined"
+    }
+    return sample;
+  }
+
+  getImage(){
+    var sample:any = "";
+    var a:any = JSON.parse(localStorage.getItem('userImage'));
+    //console.log("Changes in code"+ a.firstName);
+    if(a){
+      sample = a;
+    } else {
+      sample = "undefined"
+    }
+    return sample;
   }
   constructor(public router: Router,private Auth: AuthService,overlay: Overlay, vcRef: ViewContainerRef,){
    var a = localStorage.getItem('userData');
@@ -34,7 +58,9 @@ export class FullLayoutComponent implements OnInit {
        this.user = data[0];
        if(!this.user.userDetails){
         this.user.userDetails = {};
+        
        }
+       localStorage.setItem('userImage', JSON.stringify(this.user.userDetails.image));
      }
    )
    

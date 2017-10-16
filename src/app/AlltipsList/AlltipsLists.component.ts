@@ -4,6 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Overlay } from 'ngx-modialog';
 import { Modal, BSModalContext } from 'ngx-modialog/plugins/bootstrap';
 import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
+import { LoaderComponent } from '../loader/loader.component';
+
 
 @Component({
   templateUrl: 'AlltipsLists.component.html'
@@ -16,20 +18,39 @@ export class AlltipsListComponent {
   Categories:any = [];
   categoryIdVal:any = "all";
   searchText = '';
+  vendors:any ="";
+
   public abc;
+  showSpinner: boolean = true;
+  showPage: boolean = false;
  
   constructor(public tipsService: TipsService, public router: Router, public modal: Modal, private route: ActivatedRoute) {
 
     this.curPage = route.params['_value']['page'];
     this.searchText = route.params['_value']['search'];
+
     this.loadCategories();
+    this.loadTips();
     var a = localStorage.getItem('userData');
      this.abc = JSON.parse(a);
 
-  
+
+    // var a = localStorage.getItem('userData');
+    // this.abc = JSON.parse(a);
     // this.changePage(this.curPage);
-   
   }
+
+
+  loadVendors() {
+    this.tipsService.getVendorList()
+      .then(data => {
+        this.vendors = data;
+        this.loadCategories();
+      });
+       
+  }
+
+
   clearSearch(){
     this.searchText = '';
     this.router.navigate(['/AllTips/'+this.curPage+'/ ']);
@@ -45,7 +66,7 @@ export class AlltipsListComponent {
     b.push(a);
     let c =  b[0].id;
     if(searchTerm != ''){
-    this.tipsService.searchTipsAll(searchTerm, this.categoryIdVal)
+    this.tipsService.searchVendorsTipsAll(searchTerm, this.categoryIdVal)
       .then(
         data => {   
           let g:any = data;
@@ -78,16 +99,17 @@ export class AlltipsListComponent {
     }
       });
     }
-  loadTips() {
-     var a = localStorage.getItem('userData');
+  loadTips() {   
+    var a = localStorage.getItem('userData');
     a = JSON.parse(a);
-    console.log(a)
     var b =[];
     b.push(a);
     console.log(b[0].id + 'LOAD');
-    this.tipsService.allTips(b[0].id)
+    this.tipsService.vendorTips()
       .then(data => {
         this.tips = data;
+        this.showSpinner = false;
+        this.showPage = true;
       });
   }
   removeTip(tip) {

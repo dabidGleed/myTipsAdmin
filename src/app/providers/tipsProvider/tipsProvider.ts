@@ -107,12 +107,42 @@ export class TipsService {
         });
     });
   }
-  fileUpload(file) {
+  fileUploadBase64(file) {
+    console.log(file);
+    // let headers = new Headers();
+    // let formData: FormData = new FormData();
+    // formData.append('content', file);
+
+    var data:any = {
+      imgbase64:file
+    }
+
+    return new Promise(resolve => {
+      this.http.post('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/file/base64/upload', data)
+      // this.http.post('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/file/uploads3', formData, {
+        // headers: headers
+      // })
+        .map(res => res.json())
+        .subscribe(data => {
+          // console.log(data)
+          this.data = data;
+          resolve(this.data);
+        })
+    });
+  }
+
+   fileUpload(file) {
     console.log(file);
     let headers = new Headers();
     let formData: FormData = new FormData();
     formData.append('content', file);
+
+    var data:any = {
+      imgbase64:file
+    }
+
     return new Promise(resolve => {
+      // this.http.post('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/file/base64/upload', data)
       this.http.post('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/file/uploads3', formData, {
         headers: headers
       })
@@ -195,6 +225,41 @@ export class TipsService {
            resolve(this.data);
         });
     });
+
+  }
+
+  vendorTips() {
+    return new Promise(resolve => { 
+      this.http.get('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/tips/vendorTips')
+        .map(res => res.json())
+        .subscribe(data => {
+           resolve(data);
+        });
+    });
+
+  }
+
+  searchVendorsTipsAll(searchVal, categoryIdVal){   
+    console.log(searchVal)   
+    if(categoryIdVal == 'all'){
+      return new Promise(resolve => {
+        this.http.get('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/tips/vendorTips?str='+searchVal)
+          .map(res => res.json())
+          .subscribe(data => {
+            this.data = data;
+            resolve(this.data);            
+          });
+      });
+    } else if(categoryIdVal != 'all'){
+       return new Promise(resolve => {
+        this.http.get('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/tips/vendorTips?str='+searchVal+'&categoryId='+categoryIdVal)
+          .map(res => res.json())
+          .subscribe(data => {
+            this.data = data;
+            resolve(this.data);
+          });
+      });
+    }
 
   }
 
@@ -288,8 +353,6 @@ export class TipsService {
           resolve(this.data);
         });
     });
-
   }
-  
 }
 
