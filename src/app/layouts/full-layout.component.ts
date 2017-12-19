@@ -38,8 +38,7 @@ export class FullLayoutComponent implements OnInit {
 
   getImage(){
     var sample:any = "";
-    var a:any = JSON.parse(localStorage.getItem('userImage'));
-    //console.log("Changes in code"+ a.firstName);
+    var a:any = localStorage.getItem('userImage');
     if(a){
       sample = a;
     } else {
@@ -57,11 +56,11 @@ export class FullLayoutComponent implements OnInit {
      data => {
        this.user = data[0];
        if(!this.user.userDetails){
-        this.user.userDetails = {image: ""};
-        this.user.userDetails.image = "assets/img/avatars/profile.png";
+        this.user.userDetails = {};
+        this.user.userDetails = {image:"assets/img/avatars/profile.png"};
         
        }
-       localStorage.setItem('userImage', JSON.stringify(this.user.userDetails.image));
+       localStorage.setItem('userImage',this.user.userDetails.image);
      }
    )
    
@@ -86,5 +85,6 @@ export class FullLayoutComponent implements OnInit {
   logout(){
     this.router.navigate(['/pages/login']);
     localStorage.removeItem('userData');
+    localStorage.removeItem('userImage')
   }
 }
