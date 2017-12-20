@@ -13,13 +13,13 @@ export class AuthService {
   baseURL:String = "http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/";
 
   constructor(public http: Http, public globalservices:globalService) {
-    console.log(this.baseURL);
+    //console.log(this.baseURL);
 
     let headers = new Headers();
     headers.append('Content-Type', 'multipart/form-data');
     headers.append('Accept', 'application/json');
     this.options = new RequestOptions({headers: headers});
-    console.log('Hello AuthService Provider');
+   // console.log('Hello AuthService Provider');
   }
 
 
