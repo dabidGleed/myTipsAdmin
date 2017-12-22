@@ -108,7 +108,7 @@ export class tipsAddComponent {
   }
   
     
-  
+   
 }
   myfile:any;
   fileChange(fileInput: any) {

@@ -66,13 +66,13 @@ export class AlltipsListComponent {
     b.push(a);
     let c =  b[0].id;
     if(searchTerm != ''){
-    this.tipsService.searchTipsAll(searchTerm, this.categoryIdVal)
+    this.tipsService.searchVendorsTipsAll(searchTerm, this.categoryIdVal)
       .then(
         data => {   
           let g:any = data;
           let b:any =[];          
           g.forEach(element => {
-            if(element.userId != c){
+            if(element.userId != c && element.status !='DELETED'){
                b.push(element);
             }
           });   
@@ -105,14 +105,32 @@ export class AlltipsListComponent {
     var b =[];
     b.push(a);
     console.log(b[0].id + 'LOAD');
-    this.tipsService.allTips(b[0].id)
-      .then(data => {
-        this.tips = data;
-
+    this.tipsService.vendorTips()
+      .then(
+        data => {  
+          console.log(data); 
+          let e:any = data;
+          let d:any =[];          
+          e.forEach(element => {
+            
+            if(element.status != 'DELETED'){
+              // delete element
+              console.log(element.status);
+               d.push(element);
+            }
+          });   
+          this.tips = d;
+        // data => {
+        // this.tips = data;
         this.showSpinner = false;
         this.showPage = true;
-
-      });
+      })
+      .catch(
+        err => {   
+      
+      console.log(err);
+      }
+      );
   }
   removeTip(tip) {
     var confirmed = confirm("Are you sure to delete?");

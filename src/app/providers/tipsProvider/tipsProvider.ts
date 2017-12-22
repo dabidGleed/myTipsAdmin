@@ -10,7 +10,7 @@ export class TipsService {
   options;
   imageData;
   constructor(public http: Http, public globalservices:globalService) {
-    console.log(globalservices.url + 'category');
+ //   console.log(globalservices.url + 'category');
     let headers = new Headers();
     headers.append('Content-Type', 'multipart/form-data');
     headers.append('Accept', 'application/json');
@@ -19,6 +19,7 @@ export class TipsService {
   }
 
   load(userId) {
+    console.log('ascasdcadsca')
     return new Promise(resolve => {
       this.http.get('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/tips/'+ userId +'/list/allUser')
         .map(res => res.json())
@@ -268,6 +269,41 @@ export class TipsService {
            resolve(this.data);
         });
     });
+
+  }
+
+  vendorTips() {
+    return new Promise(resolve => { 
+      this.http.get('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/tips/vendorTips')
+        .map(res => res.json())
+        .subscribe(data => {
+           resolve(data);
+        });
+    });
+
+  }
+
+  searchVendorsTipsAll(searchVal, categoryIdVal){   
+    console.log(searchVal)   
+    if(categoryIdVal == 'all'){
+      return new Promise(resolve => {
+        this.http.get('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/tips/vendorTips?str='+searchVal)
+          .map(res => res.json())
+          .subscribe(data => {
+            this.data = data;
+            resolve(this.data);            
+          });
+      });
+    } else if(categoryIdVal != 'all'){
+       return new Promise(resolve => {
+        this.http.get('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/tips/vendorTips?str='+searchVal+'&categoryId='+categoryIdVal)
+          .map(res => res.json())
+          .subscribe(data => {
+            this.data = data;
+            resolve(this.data);
+          });
+      });
+    }
 
   }
 
