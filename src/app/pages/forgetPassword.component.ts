@@ -37,9 +37,9 @@ export class forgetPasswordComponent {
     this.Auth.forgetPassword(role,this.userData)
          .then(
         data => {
-        console.log(this.data)
-          
-          if (this.data.status === 200) {
+        // console.log(data);
+        this.data = data;
+          if (this.data.status == 200) {
             this.submitEmail('We sent you a Reset Password link to your Email.');
           } else {
             this.submitEmail('user doesnt exist');
