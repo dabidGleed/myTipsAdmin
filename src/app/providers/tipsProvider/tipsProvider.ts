@@ -140,6 +140,49 @@ export class TipsService {
 
     var data:any = {
       imgbase64:file
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
     }
 
     return new Promise(resolve => {
