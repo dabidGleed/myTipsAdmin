@@ -34,6 +34,7 @@ export class resetPasswordComponent {
       console.log( this.userData);
       this.userData ={};
       this.reset();
+      validVal.resetForm();
       this.router.navigate(['/pages/login']);
     }, //Bind to view
     err => {

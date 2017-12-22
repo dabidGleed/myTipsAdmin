@@ -41,10 +41,11 @@ export class forgetPasswordComponent {
         this.data = data;
           if (this.data.status == 200) {
             this.submitEmail('We sent you a Reset Password link to your Email.');
+            validVal.resetForm();
           } else {
             this.submitEmail('user doesnt exist');
           }
-        
+         
         });
   }
      }
