@@ -140,6 +140,49 @@ export class TipsService {
 
     var data:any = {
       imgbase64:file
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
     }
 
     return new Promise(resolve => {
@@ -241,7 +284,7 @@ export class TipsService {
   }
 
   searchVendorsTipsAll(searchVal, categoryIdVal){   
-    console.log(searchVal)   
+    console.log(categoryIdVal)   
     if(categoryIdVal == 'all'){
       return new Promise(resolve => {
         this.http.get('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/tips/vendorTips?str='+searchVal)
@@ -251,7 +294,7 @@ export class TipsService {
             resolve(this.data);            
           });
       });
-    } else if(categoryIdVal != 'all'){
+    } else{
        return new Promise(resolve => {
         this.http.get('http://ec2-52-66-121-193.ap-south-1.compute.amazonaws.com/tips/vendorTips?str='+searchVal+'&categoryId='+categoryIdVal)
           .map(res => res.json())

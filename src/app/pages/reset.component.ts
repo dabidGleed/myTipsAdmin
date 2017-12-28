@@ -28,9 +28,20 @@ export class resetPasswordComponent {
   
  changePassword(validVal: NgForm){
    if(validVal.valid){
-   this.Auth.changePassword(this.verificationId,this.userData);
-   this.userData ={};
-   this.reset();
+   this.Auth.changePassword(this.verificationId,this.userData)
+   .then(
+    data => {
+      console.log( this.userData);
+      this.userData ={};
+      this.reset();
+      validVal.resetForm();
+      this.router.navigate(['/pages/login']);
+    }, //Bind to view
+    err => {
+      // Log errors if any
+      console.log(err);
+    });
+  
    }
  }
 

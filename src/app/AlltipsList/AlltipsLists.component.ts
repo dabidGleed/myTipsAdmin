@@ -59,13 +59,15 @@ export class AlltipsListComponent {
 
   
   searchTips(searchTerm){
+    console.log("searchTerm");
     this.router.navigate(['/AllTips/'+this.curPage+'/'+searchTerm]);
      var a = localStorage.getItem('userData');
     a = JSON.parse(a);
     var b =[];
     b.push(a);
     let c =  b[0].id;
-    if(searchTerm != ''){
+    // if(searchTerm != ''){
+      console.log(this.categoryIdVal);
     this.tipsService.searchVendorsTipsAll(searchTerm, this.categoryIdVal)
       .then(
         data => {   
@@ -82,10 +84,10 @@ export class AlltipsListComponent {
           // Log errors if any
           console.log(err);
         });
-    } else {
-       this.router.navigate(['/AllTips/'+this.curPage+'/ ']);
-       this.loadTips();
-    }
+    // } else {
+    //    this.router.navigate(['/AllTips/'+this.curPage+'/ ']);
+    //    this.loadTips();
+    // }
   }
   loadCategories() {
     this.tipsService.getCategories()

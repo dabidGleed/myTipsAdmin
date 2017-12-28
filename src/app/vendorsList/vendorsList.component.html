@@ -27,9 +27,9 @@
                             <td data-th="Actions">
                                 <!-- <button class="btn btn-danger btn-sm" type="button">Delete</button> -->
                                 <button *ngIf="vendor.status" class="btn btn-primary btn-sm {{vendor.status}} point" type="button" (click)="vendorBlock(vendor)">{{vendor.status}}</button>
-                                <!-- <template *ngIf="vendor.status === 'ACTIVE'">
+                                <!-- <ng-template *ngIf="vendor.status === 'ACTIVE'">
                     <button  class="btn btn-info btn-sm" type="button">{{vendor.status}}</button>
-                  </template> -->
+                  </ng-template> -->
                             </td>
                         </tr>
                     </tbody>
