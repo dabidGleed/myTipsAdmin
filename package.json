@@ -34,7 +34,7 @@
     "ng-validators": "0.2.1",
     "ng2-bootstrap": "1.6.3",
     "ng2-charts": "1.6.0",
-    "ng2-ckeditor": "1.1.9",
+    "ng2-ckeditor": "^1.1.9",
     "ng2-datepicker": "1.8.3",
     "ng2-file-upload": "1.2.1",
     "ng2-pagination": "2.0.2",

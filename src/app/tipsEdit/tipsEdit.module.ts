@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import {FroalaEditorModule, FroalaViewModule} from 'angular2-froala-wysiwyg';
 import { CKEditorModule, CKEditorComponent } from 'ng2-ckeditor';
+// import { QuillModule,QuillEditorComponent } from 'ngx-quill'
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { CKEditorModule, CKEditorComponent } from 'ng2-ckeditor';
       FormsModule,
       //  FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),
        CKEditorModule
+      // QuillModule,
     ],
   declarations: [ tipsEditComponent ]
 })

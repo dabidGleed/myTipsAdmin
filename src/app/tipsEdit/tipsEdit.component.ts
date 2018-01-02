@@ -19,6 +19,7 @@ export class tipsEditComponent {
   private tipId: any;
   private categories;
   tip: any = {title:'', description:'', images:[],videos:[], category:'',tagsList:'',tags:[], postType:'',genderSpecific:[], videoLink:'',userId:''};
+  
     public config = {toolbarGroups:[
         { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
         { name: 'editing',     groups: [ 'find', 'selection', 'spellchecker' ] },
@@ -44,13 +45,16 @@ export class tipsEditComponent {
     }
     this.loadTipDetails();
     this.loadCategories();
+  
     for (let name in CKEDITOR.instances) {
-        CKEDITOR.instances[name].destroy(true);
+        CKEDITOR.instances[name].destroy(false);
     }
+    console.log(CKEDITOR.instances);
   }
   // Local properties
 
   loadTipDetails(){
+    console.log(CKEDITOR.instances);
     // Get all comments
     this.AllTipsService.getOneTip(this.tipId)
         .then(data => {
