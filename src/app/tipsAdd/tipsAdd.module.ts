@@ -6,6 +6,7 @@ import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 // import {FroalaEditorModule, FroalaViewModule} from 'angular2-froala-wysiwyg';
 import { CKEditorModule } from 'ng2-ckeditor';
+// import { QuillModule } from 'ngx-quill'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TagInputModule } from 'ngx-chips';
 
@@ -19,6 +20,7 @@ import { TagInputModule } from 'ngx-chips';
     FormsModule,
     // FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),
     CKEditorModule,
+    // QuillModule,
     TagInputModule
   ],
   declarations: [tipsAddComponent]

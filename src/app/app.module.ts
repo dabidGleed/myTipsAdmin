@@ -8,6 +8,7 @@ import { BootstrapModalModule } from 'ngx-modialog/plugins/bootstrap';
 // import { FroalaEditorModule, FroalaViewModule } from 'angular2-froala-wysiwyg';
 import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 import { CKEditorModule,CKEditorComponent  } from 'ng2-ckeditor';
+// import { QuillModule,QuillEditorComponent } from 'ngx-quill'
 
 
 import { DatePickerModule } from 'ng2-datepicker';
@@ -51,6 +52,7 @@ import { TagInputModule } from 'ngx-chips';
     TabsModule.forRoot(),
     ChartsModule,
     CKEditorModule,
+    // QuillModule,
     Ng2Bs3ModalModule,
     // ImageCropperModule,
     // FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),

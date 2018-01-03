@@ -87,4 +87,10 @@ export class FullLayoutComponent implements OnInit {
     localStorage.removeItem('userData');
     localStorage.removeItem('userImage')
   }
+  changeOfRoutes(){
+    // if(this.router.url === '/'){
+    //    this.showAfterLogin = true;
+    // }
+    console.log("Router");
+   }
 }
